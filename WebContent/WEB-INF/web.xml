@@ -9,4 +9,26 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <jsp-config>
+    <taglib>
+      <taglib-uri>/pagingTag</taglib-uri>
+      <taglib-location>/WEB-INF/pagingTag.tld</taglib-location>
+    </taglib>
+  </jsp-config>
+  <filter>
+    <filter-name>CharsetEncodingFilter</filter-name>
+    <filter-class>com.lingo.profiles.filter.CharsetEncodingFilter</filter-class>
+    <init-param>
+      <param-name>encode</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+    <init-param>
+        <param-name>default</param-name>
+        <param-value>iso-8859-1</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>CharsetEncodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
 </web-app>

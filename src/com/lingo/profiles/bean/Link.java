@@ -7,7 +7,7 @@ public class Link {
 	private int pid;
 	private String title;
 	private String link;
-	private Image logo;
+	private byte[] logo;
 	public int getId() {
 		return id;
 	}
@@ -32,10 +32,10 @@ public class Link {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	public Image getLogo() {
+	public byte[] getLogo() {
 		return logo;
 	}
-	public void setLogo(Image logo) {
+	public void setLogo(byte[] logo) {
 		this.logo = logo;
 	}
 	

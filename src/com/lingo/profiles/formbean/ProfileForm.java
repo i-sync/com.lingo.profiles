@@ -1,6 +1,8 @@
-package com.lingo.profiles.bean;
+package com.lingo.profiles.formbean;
 
-public class Profile {
+import org.apache.tomcat.util.codec.binary.Base64;
+
+public class ProfileForm {
 	private int id;
 	private String name;
 	private byte[] avatar;
@@ -9,7 +11,7 @@ public class Profile {
 	private String address;
 	private String intro;
 	
-	public Profile(String name,byte[] avatar, String email,String phone,String address,String intro)
+	public ProfileForm(String name,byte[] avatar, String email,String phone,String address,String intro)
 	{
 		this.name= name;
 		this.avatar = avatar;
@@ -18,14 +20,12 @@ public class Profile {
 		this.address = address ;
 		this.intro = intro;
 	}
-	public Profile(int id,String name,byte[] avatar, String email,String phone,String address,String intro)
+	public ProfileForm(int id,String name,byte[] avatar, String email,String phone,String address,String intro)
 	{
 		this(name,avatar,email,phone,address,intro);
 		this.id = id;
 	}
-	
-	public Profile(){}
-	
+	public ProfileForm(){}
 	public int getId() {
 		return id;
 	}
@@ -43,6 +43,10 @@ public class Profile {
 	}
 	public void setAvatar(byte[] avatar) {
 		this.avatar = avatar;
+	}
+	public String getAvatarImage()
+	{
+		return new Base64().encodeToString(this.avatar);
 	}
 	public String getEmail() {
 		return email;

@@ -5,7 +5,7 @@ Create Table `Profile`
 (
 	ID int primary key auto_increment,
     `Name` varchar(64),
-    Avater binary,
+    Avatar MediumBlob,
     Email varchar(64),
     Phone varchar(32),
     Address varchar(128),
@@ -25,7 +25,7 @@ Create Table Project
 	ID int primary key auto_increment,
     PID int,
     Title varchar(512),
-    Image binary,
+    Image MediumBlob,
     Link varchar(128),
     Tags varchar(256),
     Intro varchar(4096)
@@ -56,5 +56,5 @@ Create Table Link
     PID int,
     Title varchar(256),
     Link varchar(128),
-    Logo binary 
+    Logo MediumBlob 
 );

@@ -14,12 +14,11 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import com.zzti.bean.Login;
-import com.zzti.common.AuthInterceptor;
+import com.lingo.profiles.common.AuthInterceptor;
  
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.zzti.controller")
+@ComponentScan(basePackages = "com.lingo.profiles.controller")
 public class AppConfiguration extends WebMvcConfigurerAdapter{
      
     @Bean

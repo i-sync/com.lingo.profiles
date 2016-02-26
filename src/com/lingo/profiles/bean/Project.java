@@ -6,7 +6,7 @@ public class Project {
 	private int id ;
 	private int pid;
 	private String title;
-	private Image image;
+	private byte[] image;
 	private String link;
 	private String tags;
 	private String intro;
@@ -28,10 +28,10 @@ public class Project {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public Image getImage() {
+	public byte[] getImage() {
 		return image;
 	}
-	public void setImage(Image image) {
+	public void setImage(byte[] image) {
 		this.image = image;
 	}
 	public String getLink() {
