@@ -1,18 +1,20 @@
-package com.lingo.profiles.bean;
+package com.lingo.profiles.formbean;
+
+import org.apache.tomcat.util.codec.binary.Base64;
 
 
-public class Link {
+public class LinkForm {
 	private int id;
 	private int pid;
 	private String title;
 	private String link;
 	private byte[] logo;
 	
-	public Link(int id, int pid, String title, String link, byte[] logo) {
+	public LinkForm(int id, int pid, String title, String link, byte[] logo) {
 		this(pid,title,link,logo);
 		this.id = id;
 	}
-	public Link(int pid, String title, String link, byte[] logo) {
+	public LinkForm(int pid, String title, String link, byte[] logo) {
 		super();
 		this.pid = pid;
 		this.title = title;
@@ -49,6 +51,9 @@ public class Link {
 	public void setLogo(byte[] logo) {
 		this.logo = logo;
 	}
-	
+	public String getLogoImage()
+	{
+		return new Base64().encodeToString(this.logo);
+	}
 	
 }

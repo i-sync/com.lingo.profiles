@@ -1,6 +1,8 @@
-package com.lingo.profiles.bean;
+package com.lingo.profiles.formbean;
 
-public class Project {
+import org.apache.tomcat.util.codec.binary.Base64;
+
+public class ProjectForm {
 	private int id ;
 	private int pid;
 	private String title;
@@ -9,12 +11,12 @@ public class Project {
 	private String tags;
 	private String intro;
 		
-	public Project(int id, int pid, String title, byte[] image, String link,
+	public ProjectForm(int id, int pid, String title, byte[] image, String link,
 			String tags, String intro) {
 		this(pid, title, image, link, tags, intro);
 		this.id = id;
 	}
-	public Project(int pid, String title, byte[] image, String link,
+	public ProjectForm(int pid, String title, byte[] image, String link,
 			String tags, String intro) {
 		super();
 		this.pid = pid;
@@ -47,6 +49,10 @@ public class Project {
 	}
 	public void setImage(byte[] image) {
 		this.image = image;
+	}
+	public String getProjectImage()
+	{
+		return new Base64().encodeToString(this.image);
 	}
 	public String getLink() {
 		return link;

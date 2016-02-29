@@ -8,12 +8,17 @@ public class Skill {
 	
 	public Skill(int id,int pid, String title, String content)
 	{
+		this(pid,title,content);
 		this.id = id;
-		this.pid = pid;
-		this.title = title;
-		this.content = content;		
 	}
 	
+	public Skill(int pid, String title, String content) {
+		super();
+		this.pid = pid;
+		this.title = title;
+		this.content = content;
+	}
+
 	public int getId() {
 		return id;
 	}

@@ -1,5 +1,7 @@
 package com.lingo.profiles.bean;
 
+import java.util.List;
+
 public class Profile {
 	private int id;
 	private String name;
@@ -8,6 +10,11 @@ public class Profile {
 	private String phone;
 	private String address;
 	private String intro;
+	private List<Skill> skill;
+	private List<Project> project;
+	private List<Education> education;
+	private List<Link> link;
+	private List<Living> living;
 	
 	public Profile(String name,byte[] avatar, String email,String phone,String address,String intro)
 	{
@@ -67,6 +74,36 @@ public class Profile {
 	}
 	public void setIntro(String intro) {
 		this.intro = intro;
+	}
+	public List<Skill> getSkill() {
+		return skill;
+	}
+	public void setSkill(List<Skill> skill) {
+		this.skill = skill;
+	}
+	public List<Project> getProject() {
+		return project;
+	}
+	public void setProject(List<Project> project) {
+		this.project = project;
+	}
+	public List<Education> getEducation() {
+		return education;
+	}
+	public void setEducation(List<Education> education) {
+		this.education = education;
+	}
+	public List<Link> getLink() {
+		return link;
+	}
+	public void setLink(List<Link> link) {
+		this.link = link;
+	}
+	public List<Living> getLiving() {
+		return living;
+	}
+	public void setLiving(List<Living> living) {
+		this.living = living;
 	}
 	
 }

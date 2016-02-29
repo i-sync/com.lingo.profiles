@@ -1,16 +1,16 @@
-package com.lingo.profiles.bean;
+package com.lingo.profiles.formbean;
 
-public class Living {
+public class LivingForm {
 	private int id;
 	private int pid;
 	private String title;
 	private String content;
 	
-	public Living(int id, int pid, String title, String content) {
+	public LivingForm(int id, int pid, String title, String content) {
 		this(pid, title, content);
 		this.id = id;
 	}
-	public Living(int pid, String title, String content) {
+	public LivingForm(int pid, String title, String content) {
 		super();
 		this.pid = pid;
 		this.title = title;

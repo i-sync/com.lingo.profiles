@@ -1,6 +1,6 @@
-package com.lingo.profiles.bean;
+package com.lingo.profiles.formbean;
 
-public class Education {
+public class EducationForm {
 	private int id;
 	private int pid;
 	private String title;
@@ -9,12 +9,12 @@ public class Education {
 	private String link;
 	private String intro;
 	
-	public Education(int id, int pid, String title, String period,
+	public EducationForm(int id, int pid, String title, String period,
 			String professional, String link, String intro) {
 		this(pid,title,period,professional,link,intro);
 		this.id = id;
 	}
-	public Education(int pid, String title, String period, String professional,
+	public EducationForm(int pid, String title, String period, String professional,
 			String link, String intro) {
 		super();
 		this.pid = pid;
@@ -25,7 +25,7 @@ public class Education {
 		this.intro = intro;
 	}
 	
-	public Education(){}
+	public EducationForm(){}
 	
 	public int getId() {
 		return id;
