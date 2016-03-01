@@ -19,6 +19,7 @@ public class Link {
 		this.link = link;
 		this.logo = logo;
 	}
+	public Link(){}
 	public int getId() {
 		return id;
 	}

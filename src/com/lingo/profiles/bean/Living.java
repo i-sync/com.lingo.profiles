@@ -16,6 +16,7 @@ public class Living {
 		this.title = title;
 		this.content = content;
 	}
+	public Living(){}
 	public int getId() {
 		return id;
 	}

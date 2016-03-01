@@ -1,10 +1,14 @@
 package com.lingo.profiles.formbean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class LivingForm {
 	private int id;
 	private int pid;
 	private String title;
 	private String content;
+	private Map<String,String> errors = new HashMap<String,String>();
 	
 	public LivingForm(int id, int pid, String title, String content) {
 		this(pid, title, content);
@@ -16,6 +20,7 @@ public class LivingForm {
 		this.title = title;
 		this.content = content;
 	}
+	public LivingForm(){}
 	public int getId() {
 		return id;
 	}
@@ -40,6 +45,30 @@ public class LivingForm {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	public Map<String, String> getErrors() {
+		return errors;
+	}
+	public void setErrors(Map<String, String> errors) {
+		this.errors = errors;
+	}
 	
-	
+	/**
+	 * verify
+	 * @return
+	 */
+	public boolean validate() {
+		boolean flag = true;
+		if(this.title ==null ||this.title.trim().equals(""))
+		{
+			this.errors.put("title", "title can't is empty");
+			flag =false;
+		}
+		if(this.content ==null || this.content.trim().equals(""))
+		{
+			this.errors.put("content", "content can't is empty");
+			flag = false;
+		}
+
+		return flag;
+	}
 }

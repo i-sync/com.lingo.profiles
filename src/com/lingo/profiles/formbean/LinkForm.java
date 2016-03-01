@@ -1,5 +1,8 @@
 package com.lingo.profiles.formbean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.tomcat.util.codec.binary.Base64;
 
 
@@ -9,6 +12,7 @@ public class LinkForm {
 	private String title;
 	private String link;
 	private byte[] logo;
+	private Map<String,String> errors = new HashMap<String,String>();
 	
 	public LinkForm(int id, int pid, String title, String link, byte[] logo) {
 		this(pid,title,link,logo);
@@ -21,6 +25,7 @@ public class LinkForm {
 		this.link = link;
 		this.logo = logo;
 	}
+	public LinkForm(){}
 	public int getId() {
 		return id;
 	}
@@ -54,6 +59,12 @@ public class LinkForm {
 	public String getLogoImage()
 	{
 		return new Base64().encodeToString(this.logo);
+	}
+	public Map<String, String> getErrors() {
+		return errors;
+	}
+	public void setErrors(Map<String, String> errors) {
+		this.errors = errors;
 	}
 	
 }

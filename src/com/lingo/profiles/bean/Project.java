@@ -24,6 +24,7 @@ public class Project {
 		this.tags = tags;
 		this.intro = intro;
 	}
+	public Project(){}
 	public int getId() {
 		return id;
 	}

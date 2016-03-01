@@ -11,8 +11,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.beanutils.BeanUtils;
-
 public class CharsetEncodingFilter implements Filter {
 
 	private  String defaultcharacter = null;

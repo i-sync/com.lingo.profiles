@@ -1,5 +1,8 @@
 package com.lingo.profiles.formbean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class EducationForm {
 	private int id;
 	private int pid;
@@ -8,6 +11,7 @@ public class EducationForm {
 	private String professional;
 	private String link;
 	private String intro;
+	private Map<String,String> errors = new HashMap<String,String>();
 	
 	public EducationForm(int id, int pid, String title, String period,
 			String professional, String link, String intro) {
@@ -69,6 +73,45 @@ public class EducationForm {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
+	public Map<String, String> getErrors() {
+		return errors;
+	}
+	public void setErrors(Map<String, String> errors) {
+		this.errors = errors;
+	}
 	
-	
+	/**
+	 * verify
+	 * @return
+	 */
+	public boolean validate() {
+		boolean flag = true;
+		if(this.title ==null ||this.title.trim().equals(""))
+		{
+			this.errors.put("title", "title can't is empty");
+			flag =false;
+		}
+		if(this.period ==null || this.period.trim().equals(""))
+		{
+			this.errors.put("period", "period can't is empty");
+			flag = false;
+		}
+		if(this.professional ==null || this.professional.trim().equals(""))
+		{
+			this.errors.put("professional", "professional can't is empty");
+			flag = false;
+		}
+		/*if(this.link ==null || this.link.trim().equals(""))
+		{
+			this.errors.put("link", "link can't is empty");
+			flag = false;
+		}*/
+		if(this.intro ==null || this.intro.trim().equals(""))
+		{
+			this.errors.put("intro", "intro can't is empty");
+			flag = false;
+		}
+
+		return flag;
+	}
 }

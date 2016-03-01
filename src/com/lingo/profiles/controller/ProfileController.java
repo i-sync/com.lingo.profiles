@@ -16,6 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lingo.profiles.bean.Profile;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.TResult;
+import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.ProfileForm;
 import com.lingo.profiles.utils.WebUtils;
 
@@ -57,9 +58,61 @@ public class ProfileController {
 		if (result.getResult() != 1)// error
 		{
 			// .....
+			LingoLogger.logger.info(String.format("controller level: add profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
 		}
 
 		return "redirect:/profile/add";
+	}
+	
+	@RequestMapping(value={"/update"},method=RequestMethod.POST)
+	public String updateProfile(@RequestParam(value = "avatar") MultipartFile file, ModelMap model,
+			HttpServletRequest request)
+	{
+		ProfileForm form = WebUtils.requestToBean(request, ProfileForm.class);
+		if (!file.isEmpty()) {
+			try {
+				InputStream is = file.getInputStream();
+				byte[] avatar = new byte[is.available()];
+				is.read(avatar);
+				form.setAvatar(avatar);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		// check
+		// .......
+
+		Profile data = new Profile();
+		WebUtils.copyBean(form, data);
+
+		// write database
+		com.lingo.profiles.dao.Profile profile = new com.lingo.profiles.dao.Profile();
+		Result result = profile.update(data);
+		if (result.getResult() != 1)// error
+		{
+			// .....
+			LingoLogger.logger.info(String.format("controller level: add profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
+		}
+
+		return String.format("redirect:/profile/%d",data.getId());
+	}
+	
+	@RequestMapping(value={"/delete/{id}"},method=RequestMethod.POST)
+	public String deleteProfile(@PathVariable int id, ModelMap model)
+	{
+		Profile data = new Profile();
+		data.setId(id);
+		
+		com.lingo.profiles.dao.Profile profile = new com.lingo.profiles.dao.Profile();
+		Result result = profile.delete(data);
+		if(result.getResult()!=1)
+		{
+			//error....
+			LingoLogger.logger.info(String.format("controller level: delete profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
+		}
+		
+		return "project_list";
 	}
 
 	@RequestMapping(value = { "/model/{id}" }, method = RequestMethod.GET)
@@ -70,7 +123,8 @@ public class ProfileController {
 		com.lingo.profiles.dao.Profile profile = new com.lingo.profiles.dao.Profile();
 		TResult<Profile> result = profile.getModel(data);
 		if (result.getResult() != 1) {
-			// todo
+			// error
+			LingoLogger.logger.info(String.format("controller level: get profile model error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
 		}
 		ProfileForm form = new ProfileForm();
 		WebUtils.copyBean(result.getT(), form);

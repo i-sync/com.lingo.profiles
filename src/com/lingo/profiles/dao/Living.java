@@ -161,7 +161,7 @@ public class Living {
 	 */
 	public ListResult<com.lingo.profiles.bean.Living> getList(com.lingo.profiles.bean.Living data)
 	{
-		LingoLogger.logger.info("dao level: get living model info start...");
+		LingoLogger.logger.info("dao level: get living list info start...");
 		ListResult<com.lingo.profiles.bean.Living> result = new ListResult<com.lingo.profiles.bean.Living>();
 		
 		Connection conn = null;

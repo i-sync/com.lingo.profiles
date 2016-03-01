@@ -1,5 +1,8 @@
 package com.lingo.profiles.formbean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.tomcat.util.codec.binary.Base64;
 
 public class ProjectForm {
@@ -10,6 +13,7 @@ public class ProjectForm {
 	private String link;
 	private String tags;
 	private String intro;
+	private Map<String,String> errors = new HashMap<String,String>();
 		
 	public ProjectForm(int id, int pid, String title, byte[] image, String link,
 			String tags, String intro) {
@@ -26,6 +30,7 @@ public class ProjectForm {
 		this.tags = tags;
 		this.intro = intro;
 	}
+	public ProjectForm(){}
 	public int getId() {
 		return id;
 	}
@@ -71,6 +76,12 @@ public class ProjectForm {
 	}
 	public void setIntro(String intro) {
 		this.intro = intro;
+	}
+	public Map<String, String> getErrors() {
+		return errors;
+	}
+	public void setErrors(Map<String, String> errors) {
+		this.errors = errors;
 	}
 	
 	
