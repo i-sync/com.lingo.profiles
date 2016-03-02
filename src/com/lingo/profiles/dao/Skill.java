@@ -162,7 +162,7 @@ public class Skill {
 	 */
 	public ListResult<com.lingo.profiles.bean.Skill> getList(com.lingo.profiles.bean.Skill data)
 	{
-		LingoLogger.logger.info("dao level: get skill model info start...");
+		LingoLogger.logger.info("dao level: get skill list info start...");
 		ListResult<com.lingo.profiles.bean.Skill> result = new ListResult<com.lingo.profiles.bean.Skill>();
 		
 		Connection conn = null;

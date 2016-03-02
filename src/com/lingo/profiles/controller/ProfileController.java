@@ -2,6 +2,9 @@ package com.lingo.profiles.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,11 +16,21 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.lingo.profiles.bean.Education;
+import com.lingo.profiles.bean.Link;
+import com.lingo.profiles.bean.Living;
 import com.lingo.profiles.bean.Profile;
+import com.lingo.profiles.bean.Project;
 import com.lingo.profiles.bean.Result;
+import com.lingo.profiles.bean.Skill;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
+import com.lingo.profiles.formbean.EducationForm;
+import com.lingo.profiles.formbean.LinkForm;
+import com.lingo.profiles.formbean.LivingForm;
 import com.lingo.profiles.formbean.ProfileForm;
+import com.lingo.profiles.formbean.ProjectForm;
+import com.lingo.profiles.formbean.SkillForm;
 import com.lingo.profiles.utils.WebUtils;
 
 @Controller
@@ -47,7 +60,11 @@ public class ProfileController {
 			}
 		}
 		// check
-		// .......
+		if(!form.validate())
+		{
+			model.addAttribute("form", form);
+			return "profile_add";
+		}
 
 		Profile data = new Profile();
 		WebUtils.copyBean(form, data);
@@ -81,7 +98,11 @@ public class ProfileController {
 			}
 		}
 		// check
-		// .......
+		if(!form.validate())
+		{
+			model.addAttribute("form", form);
+			return "profile_update";
+		}
 
 		Profile data = new Profile();
 		WebUtils.copyBean(form, data);
@@ -126,8 +147,55 @@ public class ProfileController {
 			// error
 			LingoLogger.logger.info(String.format("controller level: get profile model error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
 		}
+		data = result.getT();
 		ProfileForm form = new ProfileForm();
-		WebUtils.copyBean(result.getT(), form);
+		WebUtils.copyBean(data, form);
+		//copy list property
+		List<SkillForm> temp1 = new ArrayList<SkillForm>();
+		for(Skill item : data.getSkill())
+		{
+			SkillForm skill = new SkillForm();
+			WebUtils.copyBean(item, skill);
+			temp1.add(skill);
+		}
+		form.setSkill(temp1);
+		
+		List<ProjectForm> temp2 = new ArrayList<ProjectForm>();
+		for(Project item : data.getProject())
+		{
+			ProjectForm project = new ProjectForm();
+			WebUtils.copyBean(item, project);
+			temp2.add(project);
+		}
+		form.setProject(temp2);
+		
+		List<EducationForm> temp3 = new ArrayList<EducationForm>();
+		for(Education item : data.getEducation())
+		{
+			EducationForm education = new EducationForm();
+			WebUtils.copyBean(item, education);
+			temp3.add(education);
+		}
+		form.setEducation(temp3);
+		
+		List<LivingForm> temp4 = new ArrayList<LivingForm>();
+		for(Living item : data.getLiving())
+		{
+			LivingForm living = new LivingForm();
+			WebUtils.copyBean(item, living);
+			temp4.add(living);
+		}
+		form.setLiving(temp4);
+		
+		List<LinkForm> temp5 = new ArrayList<LinkForm>();
+		for(Link item : data.getLink())
+		{
+			LinkForm link = new LinkForm();
+			WebUtils.copyBean(item, link);
+			temp5.add(link);
+		}		
+		form.setLink(temp5);
+		
 		model.addAttribute("form", form);
 
 		return "index";

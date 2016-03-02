@@ -84,5 +84,33 @@ public class ProjectForm {
 		this.errors = errors;
 	}
 	
-	
+	/**
+	 * verify
+	 * @return
+	 */
+	public boolean validate() {
+		boolean flag = true;
+		if(this.title ==null ||this.title.trim().equals(""))
+		{
+			this.errors.put("title", "title can't is empty");
+			flag =false;
+		}
+		if(this.tags ==null || this.tags.trim().equals(""))
+		{
+			this.errors.put("tags", "tags can't is empty");
+			flag = false;
+		}
+		/*if(this.link ==null ||this.link.trim().equals(""))
+		{
+			this.errors.put("link", "link can't is empty");
+			flag =false;
+		}*/
+		if(this.intro ==null || this.intro.trim().equals(""))
+		{
+			this.errors.put("intro", "intro can't is empty");
+			flag = false;
+		}
+
+		return flag;
+	}
 }

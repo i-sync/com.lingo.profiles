@@ -209,7 +209,7 @@ public class Project {
 	 */
 	public ListResult<com.lingo.profiles.bean.Project> getList(
 			com.lingo.profiles.bean.Project data) {
-		LingoLogger.logger.info("dao level: get project model info start...");
+		LingoLogger.logger.info("dao level: get project list info start...");
 		ListResult<com.lingo.profiles.bean.Project> result = new ListResult<com.lingo.profiles.bean.Project>();
 
 		Connection conn = null;

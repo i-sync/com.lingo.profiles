@@ -66,5 +66,23 @@ public class LinkForm {
 	public void setErrors(Map<String, String> errors) {
 		this.errors = errors;
 	}
-	
+	/**
+	 * verify
+	 * @return
+	 */
+	public boolean validate() {
+		boolean flag = true;
+		if(this.title ==null ||this.title.trim().equals(""))
+		{
+			this.errors.put("title", "title can't is empty");
+			flag =false;
+		}
+		if(this.link ==null || this.link.trim().equals(""))
+		{
+			this.errors.put("link", "link can't is empty");
+			flag = false;
+		}
+
+		return flag;
+	}
 }

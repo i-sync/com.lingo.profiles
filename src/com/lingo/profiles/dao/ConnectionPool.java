@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Properties;
 
+import com.lingo.profiles.common.LingoLogger;
+
 /**
  * 
  * @author michael.tian
@@ -60,7 +62,7 @@ public class ConnectionPool {
 	 */
 	private ConnectionPool() {
 		freeConnections = new LinkedList<Connection>();
-		System.out.println("database connection pool start initial... ,init number：" + INIT_CONN);
+		LingoLogger.logger.info(String.format("database connection pool start initial... ,init number：%d", INIT_CONN));
 		/**
 		 * init some connection
 		 */
@@ -71,7 +73,7 @@ public class ConnectionPool {
 				free_num++;
 			}
 		}
-		System.out.println("database connection pool init complete.");
+		LingoLogger.logger.info("database connection pool init complete.");
 	}
 
 	protected static ConnectionPool getInstance() {
@@ -94,7 +96,8 @@ public class ConnectionPool {
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
 		} catch (SQLException e) {
-			System.out.println("get an connection occur an error , error message as follow:");
+			LingoLogger.logger.error("get an connection occur an error , error message as follow:");
+			LingoLogger.logger.error(e);
 			e.printStackTrace();
 		}
 		return conn;

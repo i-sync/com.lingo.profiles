@@ -164,7 +164,7 @@ public class Education {
 	 */
 	public ListResult<com.lingo.profiles.bean.Education> getList(com.lingo.profiles.bean.Education data)
 	{
-		LingoLogger.logger.info("dao level: get education model info start...");
+		LingoLogger.logger.info("dao level: get education list info start...");
 		ListResult<com.lingo.profiles.bean.Education> result = new ListResult<com.lingo.profiles.bean.Education>();
 		
 		Connection conn = null;

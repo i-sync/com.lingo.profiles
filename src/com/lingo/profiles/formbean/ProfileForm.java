@@ -6,11 +6,7 @@ import java.util.Map;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 
-import com.lingo.profiles.bean.Education;
-import com.lingo.profiles.bean.Link;
-import com.lingo.profiles.bean.Living;
-import com.lingo.profiles.bean.Project;
-import com.lingo.profiles.bean.Skill;
+import com.lingo.profiles.utils.RegexUtil;
 
 public class ProfileForm {
 	private int id;
@@ -20,11 +16,11 @@ public class ProfileForm {
 	private String phone;
 	private String address;
 	private String intro;
-	private List<Skill> skill;
-	private List<Project> project;
-	private List<Education> education;
-	private List<Link> link;
-	private List<Living> living;
+	private List<SkillForm> skill;
+	private List<ProjectForm> project;
+	private List<EducationForm> education;
+	private List<LinkForm> link;
+	private List<LivingForm> living;
 	private Map<String,String> errors = new HashMap<String,String>();
 	
 	public ProfileForm(String name,byte[] avatar, String email,String phone,String address,String intro)
@@ -88,34 +84,35 @@ public class ProfileForm {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-	public List<Skill> getSkill() {
+	
+	public List<SkillForm> getSkill() {
 		return skill;
 	}
-	public void setSkill(List<Skill> skill) {
+	public void setSkill(List<SkillForm> skill) {
 		this.skill = skill;
 	}
-	public List<Project> getProject() {
+	public List<ProjectForm> getProject() {
 		return project;
 	}
-	public void setProject(List<Project> project) {
+	public void setProject(List<ProjectForm> project) {
 		this.project = project;
 	}
-	public List<Education> getEducation() {
+	public List<EducationForm> getEducation() {
 		return education;
 	}
-	public void setEducation(List<Education> education) {
+	public void setEducation(List<EducationForm> education) {
 		this.education = education;
 	}
-	public List<Link> getLink() {
+	public List<LinkForm> getLink() {
 		return link;
 	}
-	public void setLink(List<Link> link) {
+	public void setLink(List<LinkForm> link) {
 		this.link = link;
 	}
-	public List<Living> getLiving() {
+	public List<LivingForm> getLiving() {
 		return living;
 	}
-	public void setLiving(List<Living> living) {
+	public void setLiving(List<LivingForm> living) {
 		this.living = living;
 	}
 	public Map<String, String> getErrors() {
@@ -125,4 +122,52 @@ public class ProfileForm {
 		this.errors = errors;
 	}
 	
+	
+	/**
+	 * verify
+	 * @return
+	 */
+	public boolean validate() {
+		boolean flag = true;
+		if(this.name ==null ||this.name.trim().equals(""))
+		{
+			this.errors.put("name", "name can't is empty");
+			flag =false;
+		}
+		if(this.phone ==null || this.name.trim().equals(""))
+		{
+			this.errors.put("name", "name can't is empty");
+			flag = false;
+		}
+		else//validate format.
+		{
+			if (!RegexUtil.isMobile(this.phone)) {
+				flag = false;
+				this.errors.put("phone", "please input correct phone number!");
+			}
+		}
+		if(this.email ==null ||this.email.trim().equals(""))
+		{
+			this.errors.put("email", "email can't is empty");
+			flag =false;
+		}
+		else //validate format
+		{
+			if (!RegexUtil.isEmail(this.email)) {
+				flag = false;
+				this.errors.put("email", "please input correct email!");
+			}
+		}
+		if(this.address ==null || this.address.trim().equals(""))
+		{
+			this.errors.put("address", "address can't is empty");
+			flag = false;
+		}
+		if(this.intro ==null ||this.intro.trim().equals(""))
+		{
+			this.errors.put("intro", "intro can't is empty");
+			flag =false;
+		}
+		return flag;
+	}
 }

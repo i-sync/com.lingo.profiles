@@ -206,7 +206,7 @@ public class Link {
 	 */
 	public ListResult<com.lingo.profiles.bean.Link> getList(
 			com.lingo.profiles.bean.Link data) {
-		LingoLogger.logger.info("dao level: get link model info start...");
+		LingoLogger.logger.info("dao level: get link list info start...");
 		ListResult<com.lingo.profiles.bean.Link> result = new ListResult<com.lingo.profiles.bean.Link>();
 
 		Connection conn = null;

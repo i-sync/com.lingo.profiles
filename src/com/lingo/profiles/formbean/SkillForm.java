@@ -70,7 +70,7 @@ public class SkillForm {
 		}
 		if(this.content ==null || this.content.trim().equals(""))
 		{
-			this.errors.put("vocational", "content can't is empty");
+			this.errors.put("content", "content can't is empty");
 			flag = false;
 		}
 
