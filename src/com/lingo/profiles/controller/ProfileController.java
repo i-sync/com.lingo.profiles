@@ -39,7 +39,7 @@ public class ProfileController {
 
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
 	public String addProfile(ModelMap model) {
-		return "add";
+		return "profile_add";
 	}
 
 	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)
