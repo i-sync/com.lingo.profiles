@@ -8,6 +8,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lingo.profiles.bean.Login;
+import com.lingo.profiles.bean.Profile;
 
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 
@@ -23,8 +24,8 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	    
 	    ObjectMapper mapper = new ObjectMapper();
 		Object obj = request.getSession().getAttribute("user");
-		//Contact data = mapper.convertValue(obj, Contact.class);
-		//if(data ==null)
+		Profile data = mapper.convertValue(obj, Profile.class);
+		if(data ==null)
 		{
 			response.sendRedirect(request.getContextPath()+"/login");
 			//return ;

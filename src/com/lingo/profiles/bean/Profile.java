@@ -1,15 +1,19 @@
 package com.lingo.profiles.bean;
 
+import java.util.Date;
 import java.util.List;
 
 public class Profile {
 	private int id;
 	private String name;
+	private String nickName;
 	private byte[] avatar;
 	private String email;
 	private String phone;
 	private String address;
 	private String intro;
+	private Date addDate;
+	private Date updateDate;
 	private List<Skill> skill;
 	private List<Project> project;
 	private List<Education> education;
@@ -45,6 +49,15 @@ public class Profile {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public String getNickName()
+	{
+		return this.nickName;
+	}
+	public void setNickName(String nickName)
+	{
+		this.nickName=nickName;
+	}
 	public byte[] getAvatar() {
 		return avatar;
 	}
@@ -74,6 +87,19 @@ public class Profile {
 	}
 	public void setIntro(String intro) {
 		this.intro = intro;
+	}
+	
+	public Date getAddDate() {
+		return addDate;
+	}
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 	public List<Skill> getSkill() {
 		return skill;

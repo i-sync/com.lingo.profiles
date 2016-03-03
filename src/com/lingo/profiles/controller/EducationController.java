@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lingo.profiles.bean.ListResult;
+import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Education;
 import com.lingo.profiles.bean.TResult;
@@ -42,15 +43,16 @@ public class EducationController {
 		}
 		return result.getList();
 	}
-	
+	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.GET)
 	public String addEducation(ModelMap model) {
 		return "education_add";
 	}
 
+	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-	public String addEducation(ModelMap model, HttpServletRequest request) {
-		EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
+	public String addEducation(@ModelAttribute EducationForm form, ModelMap model, HttpServletRequest request) {
+		//EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
 		form.setPid(pid);
 		if(!form.validate())
 		{
@@ -71,15 +73,17 @@ public class EducationController {
 		return "redirect:/education/add";
 	}
 
+	@Login
 	@RequestMapping(value = {"/update/{id}"}, method = RequestMethod.GET)
 	public String updateEducation(@PathVariable int id, ModelMap model) {
 		return String.format("redirect:/education/model/%d",id);
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/update"},method = RequestMethod.POST)
-	public String updateEducation(ModelMap model,HttpServletRequest request)
+	public String updateEducation(@ModelAttribute EducationForm form, ModelMap model,HttpServletRequest request)
 	{
-		EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
+		//EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
 		form.setPid(pid);
 		if(!form.validate())
 		{
@@ -97,7 +101,8 @@ public class EducationController {
 		}
 		return "redirect:/education/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/delete/{id}"},method=RequestMethod.GET)
 	public String deleteEducation(@PathVariable int id, ModelMap model)
 	{
@@ -114,7 +119,8 @@ public class EducationController {
 		
 		return "redirect:/education/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/model/{id}"},method=RequestMethod.GET)
 	public String getModel(@PathVariable int id, ModelMap model)
 	{

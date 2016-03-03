@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lingo.profiles.bean.ListResult;
+import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Link;
 import com.lingo.profiles.bean.TResult;
@@ -56,12 +57,14 @@ public class LinkController {
 		}
 		return list;
 	}
-	
+
+	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.GET)
 	public String addLink(ModelMap model) {
 		return "link_add";
 	}
 
+	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
 	public String addLink(@RequestParam(value = "logo") MultipartFile file, ModelMap model, HttpServletRequest request) {
 		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
@@ -97,11 +100,13 @@ public class LinkController {
 		return "redirect:/link/add";
 	}
 
+	@Login
 	@RequestMapping(value = {"/update/{id}"}, method = RequestMethod.GET)
 	public String updateLink(@PathVariable int id, ModelMap model) {
 		return String.format("redirect:/link/model/%d",id);
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/update"},method = RequestMethod.POST)
 	public String updateLink(@RequestParam(value = "logo") MultipartFile file, ModelMap model,HttpServletRequest request)
 	{
@@ -135,7 +140,8 @@ public class LinkController {
 		}
 		return "redirect:/link/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/delete/{id}"},method=RequestMethod.GET)
 	public String deleteLink(@PathVariable int id, ModelMap model)
 	{
@@ -152,7 +158,8 @@ public class LinkController {
 		
 		return "redirect:/link/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/model/{id}"},method=RequestMethod.GET)
 	public String getModel(@PathVariable int id, ModelMap model)
 	{

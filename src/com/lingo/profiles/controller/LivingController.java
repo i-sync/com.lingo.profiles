@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lingo.profiles.bean.ListResult;
+import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Living;
 import com.lingo.profiles.bean.TResult;
@@ -43,15 +44,17 @@ public class LivingController {
 		}
 		return result.getList();
 	}
-	
+
+	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.GET)
 	public String addLiving(ModelMap model) {
 		return "living_add";
 	}
 
+	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-	public String addLiving(ModelMap model, HttpServletRequest request) {
-		LivingForm form = WebUtils.requestToBean(request, LivingForm.class);
+	public String addLiving(@ModelAttribute LivingForm form, ModelMap model, HttpServletRequest request) {
+		//LivingForm form = WebUtils.requestToBean(request, LivingForm.class);
 		form.setPid(pid);
 		if(!form.validate())
 		{
@@ -72,15 +75,17 @@ public class LivingController {
 		return "redirect:/living/add";
 	}
 
+	@Login
 	@RequestMapping(value = {"/update/{id}"}, method = RequestMethod.GET)
 	public String updateLiving(@PathVariable int id, ModelMap model) {
 		return String.format("redirect:/living/model/%d", id);
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/update"},method = RequestMethod.POST)
-	public String updateLiving(ModelMap model,HttpServletRequest request)
+	public String updateLiving(@ModelAttribute LivingForm form, ModelMap model,HttpServletRequest request)
 	{
-		LivingForm form = WebUtils.requestToBean(request, LivingForm.class);
+		//LivingForm form = WebUtils.requestToBean(request, LivingForm.class);
 		form.setPid(pid);
 		if(!form.validate())
 		{
@@ -98,7 +103,8 @@ public class LivingController {
 		}
 		return "redirect:/living/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/delete/{id}"},method=RequestMethod.GET)
 	public String deleteLiving(@PathVariable int id, ModelMap model)
 	{
@@ -115,7 +121,8 @@ public class LivingController {
 		
 		return "redirect:/living/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/model/{id}"},method=RequestMethod.GET)
 	public String getModel(@PathVariable int id, ModelMap model)
 	{

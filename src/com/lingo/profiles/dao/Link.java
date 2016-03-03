@@ -27,7 +27,7 @@ public class Link {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into Link(PID,Title,Link,Logo) values(?,?,?,?);";
+			String sql = "insert into Profiles.Link(PID,Title,Link,Logo) values(?,?,?,?);";
 			Object[] objs = new Object[] { data.getPid(), data.getTitle(),
 					data.getLink() };
 			conn = PoolManager.getConnection();
@@ -75,7 +75,7 @@ public class Link {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = String.format(
-					"update Link set Title=?,Link=? %s where ID=?",
+					"update Profiles.Link set Title=?,Link=? %s where ID=?",
 					data.getLogo() == null ? "" : ",Logo=?");
 			Object[] objs = new Object[] { data.getTitle(), data.getLink() };
 
@@ -126,7 +126,7 @@ public class Link {
 		Result result = new Result();
 
 		try {
-			String sql = "delete from Link where ID=?";
+			String sql = "delete from Profiles.Link where ID=?";
 			Object[] objs = new Object[] { data.getId() };
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -157,7 +157,7 @@ public class Link {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Link where ID=?";
+			String sql = "select * from Profiles.Link where ID=?";
 			Object[] objs = new Object[] { data.getId() };
 
 			conn = PoolManager.getConnection();
@@ -214,7 +214,7 @@ public class Link {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Link where PID=?";
+			String sql = "select * from Profiles.Link where PID=?";
 			Object[] objs = new Object[] { data.getPid() };
 
 			conn = PoolManager.getConnection();

@@ -7,8 +7,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
@@ -29,8 +31,8 @@ public class Profile {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try{			
-			String sql ="insert into Profile(Name,Email,Phone,Address,Intro,Avatar) values(?,?,?,?,?,?);";
-			Object[] objs = new Object[]{data.getName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getIntro()};
+			String sql ="insert into Profiles.Profile(Name,NickName,Email,Phone,Address,Intro,AddDate,UpdateDate,Avatar) values(?,?,?,?,?,?,?,?,?);";
+			Object[] objs = new Object[]{data.getName(),data.getNickName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getIntro(),new Date(),new Date()};
 			
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -77,8 +79,8 @@ public class Profile {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try{			
-			String sql =String.format("update Profile set Name=?, Email=?,Phone=?,Address=?,Intro=? %s where ID=?",data.getAvatar()==null?"":",Avatar=?");//"insert into Profile(Name,Email,Phone,Address,Intro,Avatar) values(?,?,?,?,?,?);";
-			Object[] objs = new Object[]{data.getName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getIntro()};
+			String sql =String.format("update Profiles.Profile set Name=?,NickName=?, Email=?,Phone=?,Address=?,Intro=?,UpdateDate=? %s where ID=?",data.getAvatar()==null?"":",Avatar=?");//"insert into Profile(Name,Email,Phone,Address,Intro,Avatar) values(?,?,?,?,?,?);";
+			Object[] objs = new Object[]{data.getName(),data.getNickName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getIntro(),new Date()};
 			
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -132,7 +134,7 @@ public class Profile {
 		ResultSet rs =null;
 		try
 		{
-			String sql = "{call proc_profile_delete(?)}";//"delete from Profile where ID=?";
+			String sql = "{call Profiles.proc_profile_delete(?)}";//"delete from Profile where ID=?";
 			//Object[] objs = new Object[] { data.getId() };
 			
 			conn = PoolManager.getConnection();
@@ -183,7 +185,7 @@ public class Profile {
 		ResultSet rs = null;
 
 		try {
-			String sql = "{call proc_profile_select(?)}";//"select * from Profile where ID=?";
+			String sql = "{call Profiles.proc_profile_select(?)}";//"select * from Profile where ID=?";
 			//Object[] objs = new Object[] { data.getId() };
 
 			conn = PoolManager.getConnection();
@@ -195,6 +197,7 @@ public class Profile {
 			// profile 
 			if (rs.next()) {
 				data.setName(rs.getString("Name"));
+				data.setNickName(rs.getString("NickName"));
 				//avatar
 				byte[] avatar = ByteUtils.GetByteFromResultSet(rs,"Avatar");				
 				data.setAvatar(avatar);
@@ -202,6 +205,8 @@ public class Profile {
 				data.setPhone(rs.getString("Phone"));
 				data.setAddress(rs.getString("Address"));
 				data.setIntro(rs.getString("Intro"));
+				data.setAddDate(new Date(rs.getTimestamp("AddDate").getTime()));
+				data.setUpdateDate(new Date(rs.getTimestamp("UpdateDate").getTime()));
 				
 				result.setResult(1);
 			} 
@@ -311,5 +316,56 @@ public class Profile {
 		LingoLogger.logger.info("dao level: get profile model info end.");
 		
 		return result ;
+	}
+	
+	/**
+	 * get profile id by name;
+	 * @param data
+	 * @return
+	 */
+	public TResult<com.lingo.profiles.bean.Profile> getIdByName(com.lingo.profiles.bean.Profile data)
+	{
+		LingoLogger.logger.info("dao level: get profile id start...");
+		TResult<com.lingo.profiles.bean.Profile> result = new TResult<com.lingo.profiles.bean.Profile>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "select ID from Profiles.Profile where `Name`=?";
+			Object[] objs = new Object[] { data.getName() };
+
+			conn = PoolManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			for (int i = 0; i < objs.length; i++) {
+				pstmt.setObject(i + 1, objs[i]);
+			}
+			rs = pstmt.executeQuery();
+			// if it has result
+			if (rs.next()) {
+				data.setId( rs.getInt("ID"));
+				result.setResult(1);
+				result.setT(data);
+			} else {
+				result.setResult(-1);
+				result.setMessage(String.format("can't found name is %s record!",data.getName()));
+			}
+			
+		} catch (SQLException e) {
+			LingoLogger.logger.error(e);
+			e.printStackTrace();
+			result.setResult(0);
+			result.setMessage(e.getMessage());
+		} catch (Exception e) {
+			LingoLogger.logger.error(e);
+			e.printStackTrace();
+			result.setResult(0);
+			result.setMessage(e.getMessage());
+		} finally {
+			PoolManager.free(rs, pstmt, conn);
+		}
+		
+		LingoLogger.logger.info("dao level: get profile id end.");
+		return result;
 	}
 }

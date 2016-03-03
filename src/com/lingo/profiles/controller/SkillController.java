@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lingo.profiles.bean.ListResult;
+import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Skill;
 import com.lingo.profiles.bean.TResult;
@@ -41,14 +42,16 @@ public class SkillController {
 		}
 		return result.getList();
 	}
+	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.GET)
 	public String addSkill(ModelMap model) {
 		return "skill_add";
 	}
 
+	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-	public String addSkill(ModelMap model, HttpServletRequest request) {
-		SkillForm form = WebUtils.requestToBean(request, SkillForm.class);
+	public String addSkill(@ModelAttribute SkillForm form, ModelMap model, HttpServletRequest request) {
+		//SkillForm form = WebUtils.requestToBean(request, SkillForm.class);
 		form.setPid(pid);
 		if(!form.validate())
 		{
@@ -69,16 +72,17 @@ public class SkillController {
 		return "redirect:/skill/add";
 	}
 	
-	
+	@Login
 	@RequestMapping(value = {"/update/{id}"}, method = RequestMethod.GET)
 	public String updateSkill(@PathVariable int id, ModelMap model) {
 		return String.format("redirect:/skill/model/%d", id);
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/update"},method = RequestMethod.POST)
-	public String updateSkill(ModelMap model,HttpServletRequest request)
+	public String updateSkill(@ModelAttribute SkillForm form, ModelMap model,HttpServletRequest request)
 	{
-		SkillForm form = WebUtils.requestToBean(request, SkillForm.class);
+		//SkillForm form = WebUtils.requestToBean(request, SkillForm.class);
 		form.setPid(pid);
 		if(!form.validate())
 		{
@@ -97,7 +101,8 @@ public class SkillController {
 		}
 		return "redirect:/skill/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/delete/{id}"},method=RequestMethod.GET)
 	public String deleteSkill(@PathVariable int id, ModelMap model)
 	{
@@ -113,7 +118,8 @@ public class SkillController {
 		}
 		return "redirect:/skill/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/model/{id}"},method=RequestMethod.GET)
 	public String getModel(@PathVariable int id, ModelMap model)
 	{

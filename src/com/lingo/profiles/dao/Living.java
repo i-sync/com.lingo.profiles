@@ -25,7 +25,7 @@ public class Living {
 		
 		try
 		{
-			String sql = "insert into Living(PID,Title,Content) values(?,?,?);";
+			String sql = "insert into Profiles.Living(PID,Title,Content) values(?,?,?);";
 			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getContent()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -54,7 +54,7 @@ public class Living {
 		
 		try
 		{
-			String sql = "update Living set Title=?,Content=? where ID=?";
+			String sql = "update Profiles.Living set Title=?,Content=? where ID=?";
 			Object [] objs = new Object[]{data.getTitle(),data.getContent(),data.getId()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -83,7 +83,7 @@ public class Living {
 		
 		try
 		{
-			String sql = "delete from Living where ID=?";
+			String sql = "delete from Profiles.Living where ID=?";
 			Object [] objs = new Object[]{data.getId()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -115,7 +115,7 @@ public class Living {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Living where ID=?";
+			String sql = "select * from Profiles.Living where ID=?";
 			Object[] objs = new Object[] { data.getId() };
 
 			conn = PoolManager.getConnection();
@@ -169,7 +169,7 @@ public class Living {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Living where PID=?";
+			String sql = "select * from Profiles.Living where PID=?";
 			Object[] objs = new Object[] { data.getPid() };
 
 			conn = PoolManager.getConnection();

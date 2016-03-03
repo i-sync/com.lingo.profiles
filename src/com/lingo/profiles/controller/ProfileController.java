@@ -3,7 +3,6 @@ package com.lingo.profiles.controller;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lingo.profiles.bean.Education;
 import com.lingo.profiles.bean.Link;
 import com.lingo.profiles.bean.Living;
+import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Profile;
 import com.lingo.profiles.bean.Project;
 import com.lingo.profiles.bean.Result;
@@ -34,14 +34,16 @@ import com.lingo.profiles.formbean.SkillForm;
 import com.lingo.profiles.utils.WebUtils;
 
 @Controller
-@RequestMapping(value = { "/profile" })
+@RequestMapping(value = {"/", "/profile" })
 public class ProfileController {
 
+	@Login
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
 	public String addProfile(ModelMap model) {
 		return "profile_add";
 	}
 
+	@Login
 	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)
 	public String addProfile(
 			@RequestParam(value = "avatar") MultipartFile file, ModelMap model,
@@ -80,7 +82,8 @@ public class ProfileController {
 
 		return "redirect:/profile/add";
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/update"},method=RequestMethod.POST)
 	public String updateProfile(@RequestParam(value = "avatar") MultipartFile file, ModelMap model,
 			HttpServletRequest request)
@@ -118,7 +121,8 @@ public class ProfileController {
 
 		return String.format("redirect:/profile/%d",data.getId());
 	}
-	
+
+	@Login
 	@RequestMapping(value={"/delete/{id}"},method=RequestMethod.POST)
 	public String deleteProfile(@PathVariable int id, ModelMap model)
 	{
@@ -136,6 +140,23 @@ public class ProfileController {
 		return "project_list";
 	}
 
+	@RequestMapping(value={"/{name}"},method=RequestMethod.GET)
+	public String getModel(@PathVariable String name ,ModelMap model)
+	{
+		Profile data = new Profile();
+		data.setName(name);
+		TResult<Profile> result = new com.lingo.profiles.dao.Profile().getIdByName(data);
+		if(result.getResult()!=1)
+		{
+			//error....
+			LingoLogger.logger.info(String.format("controller level: delete profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
+			model.addAttribute("message", result.getMessage());
+			return "message";
+		}		
+		//return String.format("redirect:/profile/model/%d",result.getT().getId());
+		return getModel(result.getT().getId(),model);
+	}
+	
 	@RequestMapping(value = { "/model/{id}" }, method = RequestMethod.GET)
 	public String getModel(@PathVariable int id, ModelMap model) {
 		Profile data = new Profile();

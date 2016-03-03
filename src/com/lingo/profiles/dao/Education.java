@@ -25,7 +25,7 @@ public class Education {
 		
 		try
 		{
-			String sql = "insert into Education(PID,Title,Period,Professional,Link,Intro) values(?,?,?,?,?,?);";
+			String sql = "insert into Profiles.Education(PID,Title,Period,Professional,Link,Intro) values(?,?,?,?,?,?);";
 			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getPeriod(),data.getProfessional(),data.getLink(),data.getIntro()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -54,7 +54,7 @@ public class Education {
 		
 		try
 		{
-			String sql = "update Education set Title=?,Period=?,Professional=?,Link=?,Intro=? where ID=?";
+			String sql = "update Profiles.Education set Title=?,Period=?,Professional=?,Link=?,Intro=? where ID=?";
 			Object [] objs = new Object[]{data.getTitle(),data.getPeriod(),data.getProfessional(),data.getLink(),data.getIntro(),data.getId()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -83,7 +83,7 @@ public class Education {
 		
 		try
 		{
-			String sql = "delete from Education where ID=?";
+			String sql = "delete from Profiles.Education where ID=?";
 			Object [] objs = new Object[]{data.getId()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -115,7 +115,7 @@ public class Education {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Education where ID=?";
+			String sql = "select * from Profiles.Education where ID=?";
 			Object[] objs = new Object[] { data.getId() };
 
 			conn = PoolManager.getConnection();
@@ -172,7 +172,7 @@ public class Education {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Education where PID=?";
+			String sql = "select * from Profiles.Education where PID=?";
 			Object[] objs = new Object[] { data.getPid() };
 
 			conn = PoolManager.getConnection();

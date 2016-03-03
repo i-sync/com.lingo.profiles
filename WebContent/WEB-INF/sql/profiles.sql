@@ -1,15 +1,25 @@
 Create Database `Profiles`;
 use `Profiles`;
+Create table `RPC`
+(
+	ID int primary key auto_increment,
+	PID int,
+	CID int,
+	AddDate datetime
+)
 
 Create Table `Profile`
 (
 	ID int primary key auto_increment,
     `Name` varchar(64),
+    NickName varchar(64),
     Avatar MediumBlob,
     Email varchar(64),
     Phone varchar(32),
     Address varchar(128),
-    Intro varchar(4096)
+    Intro varchar(4096),
+    AddDate datetime,
+    UpdateDate datetime,
 );
 
 Create Table Skill
@@ -81,6 +91,7 @@ BEGIN
         
         #delete from profile
         DELETE FROM `PROFILE` WHERE ID=id;
+        DELETE FROM RPC WHERE PID=id;
         SET result=1;
     COMMIT;   
 	

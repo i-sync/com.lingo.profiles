@@ -27,7 +27,7 @@ public class Project {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into Project(PID,Title,Link,Tags,Intro,Image) values(?,?,?,?,?,?);";
+			String sql = "insert into Profiles.Project(PID,Title,Link,Tags,Intro,Image) values(?,?,?,?,?,?);";
 			Object[] objs = new Object[] { data.getPid(), data.getTitle(),
 					data.getLink(),data.getTags(),data.getIntro() };
 			conn = PoolManager.getConnection();
@@ -75,7 +75,7 @@ public class Project {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = String.format(
-					"update Project set Title=?,Link=?,Tags=?,Intro=? %s where ID=?",
+					"update Profiles.Project set Title=?,Link=?,Tags=?,Intro=? %s where ID=?",
 					data.getImage() == null ? "" : ",Image=?");
 			Object[] objs = new Object[] { data.getTitle(), data.getLink(),data.getTags(),data.getIntro() };
 
@@ -126,7 +126,7 @@ public class Project {
 		Result result = new Result();
 
 		try {
-			String sql = "delete from Project where ID=?";
+			String sql = "delete from Profiles.Project where ID=?";
 			Object[] objs = new Object[] { data.getId() };
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -157,7 +157,7 @@ public class Project {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Project where ID=?";
+			String sql = "select * from Profiles.Project where ID=?";
 			Object[] objs = new Object[] { data.getId() };
 
 			conn = PoolManager.getConnection();
@@ -217,7 +217,7 @@ public class Project {
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Project where PID=?";
+			String sql = "select * from Profiles.Project where PID=?";
 			Object[] objs = new Object[] { data.getPid() };
 
 			conn = PoolManager.getConnection();
