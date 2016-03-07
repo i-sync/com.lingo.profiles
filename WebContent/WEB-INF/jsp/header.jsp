@@ -5,6 +5,9 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/angular-material.css">	
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrap.min.css">
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/mdb.min.css">		
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/icon.css">	
+	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/font-awesome.min.css">	
 </head>
 </html>
