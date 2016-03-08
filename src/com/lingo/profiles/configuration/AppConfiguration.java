@@ -56,6 +56,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter{
         registry.addResourceHandler("/js/**").addResourceLocations("/js/");
         registry.addResourceHandler("/font/**").addResourceLocations("/font/");
         registry.addResourceHandler("/images/**").addResourceLocations("/images/");
+        registry.addResourceHandler("/img/**").addResourceLocations("/img/");
     }
      
     @Bean

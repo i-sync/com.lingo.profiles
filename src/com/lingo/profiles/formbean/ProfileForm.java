@@ -11,6 +11,7 @@ import com.lingo.profiles.utils.RegexUtil;
 public class ProfileForm {
 	private int id;
 	private String name;
+	private String nickName;
 	private byte[] avatar;
 	private String email;
 	private String phone;
@@ -49,6 +50,13 @@ public class ProfileForm {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getNickName() {
+		return nickName;
+	}
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 	public byte[] getAvatar() {
 		return avatar;
