@@ -27,8 +27,8 @@ public class Link {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into Profiles.Link(PID,Title,Link,Logo) values(?,?,?,?);";
-			Object[] objs = new Object[] { data.getPid(), data.getTitle(),
+			String sql = "insert into Profiles.Link(PID,Title,Icon,Link,Logo) values(?,?,?,?,?);";
+			Object[] objs = new Object[] { data.getPid(), data.getTitle(),data.getIcon(),
 					data.getLink() };
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -75,9 +75,9 @@ public class Link {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = String.format(
-					"update Profiles.Link set Title=?,Link=? %s where ID=?",
+					"update Profiles.Link set Title=?,Icon=?,Link=? %s where ID=?",
 					data.getLogo() == null ? "" : ",Logo=?");
-			Object[] objs = new Object[] { data.getTitle(), data.getLink() };
+			Object[] objs = new Object[] { data.getTitle(),data.getIcon(), data.getLink() };
 
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -170,6 +170,7 @@ public class Link {
 			if (rs.next()) {
 				data.setPid(rs.getInt("PID"));
 				data.setTitle(rs.getString("Title"));
+				data.setIcon(rs.getString("Icon"));
 				data.setLink(rs.getString("Link"));
 				byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
 				data.setLogo(logo);
@@ -229,10 +230,11 @@ public class Link {
 			while (rs.next()) {
 				int id = rs.getInt("ID");
 				String title = rs.getString("Title");
+				String icon  = rs.getString("Icon");
 				String lin = rs.getString("Link");
 				byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
 				com.lingo.profiles.bean.Link link = new com.lingo.profiles.bean.Link(
-						id, data.getPid(), title, lin, logo);
+						id, data.getPid(), title, icon, lin, logo);
 				list.add(link);
 			}
 			rs.close();

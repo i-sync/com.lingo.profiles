@@ -10,18 +10,20 @@ public class LinkForm {
 	private int id;
 	private int pid;
 	private String title;
+	private String icon;
 	private String link;
 	private byte[] logo;
 	private Map<String,String> errors = new HashMap<String,String>();
 	
-	public LinkForm(int id, int pid, String title, String link, byte[] logo) {
-		this(pid,title,link,logo);
+	public LinkForm(int id, int pid, String title, String icon, String link, byte[] logo) {
+		this(pid,title,icon,link,logo);
 		this.id = id;
 	}
-	public LinkForm(int pid, String title, String link, byte[] logo) {
+	public LinkForm(int pid, String title, String icon, String link, byte[] logo) {
 		super();
 		this.pid = pid;
 		this.title = title;
+		this.icon=icon;
 		this.link = link;
 		this.logo = logo;
 	}
@@ -43,6 +45,12 @@ public class LinkForm {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 	public String getLink() {
 		return link;
@@ -75,6 +83,11 @@ public class LinkForm {
 		if(this.title ==null ||this.title.trim().equals(""))
 		{
 			this.errors.put("title", "title can't is empty");
+			flag =false;
+		}
+		if(this.icon ==null ||this.icon.trim().equals(""))
+		{
+			this.errors.put("icon", "icon can't is empty");
 			flag =false;
 		}
 		if(this.link ==null || this.link.trim().equals(""))

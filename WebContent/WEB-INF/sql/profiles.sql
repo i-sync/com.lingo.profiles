@@ -65,6 +65,7 @@ Create Table Link
 	ID int primary key auto_increment,
     PID int,
     Title varchar(256),
+    Icon varchar(64),
     Link varchar(128),
     Logo MediumBlob 
 );

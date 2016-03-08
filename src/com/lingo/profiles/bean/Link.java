@@ -5,17 +5,19 @@ public class Link {
 	private int id;
 	private int pid;
 	private String title;
+	private String icon;
 	private String link;
 	private byte[] logo;
 	
-	public Link(int id, int pid, String title, String link, byte[] logo) {
-		this(pid,title,link,logo);
+	public Link(int id, int pid, String title,String icon, String link, byte[] logo) {
+		this(pid,title,icon,link,logo);
 		this.id = id;
 	}
-	public Link(int pid, String title, String link, byte[] logo) {
+	public Link(int pid, String title, String icon, String link, byte[] logo) {
 		super();
 		this.pid = pid;
 		this.title = title;
+		this.icon = icon;
 		this.link = link;
 		this.logo = logo;
 	}
@@ -34,6 +36,12 @@ public class Link {
 	}
 	public String getTitle() {
 		return title;
+	}
+	public String getIcon() {
+		return icon;
+	}
+	public void setIcon(String icon) {
+		this.icon = icon;
 	}
 	public void setTitle(String title) {
 		this.title = title;
