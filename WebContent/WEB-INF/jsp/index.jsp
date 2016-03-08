@@ -31,8 +31,8 @@
 			<section id="cd-timeline" class="cd-container">
 				<c:forEach var="item" items="${form.project }">
 					<div class="cd-timeline-block">
-						<div class="cd-timeline-img">
-							<img src="${pageContext.request.contextPath}/img/sec-d.png" alt="Picture">
+						<div class="cd-timeline-img  cd-location ">
+							<img src="${pageContext.request.contextPath}/img/icon-location.svg" alt="Picture">
 						</div>
 						<!-- cd-timeline-img -->
 		
@@ -55,8 +55,8 @@
 			<section id="cd-timeline" class="cd-container">
 				<c:forEach var="item" items="${form.education }">
 					<div class="cd-timeline-block">
-						<div class="cd-timeline-img">
-							<img src="${pageContext.request.contextPath}/img/sec-d.png" alt="Picture">
+						<div class="cd-timeline-img cd-location ">
+							<img src="${pageContext.request.contextPath}/img/icon-location.svg" alt="Picture">
 						</div>
 						<!-- cd-timeline-img -->
 		

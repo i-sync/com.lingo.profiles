@@ -152,7 +152,7 @@ header h1 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  /*box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);*/
+  box-shadow: 0 0 0 4px white, inset 0 2px 0 rgba(0, 0, 0, 0.08), 0 3px 0 4px rgba(0, 0, 0, 0.05);
 }
 .cd-timeline-img img {
   display: block;
@@ -253,7 +253,7 @@ header h1 {
 }
 .cd-timeline-content {
   position: relative;
-  margin-left: 45px;
+  margin-left: 60px;
   background: #E9F0F5;
   border-radius: 0.25em;
   padding: 1em;
@@ -321,7 +321,7 @@ header h1 {
   .cd-timeline-content {
     margin-left: 0;
     padding: 1.6em;
-    width: 48%;
+    width: 45%;
   }
   .cd-timeline-content::before {
     top: 24px;
@@ -335,7 +335,7 @@ header h1 {
   .cd-timeline-content .cd-date {
     position: absolute;
     width: 100%;
-    left: 110%;
+    left: 122%;
     top: 6px;
     font-size: 16px;
     font-size: 1rem;
@@ -355,7 +355,7 @@ header h1 {
   }
   .cd-timeline-block:nth-child(even) .cd-timeline-content .cd-date {
     left: auto;
-    right: 110%;
+    right: 122%;
     text-align: right;
   }
   .cssanimations .cd-timeline-content.is-hidden {
