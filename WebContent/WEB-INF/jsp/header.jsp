@@ -13,3 +13,18 @@
 	href="${pageContext.request.contextPath }/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/style.css">
+
+<nav class="navbar navbar-fixed-top z-depth-1" role="navigation">
+	<div class="container-fluid">
+		<div class="navbar-header pull-left">
+			<a href="#" data-activates="slide-out" class="button-collapse hidden-lg hidden-md"><i class="fa fa-bars"></i></a>
+		</div>
+		
+		<div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">
+			<a href="#" class="waves-effect waves-light">Link</a>
+			<a href="#" class="waves-effect waves-light">Link</a>
+		</ul>
+		</div>
+	</div>
+</nav>
