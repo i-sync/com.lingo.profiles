@@ -27,7 +27,8 @@ public class Link {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into Profiles.Link(PID,Title,Icon,Link,Logo) values(?,?,?,?,?);";
+			String sql = "insert into Profiles.Link(PID,Title,Icon,Link) values(?,?,?,?);";
+			//String sql = "insert into Profiles.Link(PID,Title,Icon,Link,Logo) values(?,?,?,?,?);";
 			Object[] objs = new Object[] { data.getPid(), data.getTitle(),data.getIcon(),
 					data.getLink() };
 			conn = PoolManager.getConnection();
@@ -38,10 +39,11 @@ public class Link {
 			}
 
 			// storge logo
+			/*
 			byte[] logo = data.getLogo();
 			ByteArrayInputStream bis = new ByteArrayInputStream(logo);
 			pstmt.setBinaryStream(i + 1, bis);
-
+			*/
 			int res = pstmt.executeUpdate();
 			result.setResult(res);
 		} catch (SQLException e) {
@@ -172,8 +174,8 @@ public class Link {
 				data.setTitle(rs.getString("Title"));
 				data.setIcon(rs.getString("Icon"));
 				data.setLink(rs.getString("Link"));
-				byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
-				data.setLogo(logo);
+				//byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
+				//data.setLogo(logo);
 
 				result.setResult(1);
 				result.setT(data);
@@ -232,9 +234,9 @@ public class Link {
 				String title = rs.getString("Title");
 				String icon  = rs.getString("Icon");
 				String lin = rs.getString("Link");
-				byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
+				//byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
 				com.lingo.profiles.bean.Link link = new com.lingo.profiles.bean.Link(
-						id, data.getPid(), title, icon, lin, logo);
+						id, data.getPid(), title, icon, lin, null);
 				list.add(link);
 			}
 			rs.close();

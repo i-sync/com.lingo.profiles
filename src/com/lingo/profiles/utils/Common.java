@@ -4,7 +4,17 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Node;
+import org.dom4j.io.SAXReader;
+
+import com.lingo.profiles.bean.Social;
+import com.lingo.profiles.common.LingoLogger;
 
 public class Common {
 	public static String ServiceURL;
@@ -39,6 +49,7 @@ public class Common {
 		try {
 			pro.load(in);
 		} catch (IOException e) {
+			LingoLogger.logger.error(e);
 			System.out.println("读取配置文件信息发送错误，错误信息如下：");
 			e.printStackTrace();
 		}
@@ -63,6 +74,33 @@ public class Common {
 		//System.out.println(String.format("%1$s,%2$s,%3$s,%4$s", ServiceURL,EmailHost,EmailPort,EmailFrom));
 	}
 	
+	
+	/**
+	 * get social icon
+	 * @return
+	 */
+	public static List<Social> getSocialIcon()
+	{
+		List<Social> list = new ArrayList<Social>();
+		InputStream in = Common.class.getClassLoader()
+				.getResourceAsStream("social.xml");
+		SAXReader reader = new SAXReader();
+		Document document =null;
+		try {
+			document = reader.read(in);
+		} catch (DocumentException e) {
+			LingoLogger.logger.error(e);
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Element classElement = document.getRootElement();
+		List<? extends Node> nodes = document.selectNodes("/root/item");
+		for(Node node : nodes)
+		{
+			list.add(new Social(Integer.parseInt(node.valueOf("@id")),node.valueOf("@icon"),node.valueOf("@name"), node.valueOf("@bg")));			
+		}
+		return list;
+	}
 	
 	/*
 	 * get string md5

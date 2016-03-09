@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<item id="1" icon="qq" name="qq" bg="qq-bg"></item>
+	<item id="2" icon="weibo" name="weibo" bg="wb-bg"></item>
+	<item id="3" icon="wechat" name=" wechat" bg="wc-bg"></item>
+	<item id="4" icon="tencent-weibo" name="tencent-weibo" bg="twb-bg"></item>
+	<item id="5" icon="renren" name="renren" bg="rr-bg"></item>
+	<item id="6" icon="facebook" name="facebook" bg="fb-bg"></item>
+	<item id="7" icon="twitter" name="twitter" bg="tw-bg"></item>
+	<item id="8" icon="google-plus" name="google-plus" bg="gplus-bg"></item>
+	<item id="9" icon="youtube" name="youtube" bg="yt-bg"></item>
+	<item id="10" icon="github" name="github" bg="git-bg"></item>
+	<item id="11" icon="whatsapp" name="whatsapp" bg="wa-bg"></item>
+	<item id="12" icon="comments" name="other" bg="comm-bg"></item>
+</root>

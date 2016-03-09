@@ -19,10 +19,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
+import com.lingo.profiles.bean.Social;
 import com.lingo.profiles.bean.Link;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.LinkForm;
+import com.lingo.profiles.utils.Common;
 import com.lingo.profiles.utils.WebUtils;
 
 @Controller
@@ -56,6 +58,16 @@ public class LinkController {
 			list.add(form);
 		}
 		return list;
+	}
+	
+	/**
+	 * get social icon
+	 * @return
+	 */
+	@ModelAttribute(value="social")
+	public List<Social> getSocialIcon()
+	{
+		return Common.getSocialIcon();
 	}
 
 	@Login

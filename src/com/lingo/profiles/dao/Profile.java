@@ -277,9 +277,9 @@ public class Profile {
 					String title = rs.getString("Title");
 					String icon = rs.getString("Icon");
 					String lin = rs.getString("Link");
-					byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
+					//byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
 					com.lingo.profiles.bean.Link link = new com.lingo.profiles.bean.Link(
-							id, data.getId(), title, icon, lin, logo);
+							id, data.getId(), title, icon, lin, null);
 					list.add(link);
 				}
 				data.setLink(list);
