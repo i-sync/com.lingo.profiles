@@ -5,6 +5,14 @@
 	class="navbar-brand button-collapse"><i class="material-icons">menu</i></a>
 <!--/. SideNav slide-out button -->
 
+<<style>
+<!--
+.side-nav li a
+{
+	font-size:1.5rem;
+}
+-->
+</style>
 <!-- Sidebar navigation -->
 <ul id="slide-out"
 	class="side-nav fixed personal-side-nav stylish-side-nav">
@@ -28,11 +36,12 @@
 
 	<!-- Side navigation links -->
 	<ul class="collapsible collapsible-accordion">
-		<li><a href="#skill" class="collapsible-header waves-effect waves-light">Skill</a></li>
-		<li><a href="#project" class="collapsible-header waves-effect waves-light">Project</a></li>
-		<li><a href="#education" class="collapsible-header waves-effect waves-light">Education</a></li>
-		<li><a href="#living" class="collapsible-header waves-effect waves-light">Living</a></li>
-		<li><a href="#link" class="collapsible-header waves-effect waves-light">Link</a></li>
+		<li><a href="#skill" class="collapsible-header waves-effect waves-light"><i class="fa fa-cubes"></i>Skill</a></li>
+		<li><a href="#experience" class="collapsible-header waves-effect waves-light"><i class="fa fa-briefcase"></i>Experience</a></li>
+		<li><a href="#project" class="collapsible-header waves-effect waves-light"><i class="fa fa-trophy"></i>Project</a></li>
+		<li><a href="#education" class="collapsible-header waves-effect waves-light"><i class="fa fa-graduation-cap"></i>Education</a></li>
+		<li><a href="#living" class="collapsible-header waves-effect waves-light"><i class="fa fa-home"></i>Living</a></li>
+		<li><a href="#link" class="collapsible-header waves-effect waves-light"><i class="fa fa-user-plus"></i>Link</a></li>
 	</ul>
 	<!--/. Side navigation links -->
 </ul>
