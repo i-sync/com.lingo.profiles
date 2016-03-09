@@ -15,6 +15,7 @@ public class Profile {
 	private Date addDate;
 	private Date updateDate;
 	private List<Skill> skill;
+	private List<Experience> experience;
 	private List<Project> project;
 	private List<Education> education;
 	private List<Link> link;
@@ -106,6 +107,12 @@ public class Profile {
 	}
 	public void setSkill(List<Skill> skill) {
 		this.skill = skill;
+	}
+	public List<Experience> getExperience() {
+		return experience;
+	}
+	public void setExperience(List<Experience> experience) {
+		this.experience = experience;
 	}
 	public List<Project> getProject() {
 		return project;

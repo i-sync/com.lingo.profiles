@@ -30,6 +30,19 @@ Create Table Skill
     Content varchar(4096)
 );
 
+Create Table Experience
+(
+	ID int primary key auto_increment,
+	PID int,
+	Title varchar(256),
+	Company varchar(256),
+	Link varchar(128),
+	Period varchar(256),
+	Location varchar(256),
+	Position varchar(256),
+	Intro varchar(4096)
+);
+
 Create Table Project 
 (
 	ID int primary key auto_increment,
@@ -85,6 +98,7 @@ BEGIN
 	START TRANSACTION;
 		#delete related table : skill, project, education, link, living...
         DELETE FROM SKILL WHERE PID=id;
+        DELETE FROM EXPERIENCE WHERE PID=id;
         DELETE FROM PROJECT WHERE PID=id;
         DELETE FROM EDUCATION WHERE PID=id;
         DELETE FROM LINK WHERE PID=id;
@@ -104,6 +118,7 @@ BEGIN
 	SELECT * FROM `PROFILE` WHERE ID=id;
     #skill, project, education, link, living...
     SELECT * FROM SKILL WHERE PID=id;
+    SELECT * FROM EXPERIENCE WHERE PID=id;
     SELECT * FROM PROJECT WHERE PID=id;
     SELECT * FROM EDUCATION WHERE PID=id;
     SELECT * FROM LINK WHERE PID=id;

@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Login;
+import com.lingo.profiles.bean.Profile;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Education;
 import com.lingo.profiles.bean.TResult;
+import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.EducationForm;
 import com.lingo.profiles.utils.WebUtils;
@@ -23,17 +25,17 @@ import com.lingo.profiles.utils.WebUtils;
 @Controller
 @RequestMapping(value={"/education"})
 public class EducationController {
-	int pid =1;
-	
+		
 	/**
 	 * get education list by pid
 	 * @return
 	 */
+	@Login
 	@ModelAttribute(value="list")
-	public List<Education> getList()
+	public List<Education> getList(HttpServletRequest request)
 	{
 		Education data = new Education();
-		data.setPid(pid);
+		data.setPid(Common.getPid(request));
 		
 		com.lingo.profiles.dao.Education education = new com.lingo.profiles.dao.Education();
 		ListResult<Education> result = education.getList(data);
@@ -53,7 +55,7 @@ public class EducationController {
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
 	public String addEducation(@ModelAttribute EducationForm form, ModelMap model, HttpServletRequest request) {
 		//EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
-		form.setPid(pid);
+		form.setPid(Common.getPid(request));
 		if(!form.validate())
 		{
 			model.addAttribute("form", form);
@@ -84,7 +86,7 @@ public class EducationController {
 	public String updateEducation(@ModelAttribute EducationForm form, ModelMap model,HttpServletRequest request)
 	{
 		//EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
-		form.setPid(pid);
+		form.setPid(Common.getPid(request));
 		if(!form.validate())
 		{
 			model.addAttribute("form", form);

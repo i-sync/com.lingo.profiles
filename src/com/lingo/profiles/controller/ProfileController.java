@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.lingo.profiles.bean.Education;
+import com.lingo.profiles.bean.Experience;
 import com.lingo.profiles.bean.Link;
 import com.lingo.profiles.bean.Living;
 import com.lingo.profiles.bean.Login;
@@ -26,6 +27,7 @@ import com.lingo.profiles.bean.Skill;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.EducationForm;
+import com.lingo.profiles.formbean.ExperienceForm;
 import com.lingo.profiles.formbean.LinkForm;
 import com.lingo.profiles.formbean.LivingForm;
 import com.lingo.profiles.formbean.ProfileForm;
@@ -216,6 +218,16 @@ public class ProfileController {
 			temp5.add(link);
 		}		
 		form.setLink(temp5);
+		
+		//experience
+		List<ExperienceForm> temp6 = new ArrayList<ExperienceForm>();
+		for(Experience item : data.getExperience())
+		{
+			ExperienceForm experience = new ExperienceForm();
+			WebUtils.copyBean(item, experience);
+			temp6.add(experience);
+		}		
+		form.setExperience(temp6);
 		
 		model.addAttribute("form", form);
 

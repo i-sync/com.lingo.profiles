@@ -22,9 +22,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	        return true;
 	    }
 	    
-	    ObjectMapper mapper = new ObjectMapper();
-		Object obj = request.getSession().getAttribute("user");
-		Profile data = mapper.convertValue(obj, Profile.class);
+		Profile data = com.lingo.profiles.common.Common.getModel(request, "user", Profile.class);
 		if(data ==null)
 		{
 			response.sendRedirect(request.getContextPath()+"/login");

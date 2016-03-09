@@ -12,7 +12,7 @@
 	<%@include file="/WEB-INF/jsp/sidenav.jsp"%>
 	<main>
 	<div class="main-wrapper">
-		<div class="container-fluid">
+		<div id="profile" class="container-fluid">
 			<h1 class="h1-responsive">Profile</h1>
 			<div class="col-md-6">
 				<h3 class="h3-responsive">我是 ${form.nickName }(${form.name})</h3>
@@ -25,6 +25,32 @@
 				<img src="data:image/jpg;base64,${form.avatarImage }"
 					class="materialboxed img-responsive z-depth-2" width="500px;" />
 			</div>
+		</div>
+		
+		<div id="experience" class="container-fluid">
+			<h1 class="h1-responsive">Experience</h1>
+			<section id="cd-timeline" class="cd-container">
+				<c:forEach var="item" items="${form.experience }">
+					<div class="cd-timeline-block">
+						<div class="cd-timeline-img  cd-location ">
+							<img src="${pageContext.request.contextPath}/img/icon-location.svg" alt="Picture">
+						</div>
+						<!-- cd-timeline-img -->
+		
+						<div class="cd-timeline-content z-depth-2 hoverable">
+							<h2 class="h2-responsive">${item.company }</h2>
+							<p>${item.position }</p>
+							<p>${item.location }</p>
+							<p>${item.intro }</p>
+								<a href="${item.link }" target="_blank" class="cd-read-more">Read more</a>
+							 <span class="cd-date">${item.period }</span>
+						</div>
+						<!-- cd-timeline-content -->
+					</div>
+				</c:forEach>
+				<!-- cd-timeline-block -->
+
+			</section>
 		</div>
 		
 		<div id="project" class="container-fluid">
@@ -40,8 +66,8 @@
 						<div class="cd-timeline-content z-depth-2 hoverable">
 							<h2 class="h2-responsive">${item.title }</h2>
 							<p>${item.intro }</p>
-								<a href="#0" class="cd-read-more">Read more</a>
-							 <span class="cd-date">Jan 14</span>
+								<a href="${item.link }" target="_blank" class="cd-read-more">Read more</a>
+							 <span class="cd-date">${item.tags }</span>
 						</div>
 						<!-- cd-timeline-content -->
 					</div>
@@ -65,7 +91,7 @@
 							<h2 class="h2-responsive">${item.title }</h2>
 							<p>${item.professional }</p>
 							<p>${item.intro }</p>
-								<a href="${item.link }" class="cd-read-more">Read more</a>
+								<a href="${item.link }" target="_blank" class="cd-read-more">Read more</a>
 							 <span class="cd-date">${item.period }</span>
 						</div>
 						<!-- cd-timeline-content -->
@@ -85,129 +111,6 @@
 	</div>
 	</main>
 
-	<!--<h1></h1>
-	<div>
-		<div>
-			<h3>Profile info</h3>
-			<div>
-				Name: <label>${form.name }</label>
-			</div>
-			<div>
-				Avatar: <img src="data:image/jpg;base64,${form.avatarImage }"
-					style="width: 200px; height: 200px" />
-			</div>
-			<div>Phone:${form.phone }</div>
-			<div>Email:${form.email }</div>
-			<div>Address:${form.address }</div>
-			<div>Intro:${form.intro }</div>
-		</div>
-		<h3>Skill</h3>
-		<div>
-			<table class="striped">
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Content</th>
-				</tr>
-				<c:forEach var="item" items="${form.skill }">
-					<tr>
-						<td>${item.id }</td>
-						<td>${item.title }</td>
-						<td>${item.content }</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-
-		<h3>Project</h3>
-		<div>
-			<table class="striped">
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Image</th>
-					<th>Link</th>
-					<th>Tags</th>
-					<th>Intro</th>
-				</tr>
-				<c:forEach var="item" items="${form.project }">
-					<tr>
-						<td>${item.id }</td>
-						<td>${item.title }</td>
-						<td><img src="data:image/jpg;base64,${item.projectImage }"
-							style="width: 100px; height: 100px;" /></td>
-						<td><a href="${item.link}">${item.link }</a></td>
-						<td>${item.tags }</td>
-						<td>${item.intro }</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-
-
-		<h3>Education</h3>
-		<div>
-			<table class="striped">
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Period</th>
-					<th>Professional</th>
-					<th>Link</th>
-					<th>Intro</th>
-				</tr>
-				<c:forEach var="item" items="${form.education }">
-					<tr>
-						<td>${item.id }</td>
-						<td>${item.title }</td>
-						<td>${item.period }</td>
-						<td>${item.professional }</td>
-						<td>${item.link }</td>
-						<td>${item.intro }</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-
-		<h3>Living</h3>
-		<div>
-			<table class="striped">
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Content</th>
-				</tr>
-				<c:forEach var="item" items="${form.living }">
-					<tr>
-						<td>${item.id }</td>
-						<td>${item.title }</td>
-						<td>${item.content }</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-
-		<h3>Link</h3>
-		<div>
-			<table class="striped">
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Link</th>
-					<th>Logo</th>
-				</tr>
-				<c:forEach var="item" items="${form.link }">
-					<tr>
-						<td>${item.id }</td>
-						<td>${item.title }</td>
-						<td><a href="${item.link}">${item.link }</a></td>
-						<td><img src="data:image/jpg;base64,${item.logoImage }"
-							style="width: 50px; height: 50px;" /></td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</div-->
 	<%@include file="/WEB-INF/jsp/footer.jsp"%>
 
 </body>

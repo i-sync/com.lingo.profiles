@@ -21,6 +21,7 @@ import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Project;
 import com.lingo.profiles.bean.TResult;
+import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.ProjectForm;
 import com.lingo.profiles.utils.WebUtils;
@@ -28,17 +29,17 @@ import com.lingo.profiles.utils.WebUtils;
 @Controller
 @RequestMapping(value={"/project"})
 public class ProjectController {
-	int pid =1;
 	
 	/**
 	 * get project list by pid
 	 * @return
 	 */
+	@Login
 	@ModelAttribute(value="list")
-	public List<ProjectForm> getList()
+	public List<ProjectForm> getList(HttpServletRequest request)
 	{
 		Project data = new Project();
-		data.setPid(pid);
+		data.setPid(Common.getPid(request));
 		com.lingo.profiles.dao.Project project = new com.lingo.profiles.dao.Project();
 		ListResult<Project> result = project.getList(data);
 		if(result.getResult()!=1)
@@ -68,7 +69,7 @@ public class ProjectController {
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
 	public String addProject(@RequestParam(value = "image") MultipartFile file, ModelMap model, HttpServletRequest request) {
 		ProjectForm form = WebUtils.requestToBean(request, ProjectForm.class);
-		form.setPid(pid);
+		form.setPid(Common.getPid(request));
 		if (!file.isEmpty()) {
 			try {
 				InputStream is = file.getInputStream();
@@ -112,7 +113,7 @@ public class ProjectController {
 	public String updateProject(@RequestParam(value = "image") MultipartFile file, ModelMap model,HttpServletRequest request)
 	{
 		ProjectForm form = WebUtils.requestToBean(request, ProjectForm.class);
-		form.setPid(pid);
+		form.setPid(Common.getPid(request));
 		if (!file.isEmpty()) {
 			try {
 				InputStream is = file.getInputStream();

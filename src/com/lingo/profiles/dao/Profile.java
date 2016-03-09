@@ -229,6 +229,26 @@ public class Profile {
 				}
 				data.setSkill(list);
 			}
+			//experience
+			if(cstmt.getMoreResults())
+			{
+				rs = cstmt.getResultSet();
+				List<com.lingo.profiles.bean.Experience> list = new ArrayList<com.lingo.profiles.bean.Experience>();
+				while(rs.next())
+				{
+					int id = rs.getInt("ID");
+					String title = rs.getString("Title");
+					String company = rs.getString("Company");
+					String link = rs.getString("Link");
+					String period = rs.getString("Period");
+					String location = rs.getString("Location");
+					String position = rs.getString("Position");
+					String intro = rs.getString("Intro");
+					com.lingo.profiles.bean.Experience experience = new com.lingo.profiles.bean.Experience(id, data.getId(), title,company,link,period,location,position,intro);
+					list.add(experience);
+				}
+				data.setExperience(list);
+			}
 			//project
 			if(cstmt.getMoreResults())
 			{

@@ -30,17 +30,17 @@ import com.lingo.profiles.utils.WebUtils;
 @Controller
 @RequestMapping(value={"/link"})
 public class LinkController {
-	int pid =1;
 	
 	/**
 	 * get link list by pid
 	 * @return
 	 */
+	@Login
 	@ModelAttribute(value="list")
-	public List<LinkForm> getList()
+	public List<LinkForm> getList(HttpServletRequest request)
 	{
 		Link data = new Link();
-		data.setPid(pid);
+		data.setPid(com.lingo.profiles.common.Common.getPid(request));
 		
 		com.lingo.profiles.dao.Link link = new com.lingo.profiles.dao.Link();
 		ListResult<Link> result = link.getList(data);
@@ -80,7 +80,7 @@ public class LinkController {
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
 	public String addLink(@RequestParam(value = "logo") MultipartFile file, ModelMap model, HttpServletRequest request) {
 		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
-		form.setPid(pid);
+		form.setPid(com.lingo.profiles.common.Common.getPid(request));
 		if (!file.isEmpty()) {
 			try {
 				InputStream is = file.getInputStream();
@@ -123,7 +123,7 @@ public class LinkController {
 	public String updateLink(@RequestParam(value = "logo") MultipartFile file, ModelMap model,HttpServletRequest request)
 	{
 		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
-		form.setPid(pid);
+		form.setPid(com.lingo.profiles.common.Common.getPid(request));
 		if (!file.isEmpty()) {
 			try {
 				InputStream is = file.getInputStream();

@@ -18,6 +18,7 @@ public class ProfileForm {
 	private String address;
 	private String intro;
 	private List<SkillForm> skill;
+	private List<ExperienceForm> experience;
 	private List<ProjectForm> project;
 	private List<EducationForm> education;
 	private List<LinkForm> link;
@@ -98,6 +99,12 @@ public class ProfileForm {
 	}
 	public void setSkill(List<SkillForm> skill) {
 		this.skill = skill;
+	}
+	public List<ExperienceForm> getExperience() {
+		return experience;
+	}
+	public void setExperience(List<ExperienceForm> experience) {
+		this.experience = experience;
 	}
 	public List<ProjectForm> getProject() {
 		return project;

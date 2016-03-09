@@ -5,14 +5,6 @@
 	class="navbar-brand button-collapse"><i class="material-icons">menu</i></a>
 <!--/. SideNav slide-out button -->
 
-<<style>
-<!--
-.side-nav li a
-{
-	font-size:1.5rem;
-}
--->
-</style>
 <!-- Sidebar navigation -->
 <ul id="slide-out"
 	class="side-nav fixed personal-side-nav stylish-side-nav">
@@ -28,14 +20,15 @@
 	</div>
 	<!--/. Logo -->
 
-	<!--About-->
+	<!--About
 	<div class="about">
 		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
 	</div>
-	<!--/.About-->
+	/.About-->
 
 	<!-- Side navigation links -->
 	<ul class="collapsible collapsible-accordion">
+		<li><a href="#profile" class="collapsible-header waves-effect waves-light"><i class="fa fa-user"></i>Profile</a></li>
 		<li><a href="#skill" class="collapsible-header waves-effect waves-light"><i class="fa fa-cubes"></i>Skill</a></li>
 		<li><a href="#experience" class="collapsible-header waves-effect waves-light"><i class="fa fa-briefcase"></i>Experience</a></li>
 		<li><a href="#project" class="collapsible-header waves-effect waves-light"><i class="fa fa-trophy"></i>Project</a></li>

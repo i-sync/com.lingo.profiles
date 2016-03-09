@@ -16,6 +16,7 @@ import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Living;
 import com.lingo.profiles.bean.TResult;
+import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.LivingForm;
 import com.lingo.profiles.utils.WebUtils;
@@ -23,17 +24,17 @@ import com.lingo.profiles.utils.WebUtils;
 @Controller
 @RequestMapping(value={"/living"})
 public class LivingController {
-	int pid = 1;
 	
 	/**
 	 * get living list by pid
 	 * @return
 	 */
+	@Login
 	@ModelAttribute(value="list")
-	public List<Living> getList()
+	public List<Living> getList(HttpServletRequest request)
 	{
 		Living data = new Living();
-		data.setPid(pid);
+		data.setPid(Common.getPid(request));
 		com.lingo.profiles.dao.Living living = new com.lingo.profiles.dao.Living();
 		
 		ListResult<Living> result = living.getList(data);
@@ -55,7 +56,7 @@ public class LivingController {
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
 	public String addLiving(@ModelAttribute LivingForm form, ModelMap model, HttpServletRequest request) {
 		//LivingForm form = WebUtils.requestToBean(request, LivingForm.class);
-		form.setPid(pid);
+		form.setPid(Common.getPid(request));
 		if(!form.validate())
 		{
 			model.addAttribute("form", form);
@@ -86,7 +87,7 @@ public class LivingController {
 	public String updateLiving(@ModelAttribute LivingForm form, ModelMap model,HttpServletRequest request)
 	{
 		//LivingForm form = WebUtils.requestToBean(request, LivingForm.class);
-		form.setPid(pid);
+		form.setPid(Common.getPid(request));
 		if(!form.validate())
 		{
 			model.addAttribute("form", form);

@@ -23,9 +23,7 @@ public class LoginController {
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model, HttpServletRequest request) {
-		ObjectMapper mapper = new ObjectMapper();
-		Object obj = request.getSession().getAttribute("user");
-		Profile data = mapper.convertValue(obj, Profile.class);
+		Profile data = com.lingo.profiles.common.Common.getModel(request, "user", Profile.class);
 		if(data !=null)
 		{	
 			return String.format("redirect:/%s",data.getName());
@@ -36,9 +34,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String login(@ModelAttribute LoginForm form, ModelMap model, HttpServletRequest request)
 	{
-		ObjectMapper mapper = new ObjectMapper();
-		Object obj = request.getSession().getAttribute("user");
-		Profile data = mapper.convertValue(obj, Profile.class);
+		Profile data = com.lingo.profiles.common.Common.getModel(request, "user", Profile.class);
 		if(data !=null)
 		{	
 			return String.format("redirect:/%d",data.getName());

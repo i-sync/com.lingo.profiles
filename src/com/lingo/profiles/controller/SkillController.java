@@ -16,6 +16,7 @@ import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Skill;
 import com.lingo.profiles.bean.TResult;
+import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.SkillForm;
 import com.lingo.profiles.utils.WebUtils;
@@ -23,17 +24,17 @@ import com.lingo.profiles.utils.WebUtils;
 @Controller
 @RequestMapping(value = {"/skill"})
 public class SkillController {
-	
-	int pid=1;
+
 	/**
 	 * get skill list by pid 
 	 * @return
 	 */	
+	@Login
 	@ModelAttribute(value="list")
-	public List<Skill> getList()
+	public List<Skill> getList(HttpServletRequest request)
 	{
 		Skill data = new Skill();
-		data.setPid(pid);
+		data.setPid(Common.getPid(request));
 		com.lingo.profiles.dao.Skill skill = new com.lingo.profiles.dao.Skill();
 		ListResult<Skill> result = skill.getList(data);
 		if(result.getResult()!=1)
@@ -52,7 +53,7 @@ public class SkillController {
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
 	public String addSkill(@ModelAttribute SkillForm form, ModelMap model, HttpServletRequest request) {
 		//SkillForm form = WebUtils.requestToBean(request, SkillForm.class);
-		form.setPid(pid);
+		form.setPid(Common.getPid(request));
 		if(!form.validate())
 		{
 			model.addAttribute("form",form);
@@ -83,7 +84,7 @@ public class SkillController {
 	public String updateSkill(@ModelAttribute SkillForm form, ModelMap model,HttpServletRequest request)
 	{
 		//SkillForm form = WebUtils.requestToBean(request, SkillForm.class);
-		form.setPid(pid);
+		form.setPid(Common.getPid(request));
 		if(!form.validate())
 		{
 			model.addAttribute("form",form);
