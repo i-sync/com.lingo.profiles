@@ -14,17 +14,17 @@
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/style.css">
 
-<nav class="navbar navbar-fixed-top z-depth-1" role="navigation">
+<nav class="double-navbar navbar navbar-fixed-top pt-color z-depth-1"
+	role="navigation">
 	<div class="container-fluid">
 		<div class="navbar-header pull-left">
-			<a href="#" data-activates="slide-out" class="button-collapse hidden-lg hidden-md"><i class="fa fa-bars"></i></a>
-		</div>
-		
-		<div class="collapse navbar-collapse">
-		<ul class="nav navbar-nav">
-			<a href="#" class="waves-effect waves-light">Link</a>
-			<a href="#" class="waves-effect waves-light">Link</a>
-		</ul>
-		</div>
+           <!-- SideNav slide-out button -->
+           <a href="#" data-activates="slide-out" class="button-collapse hidden-lg hidden-md"><i class="fa fa-bars"></i></a>
+     	</div>
+     	
+     	<ul class="list-inline pull-right text-center">
+     		<li><a href="#" data-toggle="modal" data-target="#myModal" class="waves-effect waves-light"><i class="fa fa-envelope-o"></i><br><span>Contact</span></a></li>
+     	
+     	</ul>
 	</div>
 </nav>

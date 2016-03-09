@@ -10863,7 +10863,7 @@ a.waves-effect .waves-ripple {
 }
 
 .personal-side-nav .avatar-wrapper {
-	padding: 50px 80px
+	/*padding: 50px 80px*/
 }
 
 .personal-side-nav img {
@@ -10982,7 +10982,7 @@ a.waves-effect .waves-ripple {
 
 .stylish-side-nav .logo-wrapper {
 	background:
-		url("http://mdbootstrap.com/images/regular/nature/img%20(26).jpg")
+		url("../img/avatar-background-img.jpg")
 		center center no-repeat;
 	background-size: cover
 }

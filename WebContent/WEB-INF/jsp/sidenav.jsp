@@ -4,17 +4,28 @@
 <a href="#" data-activates="slide-out"
 	class="navbar-brand button-collapse"><i class="material-icons">menu</i></a>
 <!--/. SideNav slide-out button -->
-
+<style>
+<!--
+#avatar{
+	background-image:url(data:image/jpg;base64,${form.avatarImage});
+	background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 50%;
+    width: 100%;
+    padding-bottom:100%;
+}
+-->
+</style>
 <!-- Sidebar navigation -->
 <ul id="slide-out"
 	class="side-nav fixed personal-side-nav stylish-side-nav">
 	<!-- Logo -->
 	<div class="logo-wrapper">
 		<a href="#">
-			<div class="avatar-wrapper">
-				<img
+			<div id="avatar" class="avatar-wrapper">
+				<!--img
 					src="data:image/jpg;base64,${form.avatarImage }"
-					class="img-responsive img-circle">
+					class="img-responsive img-circle"-->
 			</div>
 		</a>
 	</div>
