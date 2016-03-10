@@ -23,8 +23,60 @@
      	</div>
      	
      	<ul class="list-inline pull-right text-center">
-     		<li><a href="#" data-toggle="modal" data-target="#myModal" class="waves-effect waves-light"><i class="fa fa-envelope-o"></i><br><span>Contact</span></a></li>
+     		<li><a href="#" data-toggle="modal" data-target="#contact-form" class="waves-effect waves-light"><i class="fa fa-envelope-o"></i><br><span>Contact</span></a></li>
      	
      	</ul>
 	</div>
+	
+	<!-- Modal: Contact form -->
+        <div class="modal fade" id="contact-form" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-center col-md-11">Write To Me </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <form class="col-md-12">
+                                <p>I like to receive a messages</p>
+                                <br>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="contact-name" type="text" class="validate">
+                                    <label for="contact-name">Your name</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">mail</i>
+                                    <input id="contact-mail" type="tel" class="validate">
+                                    <label for="contact-mail">Your e-mail</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">label</i>
+                                    <input id="contact-subject" type="text" class="validate">
+                                    <label for="contact-subject">Subject</label>
+                                </div>
+                                <div class="input-field">
+                                    <i class="material-icons prefix">mode_edit</i>
+                                    <textarea id="contact-text" class="materialize-textarea"></textarea>
+                                    <label for="contact-text">Message</label>
+                                </div>
+                            </form>
+                            <div class="text-center">
+                                <button type="button" class="btn btn-primary waves-effect waves-light">Send</button>
+                            </div>
+                            <!--div class="col-md-12">
+                                <div class="call">
+                                    <p>Or would you prefer to call? <span class="cf-phone"><i class="fa fa-phone"> +01 234 565 280</i></span></p>
+                                </div>
+                            </div-->
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!--/.Modal: Contact form-->
 </nav>
