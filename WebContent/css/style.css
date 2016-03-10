@@ -2,8 +2,8 @@ main {
     padding-top:70px;
     padding-left:220px;
 }
-nav{
-	padding-left:220px;
+nav,footer{
+	padding-left:240px;
 }
 .pt-color {
     background-color: #45526E!important
@@ -497,4 +497,32 @@ header h1 {
     transform: translateX(0);
   }
 }
+
+
+/* chips */
+.chip {
+	margin:5px 15px;
+    display: inline-block;
+    padding: 0 25px;
+    height: 50px;
+    font-size: 18px;
+    line-height: 50px;
+    border-radius: 25px;
+    background-color: #f1f1f1;
+}
+
+.closebtn {
+    padding-left: 10px;
+    color: #888;
+    font-weight: bold;
+    float: right;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.closebtn:hover {
+    color: #000;
+}
+
+/*-------------------*/
 

@@ -23,7 +23,18 @@
 			</div>
 			<div class="col-md-6">
 				<img src="data:image/jpg;base64,${form.avatarImage }"
-					class="materialboxed img-responsive z-depth-2" width="500px;" />
+					class="materialboxed img-responsive z-depth-2" width="500" />
+			</div>
+		</div>
+		
+		<div id="skill" class="container-fluid">
+			<h1 class="h1-responsive">Skill</h1>
+			<div class="panel-group">
+				<c:forEach var="item" items="${form.skill }">
+					<div class="panel panel-default">
+						<div class="panel-body">${item.title}. ${item.content }</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 		
@@ -102,16 +113,31 @@
 			</section>
 		</div>
 		
+		<div id="living" class="container-fluid">
+			<h1 class="h1-responsive">Living</h1>
+			<div class="container">
+				<c:forEach var="item" items="${form.living }">
+					<div class="chip z-depth-2" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="${item.content }"><span>${item.title }</span></div>
+				</c:forEach>
+			</div>
+		</div>
+		
 		<div id="link" class="container-fluid">
 			<h1 class="h1-responsive">Social Links</h1>
+			<div class="container">
 			<c:forEach var="item" items="${form.link }">
 				<a href="${item.link }" class="btn-sm-full ${fn:split(item.icon,'|')[1] } rectangle waves-effect waves-light"><i class="fa fa-${fn:split(item.icon,'|')[0] }"> </i> <span>${item.title }</span> </a>
 			</c:forEach>
+			</div>
 		</div>
 	</div>
 	</main>
 
 	<%@include file="/WEB-INF/jsp/footer.jsp"%>
-
+	<script>
+		$(document).ready(function(){
+		    $('[data-toggle="tooltip"]').tooltip({animation: true, delay: {show: 300, hide: 300}}); 
+		});
+	</script>
 </body>
 </html>

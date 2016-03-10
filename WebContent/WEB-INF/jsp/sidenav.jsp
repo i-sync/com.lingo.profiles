@@ -13,6 +13,7 @@
     border-radius: 50%;
     width: 100%;
     padding-bottom:100%;
+    background-size: cover;
 }
 -->
 </style>
