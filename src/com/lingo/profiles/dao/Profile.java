@@ -175,6 +175,71 @@ public class Profile {
 	 * @param data
 	 * @return
 	 */
+	public TResult<com.lingo.profiles.bean.Profile> getModelProfile(com.lingo.profiles.bean.Profile data)
+	{
+		//record log
+		LingoLogger.logger.info(String.format("dao level: get profile model info.ID:%d",data.getId()));
+		TResult<com.lingo.profiles.bean.Profile> result = new TResult<com.lingo.profiles.bean.Profile>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			String sql = "select * from Profiles.Profile where ID=?";
+			//Object[] objs = new Object[] { data.getId() };
+
+			conn = PoolManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setObject(1, data.getId());
+			//cstmt = conn.prepareCall(sql);
+			//cstmt.setInt(1, data.getId());
+			//cstmt.execute();
+			rs = pstmt.executeQuery();
+			// profile 
+			if (rs.next()) {
+				data.setName(rs.getString("Name"));
+				data.setNickName(rs.getString("NickName"));
+				//avatar
+				byte[] avatar = ByteUtils.GetByteFromResultSet(rs,"Avatar");				
+				data.setAvatar(avatar);
+				data.setEmail(rs.getString("Email"));
+				data.setPhone(rs.getString("Phone"));
+				data.setAddress(rs.getString("Address"));
+				data.setIntro(rs.getString("Intro"));
+				data.setAddDate(new Date(rs.getTimestamp("AddDate").getTime()));
+				data.setUpdateDate(new Date(rs.getTimestamp("UpdateDate").getTime()));
+				
+				result.setResult(1);
+			} 
+			else
+			{
+				result.setResult(0);
+			}
+			
+			result.setT(data);
+		} catch (SQLException e) {
+			LingoLogger.logger.error(e);
+			e.printStackTrace();
+			result.setResult(0);
+			result.setMessage(e.getMessage());
+		} catch (Exception e) {
+			LingoLogger.logger.error(e);
+			e.printStackTrace();
+			result.setResult(0);
+			result.setMessage(e.getMessage());
+		} finally {
+			PoolManager.free(rs, pstmt, conn);
+		}
+		LingoLogger.logger.info("dao level: get profile model info end.");
+		
+		return result ;
+	}
+	
+	/**
+	 * get profile model
+	 * @param data
+	 * @return
+	 */
 	public TResult<com.lingo.profiles.bean.Profile> getModel(com.lingo.profiles.bean.Profile data)
 	{
 		//record log
@@ -338,7 +403,7 @@ public class Profile {
 		
 		return result ;
 	}
-	
+			
 	/**
 	 * get profile id by name;
 	 * @param data

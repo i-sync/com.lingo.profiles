@@ -34,7 +34,7 @@
 			Intro:
 			<input type="text" name="intro" value="${form.intro }">
 		</div>
-		<md-button type="submit" class="md-raised md-primary">Submit</md-button>
+		<button type="submit" class="md-raised md-primary">Submit</button>
 	</form>
 	<%@include file="/WEB-INF/jsp/footer.jsp"%>
 </body>

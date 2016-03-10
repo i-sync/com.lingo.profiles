@@ -86,6 +86,29 @@ public class ProfileController {
 	}
 
 	@Login
+	@RequestMapping(value={"/update/{id}"},method = RequestMethod.GET)
+	public String updateProfile(@PathVariable int id, ModelMap model)
+	{
+		Profile data = new Profile();
+		data.setId(id);
+		
+		TResult<Profile> result = new com.lingo.profiles.dao.Profile().getModelProfile(data);
+		if(result.getResult()!=1)
+		{
+			LingoLogger.logger.info(String.format("controller level: add profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
+			model.addAttribute("message", result.getMessage());
+			return "message";
+		}
+		data = result.getT();
+		
+		ProfileForm form = new ProfileForm();
+		WebUtils.copyBean(data, form);
+		
+		model.addAttribute("form", form);
+		return "profile_update";
+	}
+	
+	@Login
 	@RequestMapping(value={"/update"},method=RequestMethod.POST)
 	public String updateProfile(@RequestParam(value = "avatar") MultipartFile file, ModelMap model,
 			HttpServletRequest request)
@@ -121,7 +144,7 @@ public class ProfileController {
 			LingoLogger.logger.info(String.format("controller level: add profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
 		}
 
-		return String.format("redirect:/profile/%d",data.getId());
+		return String.format("redirect:/%s",data.getName());
 	}
 
 	@Login
