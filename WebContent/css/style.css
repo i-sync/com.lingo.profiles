@@ -48,6 +48,13 @@ nav,footer{
 }
 
 
+input[type="text"]+label:after{
+	top:30px;
+}
+input[type="text"]+label.active:after{
+	top:60px;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
 }

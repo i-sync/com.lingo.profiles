@@ -44,18 +44,18 @@
                                 <br>
                                 <div class="input-field">
                                     <i class="material-icons prefix">account_circle</i>
-                                    <input id="contact-name" type="text" class="validate">
-                                    <label for="contact-name">Your name</label>
+                                    <input id="contact-name" type="text" class="validate" required="required">
+                                    <label for="contact-name" data-error="wrong" data-success="right">Your name</label>
                                 </div>
                                 <div class="input-field">
                                     <i class="material-icons prefix">mail</i>
-                                    <input id="contact-mail" type="tel" class="validate">
-                                    <label for="contact-mail">Your e-mail</label>
+                                    <input id="contact-mail" type="text" class="validate" required="required">
+                                    <label for="contact-mail" data-error="wrong" data-success="right">Your e-mail</label>
                                 </div>
                                 <div class="input-field">
                                     <i class="material-icons prefix">label</i>
-                                    <input id="contact-subject" type="text" class="validate">
-                                    <label for="contact-subject">Subject</label>
+                                    <input id="contact-subject" type="text" class="validate" required="required">
+                                    <label for="contact-subject" data-error="wrong" data-success="right">Subject</label>
                                 </div>
                                 <div class="input-field">
                                     <i class="material-icons prefix">mode_edit</i>
@@ -64,7 +64,7 @@
                                 </div>
                             </form>
                             <div class="text-center">
-                                <button type="button" class="btn btn-primary waves-effect waves-light">Send</button>
+                                <button type="button" class="send btn btn-primary waves-effect waves-light">Send</button>
                             </div>
                             <!--div class="col-md-12">
                                 <div class="call">
@@ -75,7 +75,9 @@
                     </div>
 
                 </div>
-
+				<div class="modal-footer" style="display:none;">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">X</button>
+                </div>
             </div>
         </div>
         <!--/.Modal: Contact form-->

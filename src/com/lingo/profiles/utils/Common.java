@@ -28,6 +28,7 @@ public class Common {
 	public static String EmailUser;
 	public static String EmailPwd;
 	public static String EmailAuth;
+	public static String EmailTo;
 	
 	public static String ImagePath;
 	
@@ -65,6 +66,7 @@ public class Common {
 		EmailUser = pro.getProperty("emailUser");
 		EmailPwd = pro.getProperty("emailPwd");
 		EmailAuth = pro.getProperty("emailAuth","false");
+		EmailTo = pro.getProperty("emailTo");
 		
 		ImagePath= pro.getProperty("imagePath");
 		
