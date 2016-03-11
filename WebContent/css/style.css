@@ -1,8 +1,12 @@
+body{	
+    overflow-x: hidden !important;
+}
+
 main {
     padding-top:70px;
     padding-left:220px;
 }
-nav,footer{
+footer{
 	padding-left:240px;
 }
 .pt-color {

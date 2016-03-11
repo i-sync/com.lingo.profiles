@@ -51,7 +51,7 @@
 				//console.log(res.errors);
 				if (res.result || res.result == "true") {
 					console.log("success");
-					$("#contact-form .modal-footer button").click();
+					$("#contact-form .modal-header button").click();
 				} else {
 					console.log(res.errors);
 					if(res.errors.name!=undefined)

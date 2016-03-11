@@ -16,14 +16,14 @@
 			<h1 class="h1-responsive">Profile</h1>
 			<div class="col-md-6">
 				<h3 class="h3-responsive">我是 ${form.nickName }(${form.name})</h3>
-				<h3 class="h3-responsive"><i class="fa fa-phone fa-lg"></i>&nbsp;&nbsp;<a href="callto:${form.phone }">${form.phone }</a></h3>
-				<h3 class="h3-responsive"><i class="fa fa-envelope"></i>  &nbsp;&nbsp;<a href="mailto:${form.email}">${form.email }</a></h3>
-				<h3 class="h3-responsive"><i class="fa fa-map-marker fa-lg"></i>&nbsp;&nbsp;${form.address }</h3>
-				<i class="fa fa-user fa-4x"></i>&nbsp;&nbsp;&nbsp;&nbsp;${form.intro }
+				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-phone fa-lg"></i></h3><h3 class="h3-responsive col-xs-10 col-md-10"><a href="callto:${form.phone }">${form.phone }</a></h3>
+				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-envelope"></i></h3><h3 class="h3-responsive col-xs-10 col-md-10"><a href="mailto:${form.email}">${form.email }</a></h3>
+				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-map-marker fa-lg"></i></h3><h3 class="h3-responsive col-xs-10 col-md-10">${form.address }</h3>
+				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-user fa-lg"></i></h3><h5 class="h5-responsive col-xs-10 col-md-10">${form.intro }</h5>
 			</div>
 			<div class="col-md-6">
 				<img src="data:image/jpg;base64,${form.avatarImage }"
-					class="materialboxed img-responsive z-depth-2" width="500" />
+					class="materialboxed img-responsive z-depth-2" width="650" />
 			</div>
 		</div>
 		
