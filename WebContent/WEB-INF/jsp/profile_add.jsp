@@ -14,6 +14,10 @@
 			<input type="text" name="name" />
 		</div>
 		<div>
+			NickName:
+			<input type="text" name="nickName"/>
+		</div>
+		<div>
 			Avatar:
 			<input type="file" name="avatar"/>
 		</div>
@@ -33,7 +37,7 @@
 			Intro:
 			<input type="text" name="intro"/>
 		</div>
-		<md-button type="submit" class="md-raised md-primary">Submit</md-button>
+		<button type="submit" class="md-raised md-primary">Submit</button>
 	</form>
 	<%@include file="/WEB-INF/jsp/footer.jsp"%>
 </body>

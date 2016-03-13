@@ -15,6 +15,10 @@
 			<input type="text" name="name" value="${form.name }">
 		</div>
 		<div>
+			NickName:
+			<input type="text" name="nickName" value="${form.nickName }"/>
+		</div>
+		<div>
 			Avatar:
 			<input type="file" name="avatar">
 		</div>

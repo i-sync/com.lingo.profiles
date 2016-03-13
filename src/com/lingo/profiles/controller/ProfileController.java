@@ -39,13 +39,11 @@ import com.lingo.profiles.utils.WebUtils;
 @RequestMapping(value = {"/", "/profile" })
 public class ProfileController {
 
-	@Login
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
 	public String addProfile(ModelMap model) {
 		return "profile_add";
 	}
 
-	@Login
 	@RequestMapping(value = { "/add" }, method = RequestMethod.POST)
 	public String addProfile(
 			@RequestParam(value = "avatar") MultipartFile file, ModelMap model,
@@ -80,9 +78,11 @@ public class ProfileController {
 		{
 			// .....
 			LingoLogger.logger.info(String.format("controller level: add profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
+			model.addAttribute("message", result.getMessage());
+			return "message";
 		}
 
-		return "redirect:/profile/add";
+		return String.format("redirect:/%s",data.getName());
 	}
 
 	@Login

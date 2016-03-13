@@ -6,7 +6,7 @@ Create table `RPC`
 	PID int,
 	CID int,
 	AddDate datetime
-)
+);
 
 Create Table `Profile`
 (
@@ -19,7 +19,7 @@ Create Table `Profile`
     Address varchar(128),
     Intro varchar(4096),
     AddDate datetime,
-    UpdateDate datetime,
+    UpdateDate datetime
 );
 
 Create Table Skill
@@ -92,35 +92,35 @@ BEGIN
     BEGIN
           #.. set any flags etc  eg. SET @flag = 0; ..
           SET result=0;
-          SELECT result as RESULT;
+          SELECT result as Result;
           ROLLBACK;
     END;
 	START TRANSACTION;
 		#delete related table : skill, project, education, link, living...
-        DELETE FROM SKILL WHERE PID=id;
-        DELETE FROM EXPERIENCE WHERE PID=id;
-        DELETE FROM PROJECT WHERE PID=id;
-        DELETE FROM EDUCATION WHERE PID=id;
-        DELETE FROM LINK WHERE PID=id;
-        DELETE FROM LIVING WHERE PID=id;
+        DELETE FROM Skill WHERE Skill.PID=id;
+        DELETE FROM Experience WHERE Experience.PID=id;
+        DELETE FROM Project WHERE Project.PID=id;
+        DELETE FROM Education WHERE Education.PID=id;
+        DELETE FROM Link WHERE Link.PID=id;
+        DELETE FROM Living WHERE Living.PID=id;
         
         #delete from profile
-        DELETE FROM `PROFILE` WHERE ID=id;
-        DELETE FROM RPC WHERE PID=id;
+        DELETE FROM `Profile` WHERE `Profile`.ID=id;
+        DELETE FROM RPC WHERE RPC.PID=id;
         SET result=1;
     COMMIT;   
 	
-    SELECT result as RESULT;
+    SELECT result as Result;
 END
 
 CREATE PROCEDURE `proc_profile_select` (IN id INT)
 BEGIN
-	SELECT * FROM `PROFILE` WHERE ID=id;
+	SELECT * FROM `Profile` WHERE `Profile`.ID=id;
     #skill, project, education, link, living...
-    SELECT * FROM SKILL WHERE PID=id;
-    SELECT * FROM EXPERIENCE WHERE PID=id;
-    SELECT * FROM PROJECT WHERE PID=id;
-    SELECT * FROM EDUCATION WHERE PID=id;
-    SELECT * FROM LINK WHERE PID=id;
-    SELECT * FROM LIVING WHERE PID=id;
+    SELECT * FROM Skill WHERE Skill.PID=id;
+    SELECT * FROM Experience WHERE Experience.PID=id;
+    SELECT * FROM Project WHERE Project.PID=id;
+    SELECT * FROM Education WHERE Education.PID=id;
+    SELECT * FROM Link WHERE Link.PID=id;
+    SELECT * FROM Living WHERE Living.PID=id;
 END
