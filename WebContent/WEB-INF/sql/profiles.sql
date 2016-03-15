@@ -6,7 +6,7 @@ Create table `RPC`
 	PID int,
 	CID int,
 	AddDate datetime
-);
+)DEFAULT CHARACTER SET=utf8;
 
 Create Table `Profile`
 (
@@ -20,7 +20,7 @@ Create Table `Profile`
     Intro varchar(4096),
     AddDate datetime,
     UpdateDate datetime
-);
+)DEFAULT CHARACTER SET=utf8;
 
 Create Table Skill
 (
@@ -28,7 +28,7 @@ Create Table Skill
     PID int ,
     Title varchar(1024),
     Content varchar(4096)
-);
+)DEFAULT CHARACTER SET=utf8;
 
 Create Table Experience
 (
@@ -41,7 +41,7 @@ Create Table Experience
 	Location varchar(256),
 	Position varchar(256),
 	Intro varchar(4096)
-);
+)DEFAULT CHARACTER SET=utf8;
 
 Create Table Project 
 (
@@ -52,7 +52,7 @@ Create Table Project
     Link varchar(128),
     Tags varchar(256),
     Intro varchar(4096)
-);
+)DEFAULT CHARACTER SET=utf8;
 
 Create Table Education
 (
@@ -63,7 +63,7 @@ Create Table Education
     Professional varchar(128),
     Link varchar(128),
     Intro varchar(4096)
-);
+)DEFAULT CHARACTER SET=utf8;
 
 Create Table Living 
 (
@@ -71,7 +71,7 @@ Create Table Living
     PID int,
     Title varchar(256),
     Content varchar(4096)
-);
+)DEFAULT CHARACTER SET=utf8;
 
 Create Table Link
 (
@@ -81,7 +81,7 @@ Create Table Link
     Icon varchar(64),
     Link varchar(128),
     Logo MediumBlob 
-);
+)DEFAULT CHARACTER SET=utf8;
 
 
 #PROC
