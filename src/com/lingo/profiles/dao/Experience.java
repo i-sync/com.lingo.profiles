@@ -25,7 +25,7 @@ public class Experience {
 		
 		try
 		{
-			String sql = "insert into Profiles.Experience(PID,Title,Company,Linkk,Period,Location,Position,Intro) values(?,?,?,?,?,?,?,?);";
+			String sql = "insert into Profiles.Experience(PID,Title,Company,Link,Period,Location,Position,Intro) values(?,?,?,?,?,?,?,?);";
 			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getCompany(),data.getLink(),data.getPeriod(),data.getLocation(),data.getPosition(),data.getIntro()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
