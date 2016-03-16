@@ -39,6 +39,11 @@ import com.lingo.profiles.utils.WebUtils;
 @RequestMapping(value = {"/", "/profile" })
 public class ProfileController {
 
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public String welcome(ModelMap model) {
+		return "welcome";
+	}
+	
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
 	public String addProfile(ModelMap model) {
 		return "profile_add";
