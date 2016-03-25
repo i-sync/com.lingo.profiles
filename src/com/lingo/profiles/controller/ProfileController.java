@@ -170,7 +170,7 @@ public class ProfileController {
 		return "project_list";
 	}
 
-	@RequestMapping(value={"/{name}"},method=RequestMethod.GET)
+	@RequestMapping(value={"/+{name}","/{name}"},method=RequestMethod.GET)
 	public String getModel(@PathVariable String name ,ModelMap model)
 	{
 		Profile data = new Profile();

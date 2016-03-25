@@ -26,7 +26,7 @@ public class LoginController {
 		Profile data = com.lingo.profiles.common.Common.getModel(request, "user", Profile.class);
 		if(data !=null)
 		{	
-			return String.format("redirect:/%s",data.getName());
+			return String.format("redirect:/+%s",data.getName());
 		}
 		return "login";
 	}
@@ -37,7 +37,7 @@ public class LoginController {
 		Profile data = com.lingo.profiles.common.Common.getModel(request, "user", Profile.class);
 		if(data !=null)
 		{	
-			return String.format("redirect:/%d",data.getName());
+			return String.format("redirect:/+%s",data.getName());
 		}
 		
 		//LoginForm form = WebUtils.requestToBean(request, LoginForm.class);
@@ -94,7 +94,7 @@ public class LoginController {
 				//System.out.println(data.getId());
 				session.setAttribute("user", res.getT());
 				//login success , redirect index	
-				return String.format("redirect:/%s",res.getT().getName());
+				return String.format("redirect:/+%s",res.getT().getName());
 				//break;
 		}
 	}
@@ -107,7 +107,7 @@ public class LoginController {
 		if(obj!=null)
 			request.getSession().removeAttribute("user");
 		if(data!=null)
-			return String.format("redirect:/%s",data.getName());
+			return String.format("redirect:/+%s",data.getName());
 		return "";
 	}
 }
