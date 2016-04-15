@@ -3,6 +3,8 @@ package com.lingo.profiles.bean;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.tomcat.util.codec.binary.Base64;
+
 public class Profile {
 	private int id;
 	private String name;
@@ -64,6 +66,10 @@ public class Profile {
 	}
 	public void setAvatar(byte[] avatar) {
 		this.avatar = avatar;
+	}
+	public String getAvatarImage()
+	{
+		return new Base64().encodeToString(this.avatar);
 	}
 	public String getEmail() {
 		return email;

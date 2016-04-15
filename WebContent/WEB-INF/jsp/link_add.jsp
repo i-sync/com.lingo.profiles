@@ -6,18 +6,12 @@
 <html>
 <head>
 <title>Add Profile Link</title>
-	<%@include file="/WEB-INF/jsp/header.jsp" %>
-	<style>
-		input[type="radio"]{
-			margin:24px 0px;
-		}
-		label
-		{
-			font-size:1rem;
-		}
-	</style>
+<%@include file="/WEB-INF/jsp/manage-header.jsp"%>
 </head>
 <body>
+	<%@include file="/WEB-INF/jsp/manage-sidenav.jsp"%>
+	<main>
+		<div class="main-wrapper">
 	<h1>Add Profile Link</h1>
 	<form action="${pageContext.request.contextPath }/link/add"
 		method="post" enctype="multipart/form-data">
@@ -49,25 +43,27 @@
 				<th>Icon</th>
 				<th>Operation</th>
 			</tr>
-			<c:forEach var="item" items="${list }">
-				<tr>
-					<td>${item.id }</td>
-					<td>${item.title }</td>
-					<td>
-						<a href="${item.link}">${item.link }</a>
-					</td>
-					<td>
-						<a href="${item.link }" class="btn-sm-full ${fn:split(item.icon,'|')[1] } rectangle waves-effect waves-light"><i class="fa fa-${fn:split(item.icon,'|')[0] }"> </i> <span>${item.title }</span> </a>
-					</td>
-					<td>
-					<a href="${pageContext.request.contextPath }/link/update/${item.id}">update</a> 
-					<a href="${pageContext.request.contextPath }/link/delete/${item.id}">delete</a> 
-					</td>
-				</tr>
-			</c:forEach>
-		</table>
+				<c:forEach var="item" items="${list }">
+					<tr>
+						<td>${item.id }</td>
+						<td>${item.title }</td>
+						<td><a href="${item.link}">${item.link }</a></td>
+						<td><a href="${item.link }"
+							class="btn-sm-full ${fn:split(item.icon,'|')[1] } rectangle waves-effect waves-light"><i
+								class="fa fa-${fn:split(item.icon,'|')[0] }"> </i> <span>${item.title }</span>
+						</a></td>
+						<td><a
+							href="${pageContext.request.contextPath }/link/update/${item.id}">update</a>
+							<a
+							href="${pageContext.request.contextPath }/link/delete/${item.id}">delete</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
 	</div>
+	</div>
+	</main>
 	
-	<%@include file="/WEB-INF/jsp/footer.jsp" %>
+	<%@include file="/WEB-INF/jsp/manage-footer.jsp" %>
 </body>
 </html>
