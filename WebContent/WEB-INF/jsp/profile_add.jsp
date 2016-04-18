@@ -10,33 +10,66 @@
 	<%@include file="/WEB-INF/jsp/manage-sidenav.jsp"%>
 	<main>
 	<div class="main-wrapper">
-		<%@include file="/WEB-INF/jsp/header.jsp"%>
-		<h1>Add Profile Info</h1>
-		<form action="${pageContext.request.contextPath }/profile/add"
-			method="post" enctype="multipart/form-data">
-			<div>
-				Name: <input type="text" name="name" />
-			</div>
-			<div>
-				NickName: <input type="text" name="nickName" />
-			</div>
-			<div>
-				Avatar: <input type="file" name="avatar" />
-			</div>
-			<div>
-				Phone: <input type="text" name="phone" />
-			</div>
-			<div>
-				Email: <input type="text" name="email" />
-			</div>
-			<div>
-				Address: <input type="text" name="address" />
-			</div>
-			<div>
-				Intro: <input type="text" name="intro" />
-			</div>
-			<button type="submit" class="md-raised md-primary">Submit</button>
-		</form>
+		<h3>Add Profile Info</h3>
+		<div class="row">
+			<form class="col-md-12"
+				action="${pageContext.request.contextPath }/profile/add"
+				method="post" enctype="multipart/form-data">
+				<div class="row">
+					<div class="input-field col-md-12">
+						<input id="name" type="text" name="name" class="validate" required />
+						<label for="name" data-success="right" data-error="${form.errors.name }">Name</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col-md-12">
+						<input id="nickname" type="text" name="nickName" class="validate" required />
+						<label for="nickname">NickName</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="file-field input-field col-md-12">
+						<!--button type="button" class="btn btn-default waves-effect waves-light">
+							<span>Avatar</span>
+							<input type="file" name="avatar" class="validate" />
+						</button-->
+						<input class="file-path validate" type="text" readonly />
+						<div class="btn btn-default">
+							<span>Avatar</span>
+							<input type="file" name="avatar" accept="image/*" class="validate" required />
+						</div>
+						<!--input id="input-avatar" type="file" name="avatar" class="validate" />
+						<label for="input-avatar">Avatar</label-->
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col-md-12">
+						<input id="phone" type="text" name="phone" class="validate" required />
+						<label for="phone">Phone</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col-md-12">
+						<input id="email" type="text" name="email" class="validate" required />
+						<label for="email">Email</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col-md-12">
+						<input id="address" type="text" name="address" class="validate" required />
+						<label for="address">Address</label>
+					</div>
+				</div><div class="row">
+					<div class="input-field col-md-12">
+						<textarea id="intro" name="intro" class="materialize-textarea"></textarea>
+						<label for="intro">Intro</label>
+					</div>
+				</div>
+				<button type="submit" class="btn btn-default waves-effect waves-light">
+					Submit
+				</button>
+			</form>
+		</div>
 	</div>
 	</main>
 	<%@include file="/WEB-INF/jsp/manage-footer.jsp"%>

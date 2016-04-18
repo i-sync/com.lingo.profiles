@@ -6,11 +6,27 @@ main {
     padding-top:70px;
     padding-left:220px;
 }
-footer{
+.double-navbar,footer{
 	padding-left:240px;
+}
+.navbar .breadcrumbs {
+    padding: 10px;
 }
 .pt-color {
     background-color: #45526E!important
+}
+
+.file-field input.file-path {
+    margin-left: 100px;
+    width: calc(100% - 100px);
+}
+
+.file-field .btn, .file-field .btn-large {
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* height: 3rem;*/
+    line-height: 2rem; 
 }
 
 @media only screen and (max-width: 480px) {

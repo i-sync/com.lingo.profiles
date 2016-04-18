@@ -22,10 +22,15 @@
 		<div class="navbar-header pull-left">
            <!-- SideNav slide-out button -->
            <a href="#" data-activates="slide-out" class="button-collapse hidden-lg hidden-md"><i class="fa fa-bars"></i></a>
-     	</div>
+		<div class="breadcrumbs hidden-xs hidden-sm">
+			<h5>
+				Lingo Profile
+			</h5>
+		</div>
+	</div>
      	<ul class="list-inline pull-right text-center">
-     		<li><a href="#" class="waves-effect waves-light"><i class="fa fa-envelope-o"></i><br><span>About</span></a></li>
-     	
+     		<li><a href="${pageContext.request.contextPath }/+${user.name }" class="waves-effect waves-light"><i class="fa fa-user"></i><br><span>Profile</span></a></li>
+     		<li><a href="#" class="waves-effect waves-light"><i class="fa fa-info-circle"></i><br><span>About</span></a></li>
      	</ul>
 	</div>
 </nav>

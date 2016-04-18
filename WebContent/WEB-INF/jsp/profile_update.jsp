@@ -10,7 +10,6 @@
 	<%@include file="/WEB-INF/jsp/manage-sidenav.jsp"%>
 	<main>
 	<div class="main-wrapper">
-		<%@include file="/WEB-INF/jsp/header.jsp"%>
 		<h1>Update Profile Info</h1>
 		<form action="${pageContext.request.contextPath }/profile/update"
 			method="post" enctype="multipart/form-data">

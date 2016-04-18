@@ -5,7 +5,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
-<%@include file="/WEB-INF/jsp/manage-header.jsp"%>
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/bootstrap.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/mdb.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/icon.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/style.css">
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
 </head>
 <body>
 	<h1>Login</h1>
