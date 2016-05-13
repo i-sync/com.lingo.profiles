@@ -23,7 +23,8 @@
 			</div>
 			<div class="col-md-6">
 				<img src="data:image/jpg;base64,${form.avatarImage }"
-					class="materialboxed img-responsive z-depth-2" width="650" />
+					class="img-responsive z-depth-2" width="650" />
+					<!-- materialboxed  -->
 			</div>
 		</div>
 		
