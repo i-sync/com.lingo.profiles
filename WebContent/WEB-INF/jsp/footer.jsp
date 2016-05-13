@@ -96,7 +96,7 @@
 	</div>
 	<div class="footer-copyright text-center rgba-black-light">
 		<div class="container-fluid">
-			© 2016 Copyright: <a href="http://www.profile.com"> profile </a>
+			© 2016 Copyright: <a href="http://profile.contacts09.ml"> profile </a>
 		</div>
 	</div>
 </footer>
