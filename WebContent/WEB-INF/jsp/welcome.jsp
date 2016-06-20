@@ -23,6 +23,12 @@
 	html,body {
 		height:100%;
 	}
+	.main
+	{
+		color: #fff;
+		background-image: url('/img/universe_reflection-wallpaper.jpg');
+		background-size: cover;
+	}
 	.container-fluid
 	{
 		height:100%;
@@ -33,7 +39,7 @@
 </style>
 </head>
 <body>
-	<div class="container-fluid text-center">		
+	<div class="container-fluid text-center main">		
 		<h1 class="h1-responsive ">Welcome to Lingo Profiles</h1>
 	</div>
 
