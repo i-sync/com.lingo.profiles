@@ -87,7 +87,7 @@ public class ProfileController {
 			return "message";
 		}
 
-		return String.format("redirect:/%s",data.getName());
+		return String.format("redirect:/+%s",data.getName());
 	}
 
 	@Login
@@ -149,7 +149,7 @@ public class ProfileController {
 			LingoLogger.logger.info(String.format("controller level: add profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
 		}
 
-		return String.format("redirect:/%s",data.getName());
+		return String.format("redirect:/+%s",data.getName());
 	}
 
 	@Login
