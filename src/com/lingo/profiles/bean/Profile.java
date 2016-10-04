@@ -13,6 +13,7 @@ public class Profile {
 	private String email;
 	private String phone;
 	private String address;
+	private String profession;
 	private String intro;
 	private Date addDate;
 	private Date updateDate;
@@ -23,18 +24,19 @@ public class Profile {
 	private List<Link> link;
 	private List<Living> living;
 	
-	public Profile(String name,byte[] avatar, String email,String phone,String address,String intro)
+	public Profile(String name,byte[] avatar, String email,String phone,String address,String profession, String intro)
 	{
 		this.name= name;
 		this.avatar = avatar;
 		this.email = email;
 		this.phone = phone;
 		this.address = address ;
+		this.profession = profession;
 		this.intro = intro;
 	}
-	public Profile(int id,String name,byte[] avatar, String email,String phone,String address,String intro)
+	public Profile(int id,String name,byte[] avatar, String email,String phone,String address,String profession, String intro)
 	{
-		this(name,avatar,email,phone,address,intro);
+		this(name,avatar,email,phone,address,profession,intro);
 		this.id = id;
 	}
 	
@@ -88,6 +90,12 @@ public class Profile {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getProfession() {
+		return profession;
+	}
+	public void setProfession(String profession) {
+		this.profession = profession;
 	}
 	public String getIntro() {
 		return intro;

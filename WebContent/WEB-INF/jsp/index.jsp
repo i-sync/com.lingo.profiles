@@ -19,6 +19,7 @@
 				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-phone fa-lg"></i></h3><h3 class="h3-responsive col-xs-10 col-md-10"><a href="callto:${form.phone }">${form.phone }</a></h3>
 				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-envelope"></i></h3><h3 class="h3-responsive col-xs-10 col-md-10"><a href="mailto:${form.email}">${form.email }</a></h3>
 				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-map-marker fa-lg"></i></h3><h3 class="h3-responsive col-xs-10 col-md-10">${form.address }</h3>
+				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-map-marker fa-lg"></i></h3><h3 class="h3-responsive col-xs-10 col-md-10">${form.profession }</h3>
 				<h3 class="h3-responsive col-xs-2 col-md-2"><i class="fa fa-user fa-lg"></i></h3><h5 class="h5-responsive col-xs-10 col-md-10">${form.intro }</h5>
 			</div>
 			<div class="col-md-6">

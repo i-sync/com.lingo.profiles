@@ -17,6 +17,7 @@ Create Table `Profile`
     Email varchar(64),
     Phone varchar(32),
     Address varchar(128),
+    Profession varchar(128),
     Intro varchar(4096),
     AddDate datetime,
     UpdateDate datetime

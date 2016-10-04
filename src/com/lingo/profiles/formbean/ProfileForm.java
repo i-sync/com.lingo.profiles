@@ -16,6 +16,7 @@ public class ProfileForm {
 	private String email;
 	private String phone;
 	private String address;
+	private String profession;
 	private String intro;
 	private List<SkillForm> skill;
 	private List<ExperienceForm> experience;
@@ -25,18 +26,19 @@ public class ProfileForm {
 	private List<LivingForm> living;
 	private Map<String,String> errors = new HashMap<String,String>();
 	
-	public ProfileForm(String name,byte[] avatar, String email,String phone,String address,String intro)
+	public ProfileForm(String name,byte[] avatar, String email,String phone,String address,String profession, String intro)
 	{
 		this.name= name;
 		this.avatar = avatar;
 		this.email = email;
 		this.phone = phone;
 		this.address = address ;
+		this.profession = profession;
 		this.intro = intro;
 	}
-	public ProfileForm(int id,String name,byte[] avatar, String email,String phone,String address,String intro)
+	public ProfileForm(int id,String name,byte[] avatar, String email,String phone,String address,String profession, String intro)
 	{
-		this(name,avatar,email,phone,address,intro);
+		this(name,avatar,email,phone,address,profession, intro);
 		this.id = id;
 	}
 	public ProfileForm(){}
@@ -86,6 +88,12 @@ public class ProfileForm {
 	}
 	public void setAddress(String address) {
 		this.address = address;
+	}
+	public String getProfession() {
+		return profession;
+	}
+	public void setProfession(String profession) {
+		this.profession = profession;
 	}
 	public String getIntro() {
 		return intro;
@@ -176,6 +184,11 @@ public class ProfileForm {
 		if(this.address ==null || this.address.trim().equals(""))
 		{
 			this.errors.put("address", "address can't is empty");
+			flag = false;
+		}
+		if(this.profession ==null || this.profession.trim().equals(""))
+		{
+			this.errors.put("profession", "profession can't is empty");
 			flag = false;
 		}
 		if(this.intro ==null ||this.intro.trim().equals(""))

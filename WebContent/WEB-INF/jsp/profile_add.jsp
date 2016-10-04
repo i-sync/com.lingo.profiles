@@ -59,7 +59,14 @@
 						<input id="address" type="text" name="address" class="validate" required />
 						<label for="address">Address</label>
 					</div>
-				</div><div class="row">
+				</div>
+				<div class="row">
+					<div class="input-field col-md-12">
+						<input id="profession" type="text" name="profession" class="validate" required />
+						<label for="profession">Profession</label>
+					</div>
+				</div>
+				<div class="row">
 					<div class="input-field col-md-12">
 						<textarea id="intro" name="intro" class="materialize-textarea"></textarea>
 						<label for="intro">Intro</label>

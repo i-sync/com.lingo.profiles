@@ -34,6 +34,9 @@
 				Address: <input type="text" name="address" value="${form.address }" />
 			</div>
 			<div>
+				Profession: <input type="text" name="profession" value="${form.profession }" />
+			</div>
+			<div>
 				Intro: <input type="text" name="intro" value="${form.intro }">
 			</div>
 			<button type="submit" class="md-raised md-primary">Submit</button>
