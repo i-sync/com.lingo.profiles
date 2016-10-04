@@ -89,14 +89,14 @@
 					<li><a class="grey-text text-lighten-3" target="_blank"
 						href="http://mdbootstrap.com/">Material Design</a></li>
 					<li><a class="grey-text text-lighten-3" target="_blank"
-						href="http://www.contacts09.ml/">Contacts 09</a></li>
+						href="//contact.nuclearengine.cn/">Contacts 09</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 	<div class="footer-copyright text-center rgba-black-light">
 		<div class="container-fluid">
-			© 2016 Copyright: <a href="http://profile.contacts09.ml"> profile </a>
+			© 2016 Copyright: <a href="//nuclearengine.cn"> profile </a>
 		</div>
 	</div>
 </footer>
