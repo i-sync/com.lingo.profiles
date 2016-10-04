@@ -20,8 +20,13 @@ public class Login {
 		ResultSet rs = null;
 		
 		try{
-			String sql ="select * from Contacts.Contact where `Phone`=?";
-			Object[] obj = new Object[]{data.getPhone()};
+			String sql =String.format("%s \n%s \n%s \n%s \n%s \n",
+					"select c.ID, c.`Password` from",
+					"	contacts.contact c",
+					"	inner join profiles.rpc r on c.ID = r.CID",
+					"	inner join profiles.profile p on r.PID = p.ID",
+					"	where p.Name = ? or p.Phone = ? or p.Email = ?");
+			Object[] obj = new Object[]{data.getPhone(), data.getPhone(), data.getPhone()};
 			
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -47,7 +52,7 @@ public class Login {
 			else
 			{
 				result.setResult(-1);
-				result.setMessage("input the phone is not exists!");
+				result.setMessage("input the username is not exists!");
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();

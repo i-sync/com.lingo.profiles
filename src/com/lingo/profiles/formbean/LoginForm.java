@@ -41,13 +41,13 @@ public class LoginForm {
 			flag =false;
 			this.errors.put("phone", "phone can't be empty!");
 		}
-		else//check phone number if correctly?
+		/*else//check phone number if correctly?
 		{
 			if (!RegexUtil.isMobile(this.phone)) {
 				flag = false;
 				this.errors.put("phone", "please input correct phone ");
 			}
-		}
+		}*/
 		if(this.password==null || this.password.trim().equals(""))
 		{
 			flag = false;

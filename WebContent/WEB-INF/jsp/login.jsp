@@ -22,7 +22,7 @@
 	<h1>Login</h1>
 	<form action="${pageContext.request.contextPath }/login" method="post">
 		<div>
-			Phone:<input type="text" name="phone">
+			Username:<input type="text" name="phone" placeholder="Username / Phone / Email">
 		</div>
 		<div>
 			Password:<input type="text" name="password">
