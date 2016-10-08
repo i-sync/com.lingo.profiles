@@ -31,7 +31,7 @@ public class Profile {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try{			
-			String sql ="insert into Profiles.Profile(Name,NickName,Email,Phone,Address,Profession,Intro,AddDate,UpdateDate,Avatar) values(?,?,?,?,?,?,?,?,?);";
+			String sql ="insert into Profiles.Profile(Name,NickName,Email,Phone,Address,Profession,Intro,AddDate,UpdateDate,Avatar) values(?,?,?,?,?,?,?,?,?,?);";
 			Object[] objs = new Object[]{data.getName(),data.getNickName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getProfession(),data.getIntro(),new Date(),new Date()};
 			
 			conn = PoolManager.getConnection();
