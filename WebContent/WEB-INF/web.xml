@@ -35,7 +35,7 @@
     <extension>ico</extension>
     <mime-type>image/x-icon</mime-type>
   </mime-mapping>
-  <security-constraint>
+  <!-- security-constraint>
     <web-resource-collection>
         <web-resource-name>profile</web-resource-name>
         <url-pattern>/*</url-pattern>
@@ -43,5 +43,5 @@
     <user-data-constraint>
         <transport-guarantee>CONFIDENTIAL</transport-guarantee>
     </user-data-constraint>
-  </security-constraint>
+  </security-constraint-->
 </web-app>
