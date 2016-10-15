@@ -93,32 +93,29 @@
 </div>
 <!--/skills-->
 
-<!--- Education Starts Here --->
-	<div id="education" class="container-fluid">
-			<h1 class="h1-responsive">Education</h1>
-			<section id="cd-timeline" class="cd-container">
-				<c:forEach var="item" items="${form.education }">
-					<div class="cd-timeline-block">
-						<div class="cd-timeline-img cd-location ">
-							<img src="${pageContext.request.contextPath}/img/icon-location.svg" alt="Picture">
-						</div>
-						<!-- cd-timeline-img -->
-		
-						<div class="cd-timeline-content z-depth-2 hoverable">
-							<h2 class="h2-responsive">${item.title }</h2>
-							<p>${item.professional }</p>
-							<p>${item.intro }</p>
+<div class="education">
+	  <div class="container">
+			<div class="edu-devide clearfix">
+				<h3>Education</h3>
+				<div class="edu-devide-div">
+					<c:forEach var="item" varStatus="loop" items="${form.education }">
+						<div class="edu-devide-box <c:if test='${loop.index % 2 == 1 }'>clearfix</c:if>">
+							<div class="bag"></div>
+							<div class="edu-devide-grid">
+								<h2 class="h2-responsive">${item.title }</h2>
+								<p>${item.professional }</p>
+								<p>${item.intro }</p>
 								<a href="${item.link }" target="_blank" class="cd-read-more">Read more</a>
-							 <span class="cd-date">${item.period }</span>
+								<span class="cd-date">${item.period }</span>
+						    </div>
 						</div>
-						<!-- cd-timeline-content -->
-					</div>
-				</c:forEach>
-				<!-- cd-timeline-block -->
-
-			</section>
-		</div>
-	<!--- Education Ends Here --->
+					</c:forEach>
+				</div>
+			</div>
+		</div>	
+	</div>
+	
+<!--- Education Ends Here --->
 
 <!-- projects -->
 <div class="experience">
@@ -221,15 +218,6 @@
 					});
 				});		
 			</script>
-			<!--//ResponsiveTabs-->
-			<!-- swipe box js -->
-			<!--<script src="js/jquery.swipebox.min.js"></script> 
-				<script type="text/javascript">
-					jQuery(function($) {
-						$(".swipebox").swipebox();
-					});
-			</script>-->
-			<!-- //swipe box js -->
 		</div>
 	</div>
 <!--//portfolio-->

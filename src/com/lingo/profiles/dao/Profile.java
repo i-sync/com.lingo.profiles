@@ -413,7 +413,7 @@ public class Profile {
 	 */
 	public TResult<com.lingo.profiles.bean.Profile> getIdByName(com.lingo.profiles.bean.Profile data)
 	{
-		LingoLogger.logger.info("dao level: get profile id start...");
+		LingoLogger.logger.info(String.format("dao level: get profile id start...  Name:%s", data.getName()));
 		TResult<com.lingo.profiles.bean.Profile> result = new TResult<com.lingo.profiles.bean.Profile>();
 		Connection conn = null;
 		PreparedStatement pstmt = null;
