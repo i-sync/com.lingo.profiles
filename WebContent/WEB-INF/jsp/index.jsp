@@ -125,14 +125,14 @@
 		<div class="span9 columns">
           <ul id="feature-tab" class="nav nav-tabs">
             <c:forEach var="item" varStatus="loop" items="${form.experience }">
-            	<li <c:if test="${loop.index eq 0 }">class='active'</c:if>>>
-            		<a href="#experience-${loop.index }" data-toogle="tab" role="tab">${item.company }</a>
+            	<li class="${loop.index eq 0 ? 'active':'' }">
+            		<a href="#experience${loop.index }" data-toogle="tab" role="tab">${item.company }</a>
             	</li>
             </c:forEach>
           </ul>
           <div id="myTabContent" class="tab-content">
           	<c:forEach var="item" varStatus="loop" items="${form.experience }">
-				<div class="tab-pane fade in active" id="experience-${loop.index }">
+				<div class="tab-pane fade ${loop.index eq 0? 'active in':'' }" id="experience${loop.index }">
 					<div class="row feature">
 						<div class="col-md-12">
 							<h2 class="feature-heading">
@@ -180,7 +180,7 @@
 							<div class="tab_img">
 							
 								<c:forEach var="item" varStatus="loop" items="${form.project }">
-									<div class="col-md-4 portfolio-grids grid ${loop.index % 3 == 0 && loop.index > 2 }">
+									<div class="col-md-4 portfolio-grids grid tab-margin">
 										<div class="effect1 wow fadeInUp animated"
 											data-wow-delay="${loop.index % 3 ==0 ? '.5s' : loop.index % 3 == 1 ? '.7s' : '.9s' }">
 											<div class="swipebox">
@@ -207,17 +207,7 @@
 					</div>
 				</div>
 			</div>
-			<!--ResponsiveTabs-->
-			<script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
-			<script type="text/javascript">
-				$(document).ready(function () {
-					$('#horizontalTab').easyResponsiveTabs({
-						type: 'default', //Types: default, vertical, accordion           
-						width: 'auto', //auto or any width like 600px
-						fit: true   // 100% fit in a container
-					});
-				});		
-			</script>
+			
 		</div>
 	</div>
 <!--//portfolio-->
@@ -300,5 +290,18 @@
 <!--common js-->
 <script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
 <!--//common js-->
+
+<!--ResponsiveTabs-->
+<script src="${pageContext.request.contextPath }/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('#horizontalTab').easyResponsiveTabs({
+			type: 'default', //Types: default, vertical, accordion           
+			width: 'auto', //auto or any width like 600px
+			fit: true   // 100% fit in a container
+		});
+	});		
+</script>
+<!--//ResponsiveTabs-->
 </body>
 </html>
