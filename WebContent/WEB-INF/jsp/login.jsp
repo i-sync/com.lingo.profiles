@@ -3,31 +3,88 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Login</title>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/bootstrap.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/mdb.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/icon.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/font-awesome.min.css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/style.css">
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+<%@include file="/WEB-INF/jsp/manage-header.jsp"%>
+<style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+</style>
+
+
 </head>
 <body>
-	<h1>Login</h1>
-	<form action="${pageContext.request.contextPath }/login" method="post">
-		<div>
-			Username:<input type="text" name="phone" placeholder="Username / Phone / Email">
-		</div>
-		<div>
-			Password:<input type="text" name="password">
-		</div>
-		<input type="submit" value="submit">
-	</form>
+	<div class="ui middle aligned center aligned grid">
+	  <div class="column">
+		<h2 class="ui teal image header">
+		  <!--img src="assets/images/logo.png" class="image"-->
+		  <div class="content">
+			Log-in to your account
+		  </div>
+		</h2>
+		<form class="ui large form" action="${pageContext.request.contextPath }/login" method="post">
+		  <div class="ui stacked segment">
+			<div class="field">
+			  <div class="ui left icon input">
+				<i class="user icon"></i>
+				<input type="text" name="phone" placeholder="Username / Phone / Email">
+			  </div>
+			</div>
+			<div class="field">
+			  <div class="ui left icon input">
+				<i class="lock icon"></i>
+				<input type="password" name="password" placeholder="Password">
+			  </div>
+			</div>
+			<input class="ui fluid large teal submit button" type="submit" value="Login">
+		  </div>
+
+		  <div class="ui error message"></div>
+
+		</form>
+
+	  </div>
+	</div>
+	
+	<%@include file="/WEB-INF/jsp/manage-footer.jsp"%>	
+	<script>
+	  $(document).ready(function() {
+		  $('.ui.form').form({
+			  fields: {
+				phone: {
+				  identifier  : 'phone',
+				  rules: [
+					{
+					  type   : 'empty',
+					  prompt : 'Please enter your username'
+					}
+				  ]
+				},
+				password: {
+				  identifier  : 'password',
+				  rules: [
+					{
+					  type   : 'empty',
+					  prompt : 'Please enter your password'
+					},
+					{
+					  type   : 'length[3]',
+					  prompt : 'Your password must be at least 3 characters'
+					}
+				  ]
+				}
+			  }
+			});
+		});
+	</script>
 </body>
 </html>
