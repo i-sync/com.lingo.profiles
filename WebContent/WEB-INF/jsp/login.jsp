@@ -3,7 +3,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Login</title>
+<title>Login Lingo Profile</title>
 <%@include file="/WEB-INF/jsp/manage-header.jsp"%>
 <style type="text/css">
     body {
@@ -28,7 +28,7 @@
 		<h2 class="ui teal image header">
 		  <!--img src="assets/images/logo.png" class="image"-->
 		  <div class="content">
-			Log-in to your account
+			Log-in to lingo profile
 		  </div>
 		</h2>
 		<form class="ui large form" action="${pageContext.request.contextPath }/login" method="post">
@@ -36,13 +36,13 @@
 			<div class="field">
 			  <div class="ui left icon input">
 				<i class="user icon"></i>
-				<input type="text" name="phone" placeholder="Username / Phone / Email">
+				<input type="text" name="phone" placeholder="Username / Phone / Email" value="tianzhenyun">
 			  </div>
 			</div>
 			<div class="field">
 			  <div class="ui left icon input">
 				<i class="lock icon"></i>
-				<input type="password" name="password" placeholder="Password">
+				<input type="password" name="password" placeholder="Password" value="123">
 			  </div>
 			</div>
 			<input class="ui fluid large teal submit button" type="submit" value="Login">
