@@ -38,34 +38,50 @@
 	<div class="ui header">
 		<h1 class="ui center aligned header">Manage Your Account</h1>
 	</div>
-	<div class="ui center container">
-		<div class="ui center grid container">
-			<div class="five wide computer eight wide tablet sixteen wide mobile column">
+	<div class="ui grid container">
+		<div
+			class="five wide computer eight wide tablet sixteen wide mobile column">
+			<div class="ui center aligned grid">
 				<div id="skill" class="ui inverted blue circular  segment">
 					<h2 class="ui header">Skill</h2>
 				</div>
 			</div>
-			<div class="five wide computer eight wide tablet sixteen wide mobile column">
+		</div>
+		<div
+			class="five wide computer eight wide tablet sixteen wide mobile column">
+			<div class="ui center aligned grid">
 				<div id="experience" class="ui inverted green circular  segment">
 					<h2 class="ui header">Experience</h2>
 				</div>
 			</div>
-			<div class="five wide computer eight wide tablet sixteen wide mobile column">
+		</div>
+		<div
+			class="five wide computer eight wide tablet sixteen wide mobile column">
+			<div class="ui center aligned grid">
 				<div id="project" class="ui inverted red circular  segment">
 					<h2 class="ui header">Project</h2>
 				</div>
 			</div>
-			<div class="five wide computer eight wide tablet sixteen wide mobile column">
+		</div>
+		<div
+			class="five wide computer eight wide tablet sixteen wide mobile column">
+			<div class="ui center aligned grid">
 				<div id="education" class="ui inverted purple circular  segment">
 					<h2 class="ui header">Education</h2>
 				</div>
 			</div>
-			<div class="five wide computer eight wide tablet sixteen wide mobile column">
+		</div>
+		<div
+			class="five wide computer eight wide tablet sixteen wide mobile column">
+			<div class="ui center aligned grid">
 				<div id="living" class="ui inverted teal circular  segment">
 					<h2 class="ui header">Living</h2>
 				</div>
 			</div>
-			<div class="five wide computer eight wide tablet sixteen wide mobile column">
+		</div>
+		<div
+			class="five wide computer eight wide tablet sixteen wide mobile column">
+			<div class="ui center aligned grid">
 				<div id="link" class="ui inverted olive circular  segment">
 					<h2 class="ui header">Link</h2>
 				</div>

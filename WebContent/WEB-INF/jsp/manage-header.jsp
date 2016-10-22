@@ -19,7 +19,6 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/divider.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/dropdown.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/segment.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/form.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/input.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/button.css">
@@ -28,5 +27,7 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/icon.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/sidebar.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/transition.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/segment.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/semantic.css">
 <link rel="shortcut icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
 <link rel="icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">

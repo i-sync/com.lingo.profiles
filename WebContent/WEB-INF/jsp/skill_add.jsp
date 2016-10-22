@@ -8,59 +8,51 @@
 <%@include file="/WEB-INF/jsp/manage-header.jsp"%>
 </head>
 <body>
-	<div class="main ui container">
-	<div class="ui form">
-		<div class="inline fields">
-			<div class="eight wide field">
-				<label>Name</label> <input type="text" placeholder="First Name">
+	<div class="main ui container masthead vertical segment">
+		<div class="ui grid">
+			<div class="column">
+				<form class="ui form" action="${pageContext.request.contextPath }/skill/add" method="post">
+					<h2 class="ui header">Add Profile Skill</h2>
+					<div class="ten wide field">
+						<label>Title</label> <input type="text" name="title"
+							placeholder="Title">
+					</div>
+					<div class="ten wide field">
+						<label>Content</label> 
+						<textarea rows="2" name="content" placeholder="Content"></textarea>
+					</div>
+					<input class="ui large teal submit button" type="submit"
+						value="Submit">
+				</form>
 			</div>
-			<div class="three wide field">
-				<input type="text" placeholder="Middle Name">
-			</div>
-			<div class="five wide field">
-				<input type="text" placeholder="Last Name">
+		</div>
+		<div class="ui grid">
+			<div class="column">
+				<table class="ui celled padded table">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Content</th>
+							<th>Operation</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="item" items="${list }">
+							<tr>
+								<td>${item.title }</td>
+								<td>${item.content }</td>
+								<td>
+									<a href="${pageContext.request.contextPath }/skill/update/${item.id}">update</a>
+									&nbsp;&nbsp;
+									<a href="${pageContext.request.contextPath }/skill/delete/${item.id}">delete</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
-	</div>
-	<main>
-	<div class="main-wrapper">
-		<h1>Add Profile Skill</h1>
-		<form action="${pageContext.request.contextPath }/skill/add"
-			method="post">
-			<div>
-				Title: <input type="text" name="title" />
-			</div>
-			<div>
-				Content: <input type="text" name="content" />
-			</div>
-			<input type="submit" value="Submit" />
-		</form>
-
-		<div>
-			<table class="striped">
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Content</th>
-					<th>Operation</th>
-				</tr>
-				<c:forEach var="item" items="${list }">
-					<tr>
-						<td>${item.id }</td>
-						<td>${item.title }</td>
-						<td>${item.content }</td>
-						<td><a
-							href="${pageContext.request.contextPath }/skill/update/${item.id}">update</a>
-							<a
-							href="${pageContext.request.contextPath }/skill/delete/${item.id}">delete</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
-		</div>
-	</div>
-	</main>
 	<%@include file="/WEB-INF/jsp/manage-footer.jsp"%>
 </body>
 </html>
