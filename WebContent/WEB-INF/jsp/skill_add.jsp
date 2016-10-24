@@ -14,12 +14,12 @@
 				<form class="ui form" action="${pageContext.request.contextPath }/skill/add" method="post">
 					<h2 class="ui header">Add Profile Skill</h2>
 					<div class="ten wide field">
-						<label>Title</label> <input type="text" name="title"
+						<label>Title</label> <input type="text" name="title" required
 							placeholder="Title">
 					</div>
 					<div class="ten wide field">
 						<label>Content</label> 
-						<textarea rows="2" name="content" placeholder="Content"></textarea>
+						<textarea rows="2" name="content" required placeholder="Content"></textarea>
 					</div>
 					<input class="ui large teal submit button" type="submit"
 						value="Submit">
@@ -54,5 +54,13 @@
 		</div>
 	</div>
 	<%@include file="/WEB-INF/jsp/manage-footer.jsp"%>
+	<script>
+	$('.ui.form')
+	  .form({
+	    fields : validationRules,
+	    inline : true,
+	    on     : 'blur'
+	  });
+	</script>
 </body>
 </html>

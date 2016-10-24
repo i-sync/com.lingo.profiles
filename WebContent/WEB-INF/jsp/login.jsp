@@ -36,13 +36,13 @@
 			<div class="field">
 			  <div class="ui left icon input">
 				<i class="user icon"></i>
-				<input type="text" name="phone" placeholder="Username / Phone / Email" value="tianzhenyun">
+				<input type="text" name="phone" required placeholder="Username / Phone / Email" value="tianzhenyun">
 			  </div>
 			</div>
 			<div class="field">
 			  <div class="ui left icon input">
 				<i class="lock icon"></i>
-				<input type="password" name="password" placeholder="Password" value="123">
+				<input type="password" name="password" required placeholder="Password" value="123">
 			  </div>
 			</div>
 			<input class="ui fluid large teal submit button" type="submit" value="Login">

@@ -6,8 +6,11 @@
 <title>Manage Your Account</title>
 <%@include file="/WEB-INF/jsp/manage-header.jsp"%>
 <style type="text/css">
-	.circular.segment {
+	.ui.circular.segment {
 		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	/* Mobile Sizing Combinations */
 	@media only screen and (min-width: 320px) and (max-width: 767px) {
