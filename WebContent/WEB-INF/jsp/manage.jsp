@@ -7,6 +7,7 @@
 <%@include file="/WEB-INF/jsp/manage-header.jsp"%>
 <style type="text/css">
 	.ui.circular.segment {
+		margin:.5em;
 		cursor: pointer;
 		display: flex;
 		justify-content: center;
@@ -15,8 +16,13 @@
 	/* Mobile Sizing Combinations */
 	@media only screen and (min-width: 320px) and (max-width: 767px) {
 		.circular.segment{
-			width:200px;
-			height:200px;
+			width:80%;
+			height:100px;
+		}		
+		
+		h1.ui.header{
+			margin-top:1em;
+			font-size:2.5em;
 		}
 	}
 	/* Tablet Sizing Combinations */
@@ -25,6 +31,11 @@
 			width:250px;
 			height:250px;
 		}
+		
+		h1.ui.header{
+			margin-top:1em;
+			font-size:3em;
+		}
 	}
 	/* Computer/Desktop Sizing Combinations */
 	@media only screen and (min-width: 992px) {
@@ -32,15 +43,25 @@
 			width:300px;
 			height:300px;
 		}
+		
+		h1.ui.header{
+			margin-top:1em;
+			font-size:3.5em;
+		}
+	}
+	.ui.container{
+		margin-top:1em;
+		min-width:325px;
 	}
 </style>
 </head>
 <body>
 	<!-- Page Contents -->
 	<div></div>
-	<div class="ui header">
-		<h1 class="ui center aligned header">Manage Your Account</h1>
-	</div>
+	<h1 class="ui center aligned teal inverted header">
+		Manage Your Account
+	</h1>
+	<div class="ui divider"></div>
 	<div class="ui grid container">
 		<div
 			class="five wide computer eight wide tablet sixteen wide mobile column">

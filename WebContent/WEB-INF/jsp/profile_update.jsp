@@ -7,42 +7,42 @@
 <%@include file="/WEB-INF/jsp/manage-header.jsp"%>
 </head>
 <body>
-	<%@include file="/WEB-INF/jsp/manage-sidenav.jsp"%>
-	<main>
-	<div class="main-wrapper">
-		<h1>Update Profile Info</h1>
-		<form action="${pageContext.request.contextPath }/profile/update"
-			method="post" enctype="multipart/form-data">
-			<input type="hidden" name="id" value="${form.id }">
-			<div>
-				Name: <input type="text" name="name" value="${form.name }">
+	<div class="main ui container masthead vertical segment">
+		<div class="ui grid">
+			<div class="column">
+				<form class="ui form" action="${pageContext.request.contextPath }/profile/update" method="post" enctype="multipart/form-data">
+					<h2 class="ui header">Update Profile Info</h2>					
+					<input type="hidden" name="id" value="${form.id }">
+					<div class="fourteen wide field">
+						<label>Name</label> <input type="text" name="name" placeholder="Name" value="${form.name }">
+					</div>
+					<div class="fourteen wide field">
+						<label>NickName</label> <input type="text" name="nickname" placeholder="NickName" value="${form.nickName }">
+					</div>
+					<div class="fourteen wide field">
+						<label>Avatar</label> <input type="file" name="avatar" accept="image/*" placeholder="Avatar">
+					</div>
+					<div class="fourteen wide field">
+						<label>Phone</label> <input type="text" name="phone" placeholder="Phone" value="${form.phone }">
+					</div>
+					<div class="fourteen wide field">
+						<label>Email</label> <input type="text" name="email" placeholder="Email" value="${form.email }">
+					</div>
+					<div class="fourteen wide field">
+						<label>Address</label> <input type="text" name="address" placeholder="Address" value="${form.address }">
+					</div>
+					<div class="fourteen wide field">
+						<label>Profession</label> <input type="text" name="profession" placeholder="Profession" value="${form.profession }">
+					</div>
+					<div class="fourteen wide field">
+						<label>Intro</label> 
+						<textarea rows="2" name="intro" placeholder="Intro">${form.intro }</textarea>
+					</div>
+					<input class="ui large teal submit button" type="submit" value="Submit">
+				</form>
 			</div>
-			<div>
-				NickName: <input type="text" name="nickName"
-					value="${form.nickName }" />
-			</div>
-			<div>
-				Avatar: <input type="file" name="avatar">
-			</div>
-			<div>
-				Phone: <input type="text" name="phone" value="${form.phone }" />
-			</div>
-			<div>
-				Email: <input type="text" name="email" value="${form.email }" />
-			</div>
-			<div>
-				Address: <input type="text" name="address" value="${form.address }" />
-			</div>
-			<div>
-				Profession: <input type="text" name="profession" value="${form.profession }" />
-			</div>
-			<div>
-				Intro: <input type="text" name="intro" value="${form.intro }">
-			</div>
-			<button type="submit" class="md-raised md-primary">Submit</button>
-		</form>
+		</div>
 	</div>
-	</main>
 	<%@include file="/WEB-INF/jsp/manage-footer.jsp"%>
 </body>
 </html>

@@ -179,7 +179,7 @@ public class ProfileController {
 		if(result.getResult()!=1)
 		{
 			//error....
-			LingoLogger.logger.info(String.format("controller level: delete profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
+			LingoLogger.logger.info(String.format("controller level: get profile error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
 			model.addAttribute("message", result.getMessage());
 			return "message";
 		}		

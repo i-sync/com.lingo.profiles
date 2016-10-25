@@ -31,3 +31,10 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/semantic.css">
 <link rel="shortcut icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
 <link rel="icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
+<style>
+body{
+   min-width:350px; /* suppose you want minimun width of 1000px */
+   width: auto !important;  /* Firefox will set width as auto */
+   width:350px;             /* As IE ignores !important it will set width as 1000px; */
+}
+</style>
