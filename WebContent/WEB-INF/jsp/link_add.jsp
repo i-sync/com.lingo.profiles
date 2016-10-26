@@ -22,7 +22,7 @@
 						<label>Link</label> <input type="text" name="link" required
 							placeholder="Link">
 					</div>
-					<div class="inline fields">
+					<div class="grouped fields">
 						<label>Icon</label>
 						<c:forEach var="item" items="${social }">
 							<div class="field">
