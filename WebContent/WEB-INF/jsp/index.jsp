@@ -16,7 +16,12 @@
 <link href="${pageContext.request.contextPath }/css/swipebox.css" rel="stylesheet" />
 <link href="${pageContext.request.contextPath }/css/font-awesome.min.css" rel='stylesheet' />	
 <!--//Custom Theme files-->
-
+<style>
+	input.invalid
+	{
+		color:red;
+	}
+</style>
 <!--web-font-->
 <link href="${pageContext.request.contextPath }/css/fontstyle.css" rel='stylesheet' />
 <link href="${pageContext.request.contextPath }/css/fontgoogle.css" rel='stylesheet'/>
@@ -126,7 +131,7 @@
           <ul id="feature-tab" class="nav nav-tabs">
             <c:forEach var="item" varStatus="loop" items="${form.experience }">
             	<li class="${loop.index eq 0 ? 'active':'' }">
-            		<a href="#experience${loop.index }" data-toogle="tab" role="tab">${item.company }</a>
+            		<a href="#experience${loop.index }" data-toggle="tab" role="tab">${item.company }</a>
             	</li>
             </c:forEach>
           </ul>
@@ -250,31 +255,28 @@
 	</div> 
 </div>
 <!--contact-->
-<div class="contact">
+<div id="contact-form" class="contact">
 	<div class="container">
 		<h3>Contact</h3>
 		<label class="line"></label>
 		<div class="col-md-4 c-w3l">
 			<i class="fa fa-map-marker" aria-hidden="true"></i>
-			<h4>北京</h4>
-			<h4>海淀</h4>
+			<h4>${form.address }</h4>
 		</div>
 		<div class="col-md-4 c-w3l c-mail">
 			<i class="fa fa-envelope" aria-hidden="true"></i>
-			<h4><a href="mailto:info@example.com">tianzhenyun@gmail.com</a></h4>
-			<h4><a href="mailto:info@example.com">tianzhenyun@yahoo.com</a></h4>
+			<h4><a href="mailto:${form.email}">${form.email }</a></h4>
 		</div>
 		<div class="col-md-4 c-w3l c-phn">
 			<i class="fa fa-phone" aria-hidden="true"></i>
-			<h4>+18510841918</h4>
-			<h4>+18501378365</h4>
+			<h4><a href="tel:${form.phone}">${form.phone }</a></h4>
 		</div>
 		<div class="clearfix"></div>
 		<form action="#" method="post">
-			<input type="text" name="name" class="name" placeholder="Your Name" required="">
-			<input type="text" name="email" class="email" placeholder="Your Email" required="">
-			<textarea  name="your message" placeholder="Your Message"  required=""></textarea>
-			<input type="submit" value="Send Message">
+			<input type="text" id="contact-name" name="name" class="name" placeholder="Your Name" required="">
+			<input type="text" id="contact-email" name="email" class="email" placeholder="Your Email" required="">
+			<textarea id="contact-message" name="your message" placeholder="Your Message"  required=""></textarea>
+			<input type="submit" id="send-message" value="Send Message">
 		</form>
 	</div>
 </div>
@@ -283,7 +285,7 @@
 
 <!--footer-->
 <div class="footer-agileinfo">
-	<p> &copy; 2016 Copyright: <a href="http://w3layouts.com">profile</a></p>
+	<p> &copy; 2016 Copyright: <a href="https://lifetime.photo">profile</a></p>
 </div>
 <!--//footer-->
 
@@ -301,6 +303,75 @@
 			fit: true   // 100% fit in a container
 		});
 	});		
+</script>
+<script>
+	//send email
+	$("#contact-form").on("click", "#send-message", function(click) {
+		//first check 		
+		var form = $("#contact-form");
+		var data = {};
+		var name = form.find("#contact-name").val().trim();
+		var email = form.find("#contact-email").val().trim();
+		//var subject = form.find("#contact-subject").val().trim();
+		var message = form.find("#contact-message").val().trim();
+		
+		if(name=="")
+			form.find("#contact-name").addClass("invalid");
+		if(email=="")
+			form.find("#contact-email").addClass("invalid");
+		if(message=="")
+			form.find("#contact-message").addClass("invalid");
+		if($("#contact-form .invalid").length>0)
+			return;
+		
+		
+		data["name"] = name;
+		data["email"] = email;
+		//data["subject"] = subject;
+		data["message"] = message;
+
+		$.ajax({
+			url : "${pageContext.request.contextPath}/email/send",
+			type : "POST",
+			contentType : "application/json",
+			headers : {
+				'Accept' : 'application/json',
+				'Content-Type' : 'application/json'
+			},
+			data : JSON.stringify(data),
+			success : function(res) {
+				//console.log(res.errors);
+				if (res.result || res.result == "true") {
+					alert("Thanks for your feedback!");
+					console.log("success");
+					//$("#contact-form .modal-header button").click();
+					$("#contact-form input").val("");
+					$("#contact-from textarea").val("");
+					$("#contact-from input[type='submit']").prop("disabled",true);
+				} else {
+					console.log(res.errors);
+					if(res.errors.name!=undefined)
+					{
+						$("#contact-form #contact-name").addClass("invalid").attr("title",res.errors.name);
+					}
+					if(res.errors.email!=undefined)
+					{
+						$("#contact-form #contact-email").addClass("invalid").attr("title",res.errors.email);
+					}
+					if(res.errors.message!=undefined)
+					{
+						$("#contact-form #contact-subject").addClass("invalid").attr("title",res.errors.subject);
+					}
+				}
+			},
+			error : function(res) {
+				console.log(res);
+			},
+			dataType : "json"
+		});
+		
+		return false;
+	});
 </script>
 <!--//ResponsiveTabs-->
 </body>

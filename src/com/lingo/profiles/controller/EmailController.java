@@ -31,7 +31,7 @@ public class EmailController {
 		//to.split(',');
 		for(String t : to.split(","))
 		{
-			new MailUtils().SendEmail(t,form.getSubject(), content);
+			new MailUtils().SendEmail(t,form.getName(), content);
 		}
 		
 		form.setResult(true);

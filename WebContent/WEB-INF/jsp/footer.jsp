@@ -14,28 +14,28 @@
 			$(this).addClass("invalid");
 	});
 	//send email
-	$("#contact-form").on("click", "button.send", function(click) {
+	$("#contact-form").on("click", "#send-message", function(click) {
 		//first check 		
 		var form = $("#contact-form");
 		var data = {};
 		var name = form.find("#contact-name").val().trim();
 		var email = form.find("#contact-mail").val().trim();
-		var subject = form.find("#contact-subject").val().trim();
-		var message = form.find("#contact-text").val().trim();
-		
+		//var subject = form.find("#contact-subject").val().trim();
+		var message = form.find("#contact-message").val().trim();
+		/*
 		if(name=="")
 			form.find("#contact-name").addClass("invalid");
 		if(email=="")
 			form.find("#contact-mail").addClass("invalid");
 		if(subject=="")
 			form.find("#contact-subject").addClass("invalid");
-
 		if($("#contact-form .invalid").length>0)
 			return;
+		*/
 		
 		data["name"] = name;
 		data["email"] = email;
-		data["subject"] = subject;
+		//data["subject"] = subject;
 		data["message"] = message;
 
 		$.ajax({
@@ -50,8 +50,12 @@
 			success : function(res) {
 				//console.log(res.errors);
 				if (res.result || res.result == "true") {
+					alert("Thanks for your feedback!");
 					console.log("success");
-					$("#contact-form .modal-header button").click();
+					//$("#contact-form .modal-header button").click();
+					$("#contact-form input").val("");
+					$("#contact-from textarea").val("");
+					$("#contact-from input#send-message").attr("disabled","disabled");
 				} else {
 					console.log(res.errors);
 					if(res.errors.name!=undefined)
@@ -62,7 +66,7 @@
 					{
 						$("#contact-form #contact-mail").addClass("invalid").attr("title",res.errors.email);
 					}
-					if(res.errors.subject!=undefined)
+					if(res.errors.message!=undefined)
 					{
 						$("#contact-form #contact-subject").addClass("invalid").attr("title",res.errors.subject);
 					}
@@ -73,6 +77,8 @@
 			},
 			dataType : "json"
 		});
+		
+		return false;
 	});
 </script>
 <footer class="page-footer blue center-on-small-only">
