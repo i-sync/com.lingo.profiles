@@ -4,65 +4,74 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Add Profile Education</title>
 <%@include file="/WEB-INF/jsp/manage-header.jsp"%>
 </head>
 <body>
-	<%@include file="/WEB-INF/jsp/manage-sidenav.jsp"%>
-	<main>
-	<div class="main-wrapper">
-		<h1>Add Profile Education</h1>
-		<form action="${pageContext.request.contextPath }/education/add"
-			method="post">
-			<div>
-				Title: <input type="text" name="title" />
+	<div class="main ui container masthead vertical segment">
+		<div class="ui grid">
+			<div class="column">
+				<form class="ui form" action="${pageContext.request.contextPath }/education/add" method="post">
+					<h2 class="ui header">Add Profile Education</h2>
+					<div class="ten wide field">
+						<label>Title</label> <input type="text" name="title" required
+							placeholder="Title">
+					</div>
+					<div class="ten wide field">
+						<label>Period</label> <input type="text" name="period" required
+							placeholder="Title">
+					</div>
+					<div class="ten wide field">
+						<label>Professional</label> <input type="text" name="professional" required
+							placeholder="Professional">
+					</div>
+					<div class="ten wide field">
+						<label>Link</label> <input type="text" name="link" required
+							placeholder="Link">
+					</div>
+					<div class="ten wide field">
+						<label>Intro</label> 
+						<textarea rows="2" name="intro" required placeholder="Intro"></textarea>
+					</div>
+					<input class="ui large teal submit button" type="submit"
+						value="Submit">
+				</form>
 			</div>
-			<div>
-				Period: <input type="text" name="period" />
+		</div>
+		<div class="ui grid">
+			<div class="column">
+				<table class="ui celled padded table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Title</th>
+							<th>Period</th>
+							<th>Professional</th>
+							<th>Link</th>
+							<th>Intro</th>
+							<th>Operation</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach var="item" items="${list }">
+							<tr>
+								<td>${item.id }</td>
+								<td>${item.title }</td>
+								<td>${item.period }</td>
+								<td>${item.professional }</td>
+								<td>${item.link }</td>
+								<td>${item.intro }</td>
+								<td>
+									<a href="${pageContext.request.contextPath }/education/update/${item.id}">update</a>
+									<a href="${pageContext.request.contextPath }/education/delete/${item.id}">delete</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
 			</div>
-			<div>
-				Professional: <input type="text" name="professional" />
-			</div>
-			<div>
-				Link: <input type="text" name="link" />
-			</div>
-			<div>
-				Intro: <input type="text" name="intro" />
-			</div>
-			<input type="submit" value="Submit" />
-		</form>
-
-		<div>
-			<table class="striped">
-				<tr>
-					<th>ID</th>
-					<th>Title</th>
-					<th>Period</th>
-					<th>Professional</th>
-					<th>Link</th>
-					<th>Intro</th>
-					<th>Operation</th>
-				</tr>
-				<c:forEach var="item" items="${list }">
-					<tr>
-						<td>${item.id }</td>
-						<td>${item.title }</td>
-						<td>${item.period }</td>
-						<td>${item.professional }</td>
-						<td>${item.link }</td>
-						<td>${item.intro }</td>
-						<td><a
-							href="${pageContext.request.contextPath }/education/update/${item.id}">update</a>
-							<a
-							href="${pageContext.request.contextPath }/education/delete/${item.id}">delete</a>
-						</td>
-					</tr>
-				</c:forEach>
-			</table>
 		</div>
 	</div>
-	</main>
 	<%@include file="/WEB-INF/jsp/manage-footer.jsp"%>
 </body>
 </html>

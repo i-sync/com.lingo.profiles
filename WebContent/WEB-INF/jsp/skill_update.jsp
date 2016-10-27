@@ -4,51 +4,54 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Update Profile Skill</title>
 <%@include file="/WEB-INF/jsp/manage-header.jsp"%>
 </head>
 <body>
-	<%@include file="/WEB-INF/jsp/manage-sidenav.jsp"%>
-	<main>
-		<div class="main-wrapper">
-			<h1>Update Profile Skill</h1>
-			<form action="${pageContext.request.contextPath }/skill/update"
-				method="post">
-				<input type="hidden" name="id" value="${form.id }" />
-				<div>
-					Title: <input type="text" name="title" value="${form.title }" />
-				</div>
-				<div>
-					Content: <input type="text" name="content" value="${form.content }" />
-				</div>
-				<input type="submit" value="Submit" />
-			</form>
-	
-			<div>
-				<table class="striped">
-					<tr>
-						<th>ID</th>
-						<th>Title</th>
-						<th>Content</th>
-						<th>Operation</th>
-					</tr>
-					<c:forEach var="item" items="${list }">
+	<div class="main ui container masthead vertical segment">
+		<div class="ui grid">
+			<div class="column">
+				<form class="ui form" action="${pageContext.request.contextPath }/skill/update" method="post">
+					<h2 class="ui header">Update Profile Skill</h2>					
+					<input type="hidden" name="id" value="${form.id }" />
+					<div class="ten wide field">
+						<label>Title</label> <input type="text" name="title" required placeholder="title" value="${form.title }">
+					</div>
+					<div class="ten wide field">
+						<label>Content</label> 
+						<textarea rows="2" name="content" required placeholder="Content">${form.content}</textarea>
+					</div>
+					<input class="ui large teal submit button" type="submit" value="Submit">
+				</form>
+			</div>
+		</div>
+		<div class="ui grid">
+			<div class="column">
+				<table class="ui celled padded table">
+					<thead>
 						<tr>
-							<td>${item.id }</td>
-							<td>${item.title }</td>
-							<td>${item.content }</td>
-							<td><a
-								href="${pageContext.request.contextPath }/skill/update/${item.id}">update</a>
-								<a
-								href="${pageContext.request.contextPath }/skill/delete/${item.id}">delete</a>
-							</td>
+							<th>Title</th>
+							<th>Content</th>
+							<th>Operation</th>
 						</tr>
-					</c:forEach>
+					</thead>
+					<tbody>
+						<c:forEach var="item" items="${list }">
+							<tr>
+								<td>${item.title }</td>
+								<td>${item.content }</td>
+								<td>
+									<a href="${pageContext.request.contextPath }/skill/update/${item.id}">update</a>
+									&nbsp;&nbsp;
+									<a href="${pageContext.request.contextPath }/skill/delete/${item.id}">delete</a>
+								</td>
+							</tr>
+						</c:forEach>
+					</tbody>
 				</table>
 			</div>
 		</div>
-	</main>
+	</div>
 	<%@include file="/WEB-INF/jsp/manage-footer.jsp"%>
 </body>
 </html>

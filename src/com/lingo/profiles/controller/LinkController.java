@@ -119,7 +119,7 @@ public class LinkController {
 	}
 
 	@Login
-	@RequestMapping(value={"/update"},method = RequestMethod.POST)
+	@RequestMapping(value={"/update/old"},method = RequestMethod.POST)
 	public String updateLink(@RequestParam(value = "logo") MultipartFile file, ModelMap model,HttpServletRequest request)
 	{
 		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
@@ -135,6 +135,30 @@ public class LinkController {
 				e.printStackTrace();
 			}
 		}
+		//check
+		if(!form.validate())
+		{
+			model.addAttribute("form", form);
+			return "link_add";
+		}
+		Link data = new Link();
+		WebUtils.copyBean(form, data);
+
+		com.lingo.profiles.dao.Link link = new com.lingo.profiles.dao.Link();
+		Result result = link.update(data);
+		if (result.getResult() != 1) {
+			// error....
+			LingoLogger.logger.info(String.format("controller level: update link error,Result:%d, Message:%s",result.getResult(),result.getMessage()));
+		}
+		return "redirect:/link/add";
+	}
+	
+	@Login
+	@RequestMapping(value={"/update"},method = RequestMethod.POST)
+	public String updateLink(ModelMap model,HttpServletRequest request)
+	{
+		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
+		form.setPid(com.lingo.profiles.common.Common.getPid(request));
 		//check
 		if(!form.validate())
 		{
