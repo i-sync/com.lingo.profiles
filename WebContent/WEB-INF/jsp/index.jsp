@@ -21,6 +21,10 @@
 	{
 		color:red;
 	}
+	textarea.invalid
+	{
+		color:red;
+	}
 </style>
 <!--web-font-->
 <link href="${pageContext.request.contextPath }/css/fontstyle.css" rel='stylesheet' />
@@ -273,9 +277,9 @@
 		</div>
 		<div class="clearfix"></div>
 		<form action="#" method="post">
-			<input type="text" id="contact-name" name="name" class="name" placeholder="Your Name" required="">
-			<input type="text" id="contact-email" name="email" class="email" placeholder="Your Email" required="">
-			<textarea id="contact-message" name="your message" placeholder="Your Message"  required=""></textarea>
+			<input type="text" id="contact-name" name="name" class="name" placeholder="Your Name" required>
+			<input type="text" id="contact-email" name="email" class="email" placeholder="Your Email" required>
+			<textarea id="contact-message" name="your message" placeholder="Your Message"  required></textarea>
 			<input type="submit" id="send-message" value="Send Message">
 		</form>
 	</div>
@@ -307,6 +311,10 @@
 <script>
 	//send email
 	$("#contact-form").on("click", "#send-message", function(click) {
+		$("#contact-form input,textarea").blur();
+		if($("#contact-form .invalid").length>0)
+			return false;
+		
 		//first check 		
 		var form = $("#contact-form");
 		var data = {};
@@ -314,15 +322,14 @@
 		var email = form.find("#contact-email").val().trim();
 		//var subject = form.find("#contact-subject").val().trim();
 		var message = form.find("#contact-message").val().trim();
-		
+		/*
 		if(name=="")
 			form.find("#contact-name").addClass("invalid");
 		if(email=="")
 			form.find("#contact-email").addClass("invalid");
 		if(message=="")
 			form.find("#contact-message").addClass("invalid");
-		if($("#contact-form .invalid").length>0)
-			return;
+		*/
 		
 		
 		data["name"] = name;
@@ -345,9 +352,8 @@
 					alert("Thanks for your feedback!");
 					console.log("success");
 					//$("#contact-form .modal-header button").click();
-					$("#contact-form input").val("");
-					$("#contact-from textarea").val("");
-					$("#contact-from input[type='submit']").prop("disabled",true);
+					$("#contact-form input[type='text'],textarea").val("");
+					$("#contact-form input[type='submit']").prop("disabled",true);
 				} else {
 					console.log(res.errors);
 					if(res.errors.name!=undefined)
@@ -360,7 +366,7 @@
 					}
 					if(res.errors.message!=undefined)
 					{
-						$("#contact-form #contact-subject").addClass("invalid").attr("title",res.errors.subject);
+						$("#contact-form #contact-message").addClass("invalid").attr("title",res.errors.message);
 					}
 				}
 			},
@@ -371,6 +377,12 @@
 		});
 		
 		return false;
+	});
+	$("#contact-form input,textarea").blur(function(){
+		if($(this).val().trim()=='')
+			$(this).addClass("invalid");
+		else
+			$(this).removeClass("invalid");
 	});
 </script>
 <!--//ResponsiveTabs-->
