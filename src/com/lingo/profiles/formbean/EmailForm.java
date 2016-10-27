@@ -93,17 +93,18 @@ public class EmailForm {
 				this.errors.put("email", "please input correct email!");
 			}
 		}
+		/*
 		if(this.subject ==null ||this.subject.trim().equals(""))
 		{
 			this.errors.put("subject", "subject can't is empty");
 			flag =false;
 		}
-		/*
+		*/
 		if(this.message ==null || this.message.trim().equals(""))
 		{
 			this.errors.put("message", "message can't is empty");
 			flag = false;
-		}*/
+		}
 		result = flag;
 		return flag;
 	}
