@@ -52,13 +52,13 @@
 			<a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
 			<a href="#"><i class="fa fa-tumblr" aria-hidden="true"></i></a-->
 			<c:forEach var="item" items="${form.link }">
-				<a href="${item.link }" class="btn-sm-full ${fn:split(item.icon,'|')[1] } rectangle waves-effect waves-light"><i class="fa fa-${fn:split(item.icon,'|')[0] }"> </i>  </a>
+				<a href="${item.link }" title="${item.title }" class="btn-sm-full ${fn:split(item.icon,'|')[1] } rectangle waves-effect waves-light"><i class="fa fa-${fn:split(item.icon,'|')[0] }"> </i>  </a>
 			</c:forEach>
 		</div>
 		<div class="col-md-4 b-part2">
 			<h3>Contact</h3>
-			<h4><a href="#">${form.email }</a></h4>
-			<h4 class="agile">${form.phone }</h4>
+			<h4><a href="mailto:${form.email }">${form.email }</a></h4>
+			<h4 class="agile"><a href="tel:${form.phone }">${form.phone }</a></h4>
 			<h4>${form.address }</h4>
 		</div>
 		<div class="clearfix"></div>
