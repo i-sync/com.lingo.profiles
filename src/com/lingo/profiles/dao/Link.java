@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.lingo.profiles.bean.ListResult;
@@ -27,10 +28,9 @@ public class Link {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into Profiles.Link(PID,Title,Icon,Link) values(?,?,?,?);";
+			String sql = "insert into Profiles.Link(PID,Title,Icon,Link,AddDate,UpdateDate) values(?,?,?,?,?,?);";
 			//String sql = "insert into Profiles.Link(PID,Title,Icon,Link,Logo) values(?,?,?,?,?);";
-			Object[] objs = new Object[] { data.getPid(), data.getTitle(),data.getIcon(),
-					data.getLink() };
+			Object[] objs = new Object[] { data.getPid(), data.getTitle(),data.getIcon(), data.getLink(), new Date(), new Date() };
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			int i = 0;
@@ -77,9 +77,9 @@ public class Link {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = String.format(
-					"update Profiles.Link set Title=?,Icon=?,Link=? %s where ID=?",
+					"update Profiles.Link set Title=?,Icon=?,Link=?,UpdateDate=? %s where ID=?",
 					data.getLogo() == null ? "" : ",Logo=?");
-			Object[] objs = new Object[] { data.getTitle(),data.getIcon(), data.getLink() };
+			Object[] objs = new Object[] { data.getTitle(),data.getIcon(), data.getLink(),new Date() };
 
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);

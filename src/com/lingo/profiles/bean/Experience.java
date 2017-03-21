@@ -1,5 +1,7 @@
 package com.lingo.profiles.bean;
 
+import java.util.Date;
+
 public class Experience {
 	private int id;
 	private int pid;
@@ -10,6 +12,8 @@ public class Experience {
 	private String location;
 	private String position;
 	private String intro;
+	private Date addDate;
+	private Date updateDate;
 
 	public Experience(int id, int pid, String title, String company, String link, String period, String location, String position,
 			String intro) {
@@ -83,6 +87,18 @@ public class Experience {
 	public void setIntro(String intro) {
 		this.intro = intro;
 	}
-	
+
+	public Date getAddDate() {
+		return addDate;
+	}
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
 	
 }

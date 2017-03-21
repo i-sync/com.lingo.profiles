@@ -387,6 +387,21 @@ public class Profile {
 				data.setLiving(list);
 			}
 			
+			//skill category
+			if(cstmt.getMoreResults())
+			{
+				rs = cstmt.getResultSet();
+				List<com.lingo.profiles.bean.SkillCategory> list = new ArrayList<com.lingo.profiles.bean.SkillCategory>();
+				while(rs.next())
+				{
+					int id = rs.getInt("ID");
+					String title = rs.getString("Title");
+					com.lingo.profiles.bean.SkillCategory skillCategory = new com.lingo.profiles.bean.SkillCategory(id, data.getId(), title);
+					list.add(skillCategory);
+				}
+				data.setSkillCategory(list);
+			}
+			
 			result.setT(data);
 		} catch (SQLException e) {
 			LingoLogger.logger.error(e);

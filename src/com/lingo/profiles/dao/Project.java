@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.lingo.profiles.bean.ListResult;
@@ -27,9 +28,9 @@ public class Project {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into Profiles.Project(PID,Title,Link,Tags,Intro,Image) values(?,?,?,?,?,?);";
+			String sql = "insert into Profiles.Project(PID,Title,Link,Tags,Intro,AddDate,UpdateDate,Image) values(?,?,?,?,?,?,?,?);";
 			Object[] objs = new Object[] { data.getPid(), data.getTitle(),
-					data.getLink(),data.getTags(),data.getIntro() };
+					data.getLink(),data.getTags(),data.getIntro(),new Date(), new Date() };
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			int i = 0;
@@ -75,9 +76,9 @@ public class Project {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = String.format(
-					"update Profiles.Project set Title=?,Link=?,Tags=?,Intro=? %s where ID=?",
+					"update Profiles.Project set Title=?,Link=?,Tags=?,Intro=?,UpdateDate=? %s where ID=?",
 					data.getImage() == null ? "" : ",Image=?");
-			Object[] objs = new Object[] { data.getTitle(), data.getLink(),data.getTags(),data.getIntro() };
+			Object[] objs = new Object[] { data.getTitle(), data.getLink(),data.getTags(),data.getIntro(),new Date() };
 
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.lingo.profiles.bean.ListResult;
@@ -25,8 +26,8 @@ public class Living {
 		
 		try
 		{
-			String sql = "insert into Profiles.Living(PID,Title,Content) values(?,?,?);";
-			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getContent()};
+			String sql = "insert into Profiles.Living(PID,Title,Content,AddDate,UpdateDate) values(?,?,?,?,?);";
+			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getContent(),new Date(), new Date()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
 		}
@@ -54,8 +55,8 @@ public class Living {
 		
 		try
 		{
-			String sql = "update Profiles.Living set Title=?,Content=? where ID=?";
-			Object [] objs = new Object[]{data.getTitle(),data.getContent(),data.getId()};
+			String sql = "update Profiles.Living set Title=?,Content=?,UpdateDate=? where ID=?";
+			Object [] objs = new Object[]{data.getTitle(),data.getContent(),new Date(),data.getId()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
 		}

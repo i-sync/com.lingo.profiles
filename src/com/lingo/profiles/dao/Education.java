@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.lingo.profiles.bean.ListResult;
@@ -25,8 +26,8 @@ public class Education {
 		
 		try
 		{
-			String sql = "insert into Profiles.Education(PID,Title,Period,Professional,Link,Intro) values(?,?,?,?,?,?);";
-			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getPeriod(),data.getProfessional(),data.getLink(),data.getIntro()};
+			String sql = "insert into Profiles.Education(PID,Title,Period,Professional,Link,Intro,AddDate,UpdateDate) values(?,?,?,?,?,?,?,?);";
+			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getPeriod(),data.getProfessional(),data.getLink(),data.getIntro(), new Date(), new Date()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
 		}
@@ -54,8 +55,8 @@ public class Education {
 		
 		try
 		{
-			String sql = "update Profiles.Education set Title=?,Period=?,Professional=?,Link=?,Intro=? where ID=?";
-			Object [] objs = new Object[]{data.getTitle(),data.getPeriod(),data.getProfessional(),data.getLink(),data.getIntro(),data.getId()};
+			String sql = "update Profiles.Education set Title=?,Period=?,Professional=?,Link=?,Intro=?,UpdateDate=? where ID=?";
+			Object [] objs = new Object[]{data.getTitle(),data.getPeriod(),data.getProfessional(),data.getLink(),data.getIntro(),new Date(),data.getId()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
 		}

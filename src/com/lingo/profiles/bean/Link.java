@@ -1,5 +1,6 @@
 package com.lingo.profiles.bean;
 
+import java.util.Date;
 
 public class Link {
 	private int id;
@@ -8,6 +9,8 @@ public class Link {
 	private String icon;
 	private String link;
 	private byte[] logo;
+	private Date addDate;
+	private Date updateDate;
 	
 	public Link(int id, int pid, String title,String icon, String link, byte[] logo) {
 		this(pid,title,icon,link,logo);
@@ -58,6 +61,18 @@ public class Link {
 	public void setLogo(byte[] logo) {
 		this.logo = logo;
 	}
-	
+
+	public Date getAddDate() {
+		return addDate;
+	}
+	public void setAddDate(Date addDate) {
+		this.addDate = addDate;
+	}
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
 	
 }

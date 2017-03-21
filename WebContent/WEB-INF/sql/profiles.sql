@@ -27,8 +27,11 @@ Create Table Skill
 (
 	ID int primary key auto_increment,
     PID int ,
+    SCID int,
     Title varchar(1024),
-    Content varchar(4096)
+    Content varchar(4096),
+    AddDate datetime,
+    UpdateDate datetime
 )DEFAULT CHARACTER SET=utf8;
 
 Create Table Experience
@@ -41,7 +44,9 @@ Create Table Experience
 	Period varchar(256),
 	Location varchar(256),
 	Position varchar(256),
-	Intro varchar(4096)
+	Intro varchar(4096),
+    AddDate datetime,
+    UpdateDate datetime
 )DEFAULT CHARACTER SET=utf8;
 
 Create Table Project 
@@ -52,7 +57,9 @@ Create Table Project
     Image MediumBlob,
     Link varchar(128),
     Tags varchar(256),
-    Intro varchar(4096)
+    Intro varchar(4096),
+    AddDate datetime,
+    UpdateDate datetime
 )DEFAULT CHARACTER SET=utf8;
 
 Create Table Education
@@ -63,7 +70,9 @@ Create Table Education
     Period varchar(256),
     Professional varchar(128),
     Link varchar(128),
-    Intro varchar(4096)
+    Intro varchar(4096),
+    AddDate datetime,
+    UpdateDate datetime
 )DEFAULT CHARACTER SET=utf8;
 
 Create Table Living 
@@ -71,7 +80,9 @@ Create Table Living
 	ID int primary key auto_increment,
     PID int,
     Title varchar(256),
-    Content varchar(4096)
+    Content varchar(4096),
+    AddDate datetime,
+    UpdateDate datetime
 )DEFAULT CHARACTER SET=utf8;
 
 Create Table Link
@@ -81,9 +92,19 @@ Create Table Link
     Title varchar(256),
     Icon varchar(64),
     Link varchar(128),
-    Logo MediumBlob 
+    Logo MediumBlob,
+    AddDate datetime,
+    UpdateDate datetime
 )DEFAULT CHARACTER SET=utf8;
 
+Create table SkillCategory
+(
+	ID int primary key auto_increment,
+    PID int,
+    Title varchar(64),
+    AddDate datetime,
+    UpdateDate datetime
+)DEFAULT CHARACTER SET=utf8;
 
 #PROC
 CREATE PROCEDURE `proc_profile_delete`(IN id INT)
@@ -103,8 +124,9 @@ BEGIN
         DELETE FROM Project WHERE Project.PID=id;
         DELETE FROM Education WHERE Education.PID=id;
         DELETE FROM Link WHERE Link.PID=id;
-        DELETE FROM Living WHERE Living.PID=id;
-        
+        DELETE FROM Living WHERE Living.PID=id;        
+    	DELETE FROM SkillCategory WHERE SkillCategory.PID=id;
+    	
         #delete from profile
         DELETE FROM `Profile` WHERE `Profile`.ID=id;
         DELETE FROM RPC WHERE RPC.PID=id;
@@ -124,4 +146,5 @@ BEGIN
     SELECT * FROM Education WHERE Education.PID=id;
     SELECT * FROM Link WHERE Link.PID=id;
     SELECT * FROM Living WHERE Living.PID=id;
+    SELECT * FROM SkillCategory WHERE SkillCategory.PID=id;
 END

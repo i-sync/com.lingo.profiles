@@ -13,22 +13,21 @@ import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 
-public class Skill {
-	
+public class SkillCategory {
 	/**
-	 * add skill info
+	 * add skill category info
 	 * @param data
 	 * @return
 	 */
-	public Result add(com.lingo.profiles.bean.Skill data)
+	public Result add(com.lingo.profiles.bean.SkillCategory data)
 	{
-		LingoLogger.logger.info("dao level: add skill info start...");
+		LingoLogger.logger.info("dao level: add skill category info start...");
 		Result result = new Result();
 		
 		try
 		{
-			String sql = "insert into Profiles.Skill(PID,SCID,Title,Content,AddDate,UpdateDate) values(?,?,?,?,?,?);";
-			Object [] objs = new Object[]{data.getPid(),data.getScid(),data.getTitle(),data.getContent(),new Date(), new Date()};
+			String sql = "insert into Profiles.SkillCategory(PID,Title,AddDate,UpdateDate) values(?,?,?,?);";
+			Object [] objs = new Object[]{data.getPid(),data.getTitle(),new Date(), new Date()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
 		}
@@ -40,24 +39,24 @@ public class Skill {
 			result.setMessage(e.getMessage());
 		}
 		
-		LingoLogger.logger.info("dao level: add skill info end.");
+		LingoLogger.logger.info("dao level: add skill category info end.");
 		return result;
 	}
 	
 	/**
-	 * update skill info
+	 * update skill category info
 	 * @param data
 	 * @return
 	 */
-	public Result update(com.lingo.profiles.bean.Skill data)
+	public Result update(com.lingo.profiles.bean.SkillCategory data)
 	{
-		LingoLogger.logger.info("dao level: update skill info start...");
+		LingoLogger.logger.info("dao level: update skill category info start...");
 		Result result = new Result();
 		
 		try
 		{
-			String sql = "update Profiles.Skill set SCID=?, Title=?,Content=?,UpdateDate=? where ID=?";
-			Object [] objs = new Object[]{data.getScid(),data.getTitle(),data.getContent(),new Date(),data.getId()};
+			String sql = "update Profiles.SkillCategory set Title=?,UpdateDate=? where ID=?";
+			Object [] objs = new Object[]{data.getTitle(),new Date(),data.getId()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
 		}
@@ -69,23 +68,23 @@ public class Skill {
 			result.setMessage(e.getMessage());
 		}
 		
-		LingoLogger.logger.info("dao level: update skill info end.");
+		LingoLogger.logger.info("dao level: update skill category info end.");
 		return result;		
 	}
 	
 	/**
-	 * delete skill info
+	 * delete skill category info
 	 * @param data
 	 * @return
 	 */
-	public Result delete(com.lingo.profiles.bean.Skill data)
+	public Result delete(com.lingo.profiles.bean.SkillCategory data)
 	{
-		LingoLogger.logger.info("dao level: delete skill info start...");
+		LingoLogger.logger.info("dao level: delete skill category info start...");
 		Result result = new Result();
 		
 		try
 		{
-			String sql = "delete from Profiles.Skill where ID=?";
+			String sql = "delete from Profiles.SkillCategory where ID=?";
 			Object [] objs = new Object[]{data.getId()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
@@ -98,26 +97,26 @@ public class Skill {
 			result.setMessage(e.getMessage());
 		}
 		
-		LingoLogger.logger.info("dao level: delete skill info end.");
+		LingoLogger.logger.info("dao level: delete skill category info end.");
 		return result;		
 	}
 	
 	/**
-	 * get skill model
+	 * get skill category model
 	 * @param data
 	 * @return
 	 */
-	public TResult<com.lingo.profiles.bean.Skill> getModel(com.lingo.profiles.bean.Skill data)
+	public TResult<com.lingo.profiles.bean.SkillCategory> getModel(com.lingo.profiles.bean.SkillCategory data)
 	{
-		LingoLogger.logger.info("dao level: get skill model info start...");
-		TResult<com.lingo.profiles.bean.Skill> result = new TResult<com.lingo.profiles.bean.Skill>();
+		LingoLogger.logger.info("dao level: get skill category model info start...");
+		TResult<com.lingo.profiles.bean.SkillCategory> result = new TResult<com.lingo.profiles.bean.SkillCategory>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Profiles.Skill where ID=?";
+			String sql = "select * from Profiles.SkillCategory where ID=?";
 			Object[] objs = new Object[] { data.getId() };
 
 			conn = PoolManager.getConnection();
@@ -130,8 +129,6 @@ public class Skill {
 			if (rs.next()) {
 				data.setPid(rs.getInt("PID"));
 				data.setTitle(rs.getString("Title"));
-				data.setContent(rs.getString("Content"));
-				data.setScid(rs.getInt("SCID"));
 				
 				result.setResult(1);
 				result.setT(data);
@@ -153,26 +150,26 @@ public class Skill {
 			PoolManager.free(rs, pstmt, conn);
 		}
 
-		LingoLogger.logger.info("dao level: get skill model info end.");
+		LingoLogger.logger.info("dao level: get skill category model info end.");
 		return result;
 	}
 	
 	/**
-	 * get skill list by pid
+	 * get skill category list by pid
 	 * @param data
 	 * @return
 	 */
-	public ListResult<com.lingo.profiles.bean.Skill> getList(com.lingo.profiles.bean.Skill data)
+	public ListResult<com.lingo.profiles.bean.SkillCategory> getList(com.lingo.profiles.bean.SkillCategory data)
 	{
-		LingoLogger.logger.info("dao level: get skill list info start...");
-		ListResult<com.lingo.profiles.bean.Skill> result = new ListResult<com.lingo.profiles.bean.Skill>();
+		LingoLogger.logger.info("dao level: get skill category list info start...");
+		ListResult<com.lingo.profiles.bean.SkillCategory> result = new ListResult<com.lingo.profiles.bean.SkillCategory>();
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 
 		try {
-			String sql = "select * from Profiles.Skill where PID=?";
+			String sql = "select * from Profiles.SkillCategory where PID=?";
 			Object[] objs = new Object[] { data.getPid() };
 
 			conn = PoolManager.getConnection();
@@ -181,15 +178,13 @@ public class Skill {
 				pstmt.setObject(i + 1, objs[i]);
 			}
 			rs = pstmt.executeQuery();
-			List<com.lingo.profiles.bean.Skill> list = new ArrayList<com.lingo.profiles.bean.Skill>();
+			List<com.lingo.profiles.bean.SkillCategory> list = new ArrayList<com.lingo.profiles.bean.SkillCategory>();
 			
 			// if it has result
 			while (rs.next()) {				
 				int id = rs.getInt("ID");
-				int scid = rs.getInt("SCID");
 				String title = rs.getString("Title");
-				String content = rs.getString("Content");
-				com.lingo.profiles.bean.Skill skill = new com.lingo.profiles.bean.Skill(id, data.getPid(),scid, title, content);
+				com.lingo.profiles.bean.SkillCategory skill = new com.lingo.profiles.bean.SkillCategory(id, data.getPid(), title);
 				list.add(skill);
 			}
 			rs.close();
@@ -210,7 +205,7 @@ public class Skill {
 			PoolManager.free(rs, pstmt, conn);
 		}
 		
-		LingoLogger.logger.info("dao level: get skill list info end.");
+		LingoLogger.logger.info("dao level: get skill category list info end.");
 		return result;
 	}
 }

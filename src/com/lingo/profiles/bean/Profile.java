@@ -18,6 +18,7 @@ public class Profile {
 	private Date addDate;
 	private Date updateDate;
 	private List<Skill> skill;
+	private List<SkillCategory> skillCategory;
 	private List<Experience> experience;
 	private List<Project> project;
 	private List<Education> education;
@@ -151,6 +152,12 @@ public class Profile {
 	}
 	public void setLiving(List<Living> living) {
 		this.living = living;
+	}
+	public List<SkillCategory> getSkillCategory() {
+		return skillCategory;
+	}
+	public void setSkillCategory(List<SkillCategory> skillCategory) {
+		this.skillCategory = skillCategory;
 	}
 	
 }
