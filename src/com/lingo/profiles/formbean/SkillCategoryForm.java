@@ -3,28 +3,24 @@ package com.lingo.profiles.formbean;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SkillForm {
+public class SkillCategoryForm {
 	private int id;
 	private int pid;
-	private int scid;
-	private String sctitle;
 	private String title;
-	private String content;
 	private Map<String,String> errors = new HashMap<String,String>();
 	
-	public SkillForm(int id,int pid, String title, String content)
+	public SkillCategoryForm(int id,int pid, String title)
 	{
-		this(pid,title,content);
+		this(pid,title);
 		this.id = id;
 	}
 	
-	public SkillForm(int pid, String title, String content) {
+	public SkillCategoryForm(int pid, String title) {
 		super();
 		this.pid = pid;
 		this.title = title;
-		this.content = content;
 	}
-	public SkillForm(){}
+	public SkillCategoryForm(){}
 
 	public int getId() {
 		return id;
@@ -44,12 +40,6 @@ public class SkillForm {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
-	}
-	public void setContent(String content) {
-		this.content = content;
-	}
 
 	public Map<String, String> getErrors() {
 		return errors;
@@ -65,38 +55,12 @@ public class SkillForm {
 	 */
 	public boolean validate() {
 		boolean flag = true;
-		if(this.scid == 0)
-		{
-			this.errors.put("scid", "please select skill category");
-			flag = false;
-		}
 		if(this.title ==null ||this.title.trim().equals(""))
 		{
 			this.errors.put("title", "title can't is empty");
 			flag =false;
 		}
-		if(this.content ==null || this.content.trim().equals(""))
-		{
-			this.errors.put("content", "content can't is empty");
-			flag = false;
-		}
 
 		return flag;
-	}
-
-	public int getScid() {
-		return scid;
-	}
-
-	public void setScid(int scid) {
-		this.scid = scid;
-	}
-
-	public String getSctitle() {
-		return sctitle;
-	}
-
-	public void setSctitle(String scTitle) {
-		this.sctitle = scTitle;
 	}
 }

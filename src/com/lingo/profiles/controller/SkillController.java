@@ -1,6 +1,8 @@
 package com.lingo.profiles.controller;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -15,6 +17,7 @@ import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Skill;
+import com.lingo.profiles.bean.SkillCategory;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;
@@ -26,13 +29,28 @@ import com.lingo.profiles.utils.WebUtils;
 public class SkillController {
 
 	/**
+	 * get skill category list.
+	 */
+	@Login
+	@ModelAttribute(value = "category")
+	public List<SkillCategory> getCategoryList(HttpServletRequest request)
+	{
+		SkillCategory data = new SkillCategory();
+		data.setPid(Common.getPid(request));
+		ListResult<SkillCategory> result = new com.lingo.profiles.dao.SkillCategory().getList(data);
+		return result.getList();
+	}
+	
+	/**
 	 * get skill list by pid 
 	 * @return
 	 */	
 	@Login
 	@ModelAttribute(value="list")
-	public List<Skill> getList(HttpServletRequest request)
+	public List<SkillForm> getList(HttpServletRequest request)
 	{
+		List<SkillForm> list = new ArrayList<SkillForm>();
+		
 		Skill data = new Skill();
 		data.setPid(Common.getPid(request));
 		com.lingo.profiles.dao.Skill skill = new com.lingo.profiles.dao.Skill();
@@ -40,8 +58,20 @@ public class SkillController {
 		if(result.getResult()!=1)
 		{
 			//error
+			LingoLogger.logger.error(String.format("get skill list error, the result is:%d", result.getResult()));
+			return list;
 		}
-		return result.getList();
+		List<SkillCategory> category = getCategoryList(request);
+		for(Skill item : result.getList())
+		{
+			SkillForm sf = new SkillForm();
+			WebUtils.copyBean(item, sf);
+			Optional<SkillCategory> option = category.stream().filter(x -> x.getId() == item.getScid()).findFirst();
+			sf.setSctitle(option.isPresent()? option.get().getTitle(): "");
+			list.add(sf);
+		}
+		
+		return list;
 	}
 	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.GET)

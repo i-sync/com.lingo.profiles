@@ -14,12 +14,21 @@
 				<form class="ui form" action="${pageContext.request.contextPath }/skill/add" method="post">
 					<h2 class="ui header">Add Profile Skill</h2>
 					<div class="ten wide field">
-						<label>Title</label> <input type="text" name="title" required
+						<label>Category</label> 
+						<select name="scid">
+							<option value="0"></option>
+							<c:forEach var ="item" items="${category }">
+								<option value="${item.id }">${item.title}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="ten wide field">
+						<label>Title</label> <input type="text" name="title" required value="${form.title }"
 							placeholder="Title">
 					</div>
 					<div class="ten wide field">
 						<label>Content</label> 
-						<textarea rows="2" name="content" required placeholder="Content"></textarea>
+						<textarea rows="2" name="content" required placeholder="Content">${form.content}</textarea>
 					</div>
 					<input class="ui large teal submit button" type="submit"
 						value="Submit">
@@ -31,6 +40,7 @@
 				<table class="ui celled padded table">
 					<thead>
 						<tr>
+							<th>Category</th>
 							<th>Title</th>
 							<th>Content</th>
 							<th>Operation</th>
@@ -39,6 +49,7 @@
 					<tbody>
 						<c:forEach var="item" items="${list }">
 							<tr>
+								<td>${item.sctitle }</td>
 								<td>${item.title }</td>
 								<td>${item.content }</td>
 								<td>

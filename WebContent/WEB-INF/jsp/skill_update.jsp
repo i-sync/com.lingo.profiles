@@ -15,6 +15,15 @@
 					<h2 class="ui header">Update Profile Skill</h2>					
 					<input type="hidden" name="id" value="${form.id }" />
 					<div class="ten wide field">
+						<label>Category</label> 
+						<select name="scid">
+							<option value="0"></option>
+							<c:forEach var ="item" items="${category }">
+								<option value="${item.id }"  <c:if test="${item.id eq form.scid }">selected</c:if> >${item.title}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="ten wide field">
 						<label>Title</label> <input type="text" name="title" required placeholder="title" value="${form.title }">
 					</div>
 					<div class="ten wide field">
@@ -30,6 +39,7 @@
 				<table class="ui celled padded table">
 					<thead>
 						<tr>
+							<th>Category</th>
 							<th>Title</th>
 							<th>Content</th>
 							<th>Operation</th>
@@ -38,6 +48,7 @@
 					<tbody>
 						<c:forEach var="item" items="${list }">
 							<tr>
+								<td>${item.sctitle }</td>
 								<td>${item.title }</td>
 								<td>${item.content }</td>
 								<td>
