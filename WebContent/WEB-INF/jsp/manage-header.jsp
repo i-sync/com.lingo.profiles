@@ -29,8 +29,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/transition.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/segment.css">
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/semantic.css">
-<link rel="shortcut icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
-<link rel="icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
 <style>
 body{
    min-width:350px; /* suppose you want minimun width of 1000px */

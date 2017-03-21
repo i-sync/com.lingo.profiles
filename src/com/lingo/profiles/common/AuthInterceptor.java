@@ -28,6 +28,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			response.sendRedirect(request.getContextPath()+"/login");
 			//return ;
 		}
+		//System.out.println(data.getName());
 		return true;
 	}
 }

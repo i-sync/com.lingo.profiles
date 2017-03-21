@@ -13,8 +13,8 @@
 	href="${pageContext.request.contextPath }/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/style.css">
-<link rel="shortcut icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
-<link rel="icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
 
 <nav class="double-navbar navbar navbar-fixed-top pt-color z-depth-1"
 	role="navigation">

@@ -16,8 +16,8 @@
 	href="${pageContext.request.contextPath }/css/font-awesome.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath }/css/style.css">
-<link rel="shortcut icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
-<link rel="icon" href='<c:url value="/img/favicon.ico" />' type="image/x-icon">
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
 
 <style>
 	html,body {
@@ -26,7 +26,7 @@
 	.main
 	{
 		color: #fff;
-		background-image: url('/img/universe_reflection-wallpaper.jpg');
+		background-image: url('${pageContext.request.contextPath }/img/universe_reflection-wallpaper.jpg');
 		background-size: cover;
 	}
 	.container-fluid

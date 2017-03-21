@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns = "http://www.springframework.org/schema/beans"
+   xmlns:xsi = "http://www.w3.org/2001/XMLSchema-instance" 
+   xmlns:context = "http://www.springframework.org/schema/context"
+   xmlns:mvc = "http://www.springframework.org/schema/mvc"
+   xsi:schemaLocation = "http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+   http://www.springframework.org/schema/mvc
+   http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+   http://www.springframework.org/schema/context
+   http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+   <!-- not strictly necessary for this example, but still useful, see http://static.springsource.org/spring/docs/3.0.x/spring-framework-reference/html/mvc.html#mvc-ann-controller for more information -->
+   <context:component-scan base-package="com.lingo.profiles.controller" />
+   
+   <!-- also add the following beans to get rid of some exceptions -->
+   <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+   <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+   
+   <bean id = "viewResolver" 
+      class = "org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name = "viewClass" value="org.springframework.web.servlet.view.JstlView" />
+      <property name = "prefix" value = "/WEB-INF/jsp/" />
+      <property name = "suffix" value = ".jsp" />
+   </bean>
+   
+   <!-- the mvc resources tag does the magic -->
+   <mvc:resources mapping = "/css/**" location = "/css/" />
+   <mvc:resources mapping = "/js/**" location = "/js/" />
+   <mvc:resources mapping = "/font/**" location = "/font/" />
+   <mvc:resources mapping = "/images/**" location = "/images/" />
+   <mvc:resources mapping = "/img/**" location = "/img/" />
+   <mvc:resources mapping = "/semantic/**" location = "/semantic/" />
+   <mvc:resources mapping = "/.well-known/**" location = "/.well-known/" />  
+   <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.lingo.profiles.common.AuthInterceptor"/>
+        </mvc:interceptor> 
+   </mvc:interceptors>
+   
+   <mvc:annotation-driven/>
+   
+
+    
+</beans>

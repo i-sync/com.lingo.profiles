@@ -7,7 +7,7 @@ import javax.servlet.ServletRegistration;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
- 
+/* 
 public class AppInitializer implements WebApplicationInitializer {
  
     public void onStartup(ServletContext container) throws ServletException {
@@ -24,3 +24,4 @@ public class AppInitializer implements WebApplicationInitializer {
     }
  
 }
+*/
