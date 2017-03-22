@@ -24,6 +24,7 @@ import com.lingo.profiles.bean.Profile;
 import com.lingo.profiles.bean.Project;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Skill;
+import com.lingo.profiles.bean.SkillCategory;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.EducationForm;
@@ -32,6 +33,7 @@ import com.lingo.profiles.formbean.LinkForm;
 import com.lingo.profiles.formbean.LivingForm;
 import com.lingo.profiles.formbean.ProfileForm;
 import com.lingo.profiles.formbean.ProjectForm;
+import com.lingo.profiles.formbean.SkillCategoryForm;
 import com.lingo.profiles.formbean.SkillForm;
 import com.lingo.profiles.utils.WebUtils;
 
@@ -257,8 +259,18 @@ public class ProfileController {
 		}		
 		form.setExperience(temp6);
 		
+		//skill category
+		List<SkillCategoryForm> temp7 = new ArrayList<SkillCategoryForm>();
+		for(SkillCategory item : data.getSkillCategory())
+		{
+			SkillCategoryForm skillcategory = new SkillCategoryForm();
+			WebUtils.copyBean(item, skillcategory);
+			temp7.add(skillcategory);
+		}		
+		form.setSkillcategory(temp7);
+		
 		model.addAttribute("form", form);
 
-		return "index";
+		return "index_full_page";
 	}
 }

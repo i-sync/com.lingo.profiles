@@ -24,6 +24,7 @@ public class ProfileForm {
 	private List<EducationForm> education;
 	private List<LinkForm> link;
 	private List<LivingForm> living;
+	private List<SkillCategoryForm> skillcategory;
 	private Map<String,String> errors = new HashMap<String,String>();
 	
 	public ProfileForm(String name,byte[] avatar, String email,String phone,String address,String profession, String intro)
@@ -137,6 +138,12 @@ public class ProfileForm {
 	}
 	public void setLiving(List<LivingForm> living) {
 		this.living = living;
+	}
+	public List<SkillCategoryForm> getSkillcategory() {
+		return skillcategory;
+	}
+	public void setSkillcategory(List<SkillCategoryForm> skillcategory) {
+		this.skillcategory = skillcategory;
 	}
 	public Map<String, String> getErrors() {
 		return errors;
