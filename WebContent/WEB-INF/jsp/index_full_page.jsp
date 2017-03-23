@@ -87,7 +87,7 @@
 			<div class="section section2">
 				<h1>I Can Do!</h1>
 				<div class="data-skill">
-					<c:set var="colors" value="${fn:split('yell,orgn,blue,green',',')}" />
+					<c:set var="colors" value="${fn:split('yell,oran,blue,green',',')}" />
 					<ul class="skill-list clearfix">
 						<c:forEach var="item" items="${form.skillcategory }">
 							<li>

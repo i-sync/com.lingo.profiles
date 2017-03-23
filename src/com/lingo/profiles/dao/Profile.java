@@ -289,9 +289,10 @@ public class Profile {
 				while(rs.next())
 				{
 					int id = rs.getInt("ID");
+					int scid = rs.getInt("SCID");
 					String title = rs.getString("Title");
 					String content = rs.getString("Content");
-					com.lingo.profiles.bean.Skill skill = new com.lingo.profiles.bean.Skill(id, data.getId(), title, content);
+					com.lingo.profiles.bean.Skill skill = new com.lingo.profiles.bean.Skill(id, data.getId(),scid, title, content);
 					list.add(skill);
 				}
 				data.setSkill(list);

@@ -12,15 +12,16 @@ public class SkillForm {
 	private String content;
 	private Map<String,String> errors = new HashMap<String,String>();
 	
-	public SkillForm(int id,int pid, String title, String content)
+	public SkillForm(int id,int pid, int scid, String title, String content)
 	{
-		this(pid,title,content);
+		this(pid,scid,title,content);
 		this.id = id;
 	}
 	
-	public SkillForm(int pid, String title, String content) {
+	public SkillForm(int pid,int scid, String title, String content) {
 		super();
 		this.pid = pid;
+		this.scid = scid;
 		this.title = title;
 		this.content = content;
 	}
