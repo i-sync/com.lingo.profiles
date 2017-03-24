@@ -14,6 +14,7 @@ import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.utils.ByteUtils;
+import com.mysql.jdbc.StringUtils;
 
 public class Project {
 	/**
@@ -30,7 +31,7 @@ public class Project {
 		try {
 			String sql = "insert into Profiles.Project(PID,Title,Link,Tags,Intro,AddDate,UpdateDate,Image) values(?,?,?,?,?,?,?,?);";
 			Object[] objs = new Object[] { data.getPid(), data.getTitle(),
-					data.getLink(),data.getTags(),data.getIntro(),new Date(), new Date() };
+					data.getLink(),data.getTags(),data.getIntro(),new Date(), new Date(), data.getImage() };
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			int i = 0;
@@ -39,9 +40,9 @@ public class Project {
 			}
 
 			// storge logo
-			byte[] image = data.getImage();
-			ByteArrayInputStream bis = new ByteArrayInputStream(image);
-			pstmt.setBinaryStream(i + 1, bis);
+			//byte[] image = data.getImage();
+			//ByteArrayInputStream bis = new ByteArrayInputStream(image);
+			//pstmt.setBinaryStream(i + 1, bis);
 
 			int res = pstmt.executeUpdate();
 			result.setResult(res);
@@ -77,7 +78,7 @@ public class Project {
 		try {
 			String sql = String.format(
 					"update Profiles.Project set Title=?,Link=?,Tags=?,Intro=?,UpdateDate=? %s where ID=?",
-					data.getImage() == null ? "" : ",Image=?");
+					StringUtils.isNullOrEmpty(data.getImage()) ? "" : ",Image=?");
 			Object[] objs = new Object[] { data.getTitle(), data.getLink(),data.getTags(),data.getIntro(),new Date() };
 
 			conn = PoolManager.getConnection();
@@ -87,11 +88,12 @@ public class Project {
 				pstmt.setObject(i + 1, objs[i]);
 			}
 			// add avatar param
-			if (data.getImage() != null) {
+			if (StringUtils.isNullOrEmpty( data.getImage() )) {
 				// storage avatar
-				byte[] image = data.getImage();
-				ByteArrayInputStream bis = new ByteArrayInputStream(image);
-				pstmt.setBinaryStream(++i, bis);
+				//byte[] image = data.getImage();
+				//ByteArrayInputStream bis = new ByteArrayInputStream(image);				
+				//pstmt.setBinaryStream(++i, bis);
+				pstmt.setObject(++i, data.getImage());
 			}
 			// add id param
 			pstmt.setObject(++i, data.getId());
@@ -172,8 +174,8 @@ public class Project {
 				data.setPid(rs.getInt("PID"));
 				data.setTitle(rs.getString("Title"));
 				data.setLink(rs.getString("Link"));
-				byte[] image = ByteUtils.GetByteFromResultSet(rs, "Image");
-				data.setImage(image);
+				//byte[] image = ByteUtils.GetByteFromResultSet(rs, "Image");
+				data.setImage(rs.getString("Image"));
 				data.setLink(rs.getString("Link"));
 				data.setTags(rs.getString("Tags"));
 				data.setIntro(rs.getString("Intro"));
@@ -233,7 +235,8 @@ public class Project {
 			while (rs.next()) {
 				int id = rs.getInt("ID");
 				String title = rs.getString("Title");
-				byte [] image = ByteUtils.GetByteFromResultSet(rs, "Image");
+				//byte [] image = ByteUtils.GetByteFromResultSet(rs, "Image");
+				String image = rs.getString("Image");
 				String link = rs.getString("Link");
 				String tags = rs.getString("Tags");
 				String intro = rs.getString("Intro");

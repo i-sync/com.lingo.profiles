@@ -12,6 +12,7 @@ import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
+import com.mysql.jdbc.StringUtils;
 
 public class Experience {
 	/**
@@ -26,8 +27,8 @@ public class Experience {
 		
 		try
 		{
-			String sql = "insert into Profiles.Experience(PID,Title,Company,Link,Period,Location,Position,Intro,AddDate,UpdateDate) values(?,?,?,?,?,?,?,?,?,?);";
-			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getCompany(),data.getLink(),data.getPeriod(),data.getLocation(),data.getPosition(),data.getIntro(),new Date(), new Date()};
+			String sql = "insert into Profiles.Experience(PID,Title,Company,Link,Period,Location,Position,Intro,AddDate,UpdateDate,Logo) values(?,?,?,?,?,?,?,?,?,?,?);";
+			Object [] objs = new Object[]{data.getPid(),data.getTitle(),data.getCompany(),data.getLink(),data.getPeriod(),data.getLocation(),data.getPosition(),data.getIntro(),new Date(), new Date(), data.getLogo()};
 			int res = DBHelper.executeNonQuery(sql, objs);
 			result.setResult(res);
 		}
@@ -52,22 +53,47 @@ public class Experience {
 	{
 		LingoLogger.logger.info("dao level: update experience info start...");
 		Result result = new Result();
-		
+
+		Connection conn = null;
+		PreparedStatement pstmt = null;
 		try
 		{
-			String sql = "update Profiles.Experience set Title=?,Company=?, Link=?, Period=?,Location=?,Position=?,Intro=?,UpdateDate=? where ID=?";
+			String sql = String.format("update Profiles.Experience set Title=?,Company=?, Link=?, Period=?,Location=?,Position=?,Intro=?,UpdateDate=? %s where ID=?", StringUtils.isNullOrEmpty(data.getLogo())?"":",Logo=?");
 			Object [] objs = new Object[]{data.getTitle(),data.getCompany(),data.getLink(),data.getPeriod(),data.getLocation(),data.getPosition(),data.getIntro(),new Date(),data.getId()};
-			int res = DBHelper.executeNonQuery(sql, objs);
+			
+			conn = PoolManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			int i = 0;
+			for (; i < objs.length; i++) {
+				pstmt.setObject(i + 1, objs[i]);
+			}
+			// add avatar param
+			if (StringUtils.isNullOrEmpty( data.getLogo() )) {
+				// storage avatar
+				//byte[] image = data.getImage();
+				//ByteArrayInputStream bis = new ByteArrayInputStream(image);				
+				//pstmt.setBinaryStream(++i, bis);
+				pstmt.setObject(++i, data.getLogo());
+			}
+			// add id param
+			pstmt.setObject(++i, data.getId());
+
+			int res = pstmt.executeUpdate();
 			result.setResult(res);
-		}
-		catch(Exception e)
-		{
-			LingoLogger.logger.error(e.getMessage());
+		} catch (SQLException e) {
+			LingoLogger.logger.error(e);
 			e.printStackTrace();
 			result.setResult(0);
 			result.setMessage(e.getMessage());
+		} catch (Exception e) {
+			LingoLogger.logger.error(e);
+			e.printStackTrace();
+			result.setResult(0);
+			result.setMessage(e.getMessage());
+		} finally {
+			PoolManager.free(null, pstmt, conn);
 		}
-		
+	
 		LingoLogger.logger.info("dao level: update experience info end.");
 		return result;		
 	}
@@ -129,6 +155,7 @@ public class Experience {
 			if (rs.next()) {
 				data.setPid(rs.getInt("PID"));
 				data.setTitle(rs.getString("Title"));
+				data.setLogo(rs.getString("Logo"));
 				data.setCompany(rs.getString("Company"));
 				data.setLink(rs.getString("Link"));
 				data.setPeriod(rs.getString("Period"));
@@ -190,13 +217,14 @@ public class Experience {
 			while (rs.next()) {				
 				int id = rs.getInt("ID");
 				String title = rs.getString("Title");
+				String logo = rs.getString("Logo");
 				String company = rs.getString("Company");
 				String link = rs.getString("Link");
 				String period = rs.getString("Period");
 				String location = rs.getString("Location");
 				String position = rs.getString("Position");
 				String intro = rs.getString("Intro");
-				com.lingo.profiles.bean.Experience experience = new com.lingo.profiles.bean.Experience(id, data.getPid(), title,company,link,period,location,position ,intro);
+				com.lingo.profiles.bean.Experience experience = new com.lingo.profiles.bean.Experience(id, data.getPid(), title, logo, company,link,period,location,position ,intro);
 				list.add(experience);
 			}
 			rs.close();

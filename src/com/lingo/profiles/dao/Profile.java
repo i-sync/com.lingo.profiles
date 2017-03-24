@@ -298,13 +298,14 @@ public class Profile {
 				{
 					int id = rs.getInt("ID");
 					String title = rs.getString("Title");
+					String logo = rs.getString("Logo");
 					String company = rs.getString("Company");
 					String link = rs.getString("Link");
 					String period = rs.getString("Period");
 					String location = rs.getString("Location");
 					String position = rs.getString("Position");
 					String intro = rs.getString("Intro");
-					com.lingo.profiles.bean.Experience experience = new com.lingo.profiles.bean.Experience(id, data.getId(), title,company,link,period,location,position,intro);
+					com.lingo.profiles.bean.Experience experience = new com.lingo.profiles.bean.Experience(id, data.getId(), title, logo, company,link,period,location,position,intro);
 					list.add(experience);
 				}
 				data.setExperience(list);
@@ -318,7 +319,8 @@ public class Profile {
 				{
 					int id = rs.getInt("ID");
 					String title = rs.getString("Title");
-					byte [] image = ByteUtils.GetByteFromResultSet(rs, "Image");
+					//byte [] image = ByteUtils.GetByteFromResultSet(rs, "Image");
+					String image = rs.getString("Image");
 					String link = rs.getString("Link");
 					String tags = rs.getString("Tags");
 					String intro = rs.getString("Intro");
@@ -337,11 +339,12 @@ public class Profile {
 				{
 					int id = rs.getInt("ID");
 					String title = rs.getString("Title");
+					String logo = rs.getString("Logo");
 					String period = rs.getString("Period");
 					String professional = rs.getString("Professional");
 					String link = rs.getString("Link");
 					String intro = rs.getString("Intro");
-					com.lingo.profiles.bean.Education education = new com.lingo.profiles.bean.Education(id, data.getId(), title,period,professional,link ,intro);
+					com.lingo.profiles.bean.Education education = new com.lingo.profiles.bean.Education(id, data.getId(), title, logo,period,professional,link ,intro);
 					list.add(education);
 				}
 				data.setEducation(list);

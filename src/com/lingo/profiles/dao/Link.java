@@ -14,6 +14,7 @@ import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.utils.ByteUtils;
+import com.mysql.jdbc.StringUtils;
 
 public class Link {
 	/**
@@ -28,9 +29,9 @@ public class Link {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into Profiles.Link(PID,Title,Icon,Link,AddDate,UpdateDate) values(?,?,?,?,?,?);";
+			String sql = "insert into Profiles.Link(PID,Title,Icon,Link,AddDate,UpdateDate,Logo) values(?,?,?,?,?,?,?);";
 			//String sql = "insert into Profiles.Link(PID,Title,Icon,Link,Logo) values(?,?,?,?,?);";
-			Object[] objs = new Object[] { data.getPid(), data.getTitle(),data.getIcon(), data.getLink(), new Date(), new Date() };
+			Object[] objs = new Object[] { data.getPid(), data.getTitle(),data.getIcon(), data.getLink(), new Date(), new Date(), data.getLogo() };
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			int i = 0;
@@ -78,7 +79,7 @@ public class Link {
 		try {
 			String sql = String.format(
 					"update Profiles.Link set Title=?,Icon=?,Link=?,UpdateDate=? %s where ID=?",
-					data.getLogo() == null ? "" : ",Logo=?");
+					StringUtils.isNullOrEmpty(data.getLogo()) ? "" : ",Logo=?");
 			Object[] objs = new Object[] { data.getTitle(),data.getIcon(), data.getLink(),new Date() };
 
 			conn = PoolManager.getConnection();
@@ -88,11 +89,12 @@ public class Link {
 				pstmt.setObject(i + 1, objs[i]);
 			}
 			// add avatar param
-			if (data.getLogo() != null) {
+			if (StringUtils.isNullOrEmpty(data.getLogo())) {
 				// storage avatar
-				byte[] logo = data.getLogo();
-				ByteArrayInputStream bis = new ByteArrayInputStream(logo);
-				pstmt.setBinaryStream(++i, bis);
+				//byte[] logo = data.getLogo();
+				//ByteArrayInputStream bis = new ByteArrayInputStream(logo);
+				//pstmt.setBinaryStream(++i, bis);
+				pstmt.setObject(++i, data.getLogo());
 			}
 			// add id param
 			pstmt.setObject(++i, data.getId());
@@ -174,6 +176,7 @@ public class Link {
 				data.setTitle(rs.getString("Title"));
 				data.setIcon(rs.getString("Icon"));
 				data.setLink(rs.getString("Link"));
+				data.setLogo(rs.getString("Logo"));
 				//byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
 				//data.setLogo(logo);
 
@@ -234,6 +237,7 @@ public class Link {
 				String title = rs.getString("Title");
 				String icon  = rs.getString("Icon");
 				String lin = rs.getString("Link");
+				String logo = rs.getString("Logo");
 				//byte[] logo = ByteUtils.GetByteFromResultSet(rs, "Logo");
 				com.lingo.profiles.bean.Link link = new com.lingo.profiles.bean.Link(
 						id, data.getPid(), title, icon, lin, null);
