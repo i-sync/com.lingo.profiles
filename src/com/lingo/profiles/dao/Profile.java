@@ -15,6 +15,7 @@ import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.utils.ByteUtils;
+import com.mysql.jdbc.StringUtils;
 
 public class Profile {
 
@@ -32,7 +33,7 @@ public class Profile {
 		PreparedStatement pstmt = null;
 		try{			
 			String sql ="insert into Profiles.Profile(Name,NickName,Email,Phone,Address,Profession,Intro,AddDate,UpdateDate,Avatar) values(?,?,?,?,?,?,?,?,?,?);";
-			Object[] objs = new Object[]{data.getName(),data.getNickName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getProfession(),data.getIntro(),new Date(),new Date()};
+			Object[] objs = new Object[]{data.getName(),data.getNickName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getProfession(),data.getIntro(),new Date(),new Date(),data.getAvatar()};
 			
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -40,12 +41,7 @@ public class Profile {
 			for (; i < objs.length; i++) {
 				pstmt.setObject(i + 1, objs[i]);
 			}			
-			
-			//storge avatar
-			byte[] avatar = data.getAvatar();
-			ByteArrayInputStream bis = new ByteArrayInputStream(avatar);
-			pstmt.setBinaryStream(i+1, bis);
-			
+						
 			int res = pstmt.executeUpdate();
 			result.setResult(res);
 		}
@@ -79,7 +75,7 @@ public class Profile {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try{			
-			String sql =String.format("update Profiles.Profile set Name=?,NickName=?, Email=?,Phone=?,Address=?,Profession=?,Intro=?,UpdateDate=? %s where ID=?",data.getAvatar()==null?"":",Avatar=?");//"insert into Profile(Name,Email,Phone,Address,Intro,Avatar) values(?,?,?,?,?,?);";
+			String sql =String.format("update Profiles.Profile set Name=?,NickName=?, Email=?,Phone=?,Address=?,Profession=?,Intro=?,UpdateDate=? %s where ID=?",StringUtils.isNullOrEmpty(data.getAvatar())?"":",Avatar=?");//"insert into Profile(Name,Email,Phone,Address,Intro,Avatar) values(?,?,?,?,?,?);";
 			Object[] objs = new Object[]{data.getName(),data.getNickName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getProfession(),data.getIntro(),new Date()};
 			
 			conn = PoolManager.getConnection();
@@ -89,11 +85,9 @@ public class Profile {
 				pstmt.setObject(i + 1, objs[i]);
 			}			
 			//add avatar param
-			if (data.getAvatar() != null) {
+			if (!StringUtils.isNullOrEmpty(data.getAvatar())) {
 				// storage avatar
-				byte[] avatar = data.getAvatar();
-				ByteArrayInputStream bis = new ByteArrayInputStream(avatar);
-				pstmt.setBinaryStream(++i, bis);
+				pstmt.setObject(++i, data.getAvatar());
 			}
 			//add id param
 			pstmt.setObject(++i, data.getId());
@@ -199,9 +193,8 @@ public class Profile {
 			if (rs.next()) {
 				data.setName(rs.getString("Name"));
 				data.setNickName(rs.getString("NickName"));
-				//avatar
-				byte[] avatar = ByteUtils.GetByteFromResultSet(rs,"Avatar");				
-				data.setAvatar(avatar);
+				//avatar		
+				data.setAvatar(rs.getString("Avatar"));
 				data.setEmail(rs.getString("Email"));
 				data.setPhone(rs.getString("Phone"));
 				data.setAddress(rs.getString("Address"));
@@ -264,9 +257,8 @@ public class Profile {
 			if (rs.next()) {
 				data.setName(rs.getString("Name"));
 				data.setNickName(rs.getString("NickName"));
-				//avatar
-				byte[] avatar = ByteUtils.GetByteFromResultSet(rs,"Avatar");				
-				data.setAvatar(avatar);
+				//avatar				
+				data.setAvatar(rs.getString("Avatar"));
 				data.setEmail(rs.getString("Email"));
 				data.setPhone(rs.getString("Phone"));
 				data.setAddress(rs.getString("Address"));

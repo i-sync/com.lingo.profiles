@@ -26,6 +26,7 @@ import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Skill;
 import com.lingo.profiles.bean.SkillCategory;
 import com.lingo.profiles.bean.TResult;
+import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.EducationForm;
 import com.lingo.profiles.formbean.ExperienceForm;
@@ -58,15 +59,8 @@ public class ProfileController {
 
 		ProfileForm form = WebUtils.requestToBean(request, ProfileForm.class);
 		if (!file.isEmpty()) {
-			try {
-				InputStream is = file.getInputStream();
-				byte[] avatar = new byte[is.available()];
-				is.read(avatar);
-				form.setAvatar(avatar);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String fileName = Common.saveFile(request, file, "profile");				
+			form.setAvatar(fileName);
 		}
 		// check
 		if(!form.validate())
@@ -122,15 +116,8 @@ public class ProfileController {
 	{
 		ProfileForm form = WebUtils.requestToBean(request, ProfileForm.class);
 		if (!file.isEmpty()) {
-			try {
-				InputStream is = file.getInputStream();
-				byte[] avatar = new byte[is.available()];
-				is.read(avatar);
-				form.setAvatar(avatar);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String fileName = Common.saveFile(request, file, "profile");				
+			form.setAvatar(fileName);
 		}
 		// check
 		if(!form.validate())

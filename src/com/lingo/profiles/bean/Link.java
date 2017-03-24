@@ -8,15 +8,15 @@ public class Link {
 	private String title;
 	private String icon;
 	private String link;
-	private byte[] logo;
+	private String logo;
 	private Date addDate;
 	private Date updateDate;
 	
-	public Link(int id, int pid, String title,String icon, String link, byte[] logo) {
+	public Link(int id, int pid, String title,String icon, String link, String logo) {
 		this(pid,title,icon,link,logo);
 		this.id = id;
 	}
-	public Link(int pid, String title, String icon, String link, byte[] logo) {
+	public Link(int pid, String title, String icon, String link, String logo) {
 		super();
 		this.pid = pid;
 		this.title = title;
@@ -55,10 +55,10 @@ public class Link {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	public byte[] getLogo() {
+	public String getLogo() {
 		return logo;
 	}
-	public void setLogo(byte[] logo) {
+	public void setLogo(String logo) {
 		this.logo = logo;
 	}
 

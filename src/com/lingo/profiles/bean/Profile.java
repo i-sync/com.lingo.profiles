@@ -9,7 +9,7 @@ public class Profile {
 	private int id;
 	private String name;
 	private String nickName;
-	private byte[] avatar;
+	private String avatar;
 	private String email;
 	private String phone;
 	private String address;
@@ -25,7 +25,7 @@ public class Profile {
 	private List<Link> link;
 	private List<Living> living;
 	
-	public Profile(String name,byte[] avatar, String email,String phone,String address,String profession, String intro)
+	public Profile(String name,String avatar, String email,String phone,String address,String profession, String intro)
 	{
 		this.name= name;
 		this.avatar = avatar;
@@ -35,7 +35,7 @@ public class Profile {
 		this.profession = profession;
 		this.intro = intro;
 	}
-	public Profile(int id,String name,byte[] avatar, String email,String phone,String address,String profession, String intro)
+	public Profile(int id,String name,String avatar, String email,String phone,String address,String profession, String intro)
 	{
 		this(name,avatar,email,phone,address,profession,intro);
 		this.id = id;
@@ -64,15 +64,11 @@ public class Profile {
 	{
 		this.nickName=nickName;
 	}
-	public byte[] getAvatar() {
+	public String getAvatar() {
 		return avatar;
 	}
-	public void setAvatar(byte[] avatar) {
+	public void setAvatar(String avatar) {
 		this.avatar = avatar;
-	}
-	public String getAvatarImage()
-	{
-		return new Base64().encodeToString(this.avatar);
 	}
 	public String getEmail() {
 		return email;

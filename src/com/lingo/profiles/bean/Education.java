@@ -6,6 +6,7 @@ public class Education {
 	private int id;
 	private int pid;
 	private String title;
+	private String logo;
 	private String period;
 	private String professional;
 	private String link;
@@ -13,16 +14,17 @@ public class Education {
 	private Date addDate;
 	private Date updateDate;
 	
-	public Education(int id, int pid, String title, String period,
+	public Education(int id, int pid, String title, String logo, String period,
 			String professional, String link, String intro) {
-		this(pid,title,period,professional,link,intro);
+		this(pid,title,logo,period,professional,link,intro);
 		this.id = id;
 	}
-	public Education(int pid, String title, String period, String professional,
+	public Education(int pid, String title, String logo, String period, String professional,
 			String link, String intro) {
 		super();
 		this.pid = pid;
 		this.title = title;
+		this.logo = logo;
 		this.period = period;
 		this.professional = professional;
 		this.link = link;
@@ -72,6 +74,12 @@ public class Education {
 	}
 	public void setIntro(String intro) {
 		this.intro = intro;
+	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 	public Date getAddDate() {

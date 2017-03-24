@@ -6,6 +6,7 @@ public class Experience {
 	private int id;
 	private int pid;
 	private String title;
+	private String logo;
 	private String company;
 	private String link;
 	private String period;
@@ -15,16 +16,17 @@ public class Experience {
 	private Date addDate;
 	private Date updateDate;
 
-	public Experience(int id, int pid, String title, String company, String link, String period, String location, String position,
+	public Experience(int id, int pid, String title, String logo, String company, String link, String period, String location, String position,
 			String intro) {
-		this(pid, title, company, link, period, location, position, intro);
+		this(pid, title, logo, company, link, period, location, position, intro);
 		this.id = id;
 	}
-	public Experience(int pid, String title, String company, String link, String period, String location, String position,
+	public Experience(int pid, String title,String logo, String company, String link, String period, String location, String position,
 			String intro) {
 		super();
 		this.pid = pid;
 		this.title = title;
+		this.logo = logo;
 		this.company = company;
 		this.link = link;
 		this.period = period;
@@ -86,6 +88,12 @@ public class Experience {
 	}
 	public void setIntro(String intro) {
 		this.intro = intro;
+	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 
 	public Date getAddDate() {
