@@ -68,7 +68,7 @@ public class Experience {
 				pstmt.setObject(i + 1, objs[i]);
 			}
 			// add avatar param
-			if (StringUtils.isNullOrEmpty( data.getLogo() )) {
+			if (!StringUtils.isNullOrEmpty( data.getLogo() )) {
 				// storage avatar
 				//byte[] image = data.getImage();
 				//ByteArrayInputStream bis = new ByteArrayInputStream(image);				

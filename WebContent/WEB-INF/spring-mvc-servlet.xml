@@ -23,6 +23,10 @@
       <property name = "suffix" value = ".jsp" />
    </bean>
    
+   <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+     <property name="maxUploadSize" value="268435456"/>
+   </bean>
+   
    <!-- the mvc resources tag does the magic -->
    <mvc:resources mapping = "/css/**" location = "/css/" />
    <mvc:resources mapping = "/js/**" location = "/js/" />

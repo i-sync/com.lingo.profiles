@@ -19,7 +19,7 @@
 							placeholder="Title" value="${form.title }" >
 					</div>
 					<div class="ten wide field">
-						<label>Image</label> <input type="file" name="image" required
+						<label>Image</label> <input type="file" name="image"
 							placeholder="Image">
 					</div>
 					<div class="ten wide field">
@@ -58,7 +58,7 @@
 							<tr>
 								<td>${item.id }</td>
 								<td>${item.title }</td>
-								<td><img src="data:image/jpg;base64,${item.projectImage }"
+								<td><img src="${item.image }"
 									style="width: 100px; height: 100px;" /></td>
 								<td><a href="${item.link}">${item.link }</a></td>
 								<td>${item.tags }</td>

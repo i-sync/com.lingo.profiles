@@ -57,7 +57,7 @@
 							<tr>
 								<td>${item.id }</td>
 								<td>${item.title }</td>
-								<td><img src="data:image/jpg;base64,${item.projectImage }"
+								<td><img src="${item.image }"
 									style="width: 100px; height: 100px;" /></td>
 								<td><a href="${item.link}">${item.link }</a></td>
 								<td>${item.tags }</td>

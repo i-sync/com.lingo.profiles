@@ -7,22 +7,24 @@ public class EducationForm {
 	private int id;
 	private int pid;
 	private String title;
+	private String logo;
 	private String period;
 	private String professional;
 	private String link;
 	private String intro;
 	private Map<String,String> errors = new HashMap<String,String>();
 	
-	public EducationForm(int id, int pid, String title, String period,
+	public EducationForm(int id, int pid, String title, String logo, String period,
 			String professional, String link, String intro) {
-		this(pid,title,period,professional,link,intro);
+		this(pid,title,logo,period,professional,link,intro);
 		this.id = id;
 	}
-	public EducationForm(int pid, String title, String period, String professional,
+	public EducationForm(int pid, String title, String logo, String period, String professional,
 			String link, String intro) {
 		super();
 		this.pid = pid;
 		this.title = title;
+		this.logo = logo;
 		this.period = period;
 		this.professional = professional;
 		this.link = link;
@@ -48,6 +50,12 @@ public class EducationForm {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 	public String getPeriod() {
 		return period;

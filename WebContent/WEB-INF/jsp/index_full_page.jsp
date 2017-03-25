@@ -22,7 +22,7 @@
 			<ul id="menu" class="nav-box clearfix">
 				<li data-menuanchor="page1"><a href="#page1" class="navItem">About</a></li>
 				<li data-menuanchor="page2"><a href="#page2" class="navItem">Skills</a></li>
-				<li data-menuanchor="page3"><a href="#page3" id="myImg" style="backgroud:url('data:image/jpg;base64,${form.avatarImage }') no-repeat 0px 0px"></a></li>
+				<li data-menuanchor="page3"><a href="#page3" id="myImg" style="background:url('${form.avatar }') no-repeat 0px 0px"></a></li>
 				<li data-menuanchor="page4"><a href="#page4" class="navItem">Education</a></li>
 				<li data-menuanchor="page5"><a href="#page5" class="navItem">Experience</a></li>
 			</ul>
@@ -75,9 +75,13 @@
 							<div class="data-txt">
 		                    	<h1>技术博客：</h1>
 		                    	<p>
-		                    		<a href="http://blog.lifetime.photo/">
-		                    			http://blog.lifetime.photo/
-		                    		</a>
+		                    		<c:forEach var="item" items="${form.link }">
+			                    		<c:if test="${ fn:contains(item.link,'blog') }">
+				                    		<a href="${item.link} }">
+				                    			${item.link }
+				                    		</a>
+			                    		</c:if>
+		                    		</c:forEach>
 		                    	</p>
 			                </div>
 						</li>
@@ -112,7 +116,7 @@
 				  <div id="owl-example" class="owl-carousel">
 				  	<c:forEach var="item" items="${form.project }">
 				  		<div class="item" >
-				            <img src="data:image/jpg;base64,${item.projectImage }" />
+				            <img src="${item.image }" />
 							<div class="slide-txt">
 								<a href="${item.intro }"><h3>${item.title }</h3></a>
 								<p>${item.intro }</p>
@@ -130,7 +134,7 @@
 					    <h1>Educations</h1>
 						<div class="slide-school" >
 							<a href="${item.link }">
-								<img src="images/logo2.jpg" />
+								<img src="${item.logo }" />
 								<p>School：<span>${item.title }</span></p>
 								<p>Period：<span>${item.period }</span></p>
 								<p>Professional：<span>${item.professional }</span></p>
@@ -154,7 +158,7 @@
 							<div class="exprience_text clearfix">
 								<div class="u_exprience_head">
 									<a herf="${item.link }">
-										<img src="images/s_cb2.png" alt="${item.company }">									
+										<img src="${item.logo }" alt="${item.company }">									
 									</a>
 								</div>
 								<div class="u_exprience_body">

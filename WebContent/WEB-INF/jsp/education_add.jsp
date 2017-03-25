@@ -11,11 +11,14 @@
 	<div class="main ui container masthead vertical segment">
 		<div class="ui grid">
 			<div class="column">
-				<form class="ui form" action="${pageContext.request.contextPath }/education/add" method="post">
+				<form class="ui form" action="${pageContext.request.contextPath }/education/add" method="post" enctype="multipart/form-data">
 					<h2 class="ui header">Add Profile Education</h2>
 					<div class="ten wide field">
 						<label>Title</label> <input type="text" name="title" required
 							placeholder="Title">
+					</div>
+					<div class="ten wide field">
+						<label>Logo</label> <input type="file" name="logo" accept="image/*" required placeholder="Logo">
 					</div>
 					<div class="ten wide field">
 						<label>Period</label> <input type="text" name="period" required

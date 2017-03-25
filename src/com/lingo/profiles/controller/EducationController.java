@@ -1,6 +1,7 @@
 package com.lingo.profiles.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,12 +11,15 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Login;
 import com.lingo.profiles.bean.Profile;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Education;
+import com.lingo.profiles.bean.Experience;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;
@@ -43,7 +47,7 @@ public class EducationController {
 		{
 			//error...
 		}
-		return result.getList();
+		return result.getList().stream().map(x -> { x.setLogo(Common.getFileUrl(request, Education.class.getName(), x.getLogo())); return x;}).collect(Collectors.toList());
 	}
 	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.GET)
@@ -53,9 +57,13 @@ public class EducationController {
 
 	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-	public String addEducation(@ModelAttribute EducationForm form, ModelMap model, HttpServletRequest request) {
-		//EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
+	public String addEducation(@RequestParam(value = "logo") MultipartFile file, ModelMap model, HttpServletRequest request) {
+		EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
 		form.setPid(Common.getPid(request));
+		if (!file.isEmpty()) {
+			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Education.class.getName());	
+			form.setLogo(fileName);
+		}
 		if(!form.validate())
 		{
 			model.addAttribute("form", form);
@@ -83,10 +91,14 @@ public class EducationController {
 
 	@Login
 	@RequestMapping(value={"/update"},method = RequestMethod.POST)
-	public String updateEducation(@ModelAttribute EducationForm form, ModelMap model,HttpServletRequest request)
+	public String updateEducation(@RequestParam(value = "logo") MultipartFile file, ModelMap model,HttpServletRequest request)
 	{
-		//EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
+		EducationForm form = WebUtils.requestToBean(request, EducationForm.class);
 		form.setPid(Common.getPid(request));
+		if (!file.isEmpty()) {
+			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Education.class.getName());	
+			form.setLogo(fileName);
+		}
 		if(!form.validate())
 		{
 			model.addAttribute("form", form);
@@ -124,7 +136,7 @@ public class EducationController {
 
 	@Login
 	@RequestMapping(value={"/model/{id}"},method=RequestMethod.GET)
-	public String getModel(@PathVariable int id, ModelMap model)
+	public String getModel(@PathVariable int id, ModelMap model, HttpServletRequest request)
 	{
 		Education data = new Education();
 		data.setId(id);
@@ -140,6 +152,7 @@ public class EducationController {
 		EducationForm form = new EducationForm();
 		data = result.getT();
 		WebUtils.copyBean(data, form);
+		form.setLogo(Common.getFileUrl(request, Education.class.getName(), form.getLogo()));
 		model.addAttribute("form", form);
 		
 		return "education_update";

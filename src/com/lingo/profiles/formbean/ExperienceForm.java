@@ -7,6 +7,7 @@ public class ExperienceForm {
 	private int id;
 	private int pid;
 	private String title;
+	private String logo;
 	private String company;
 	private String link;
 	private String period;
@@ -15,16 +16,17 @@ public class ExperienceForm {
 	private String intro;
 	private Map<String,String> errors = new HashMap<String,String>();
 
-	public ExperienceForm(int id, int pid, String title, String company, String link, String period, String location,
+	public ExperienceForm(int id, int pid, String title,String logo, String company, String link, String period, String location,
 			String position, String intro) {
-		this(pid, title, company, link, period, location, position, intro);
+		this(pid, title, logo, company, link, period, location, position, intro);
 		this.id = id;
 	}
-	public ExperienceForm(int pid, String title, String company, String link, String period, String location, String position,
+	public ExperienceForm(int pid, String title, String logo, String company, String link, String period, String location, String position,
 			String intro) {
 		super();
 		this.pid = pid;
 		this.title = title;
+		this.logo = logo;
 		this.company = company;
 		this.link = link;
 		this.period = period;
@@ -50,6 +52,12 @@ public class ExperienceForm {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public String getLogo() {
+		return logo;
+	}
+	public void setLogo(String logo) {
+		this.logo = logo;
 	}
 	public String getCompany() {
 		return company;

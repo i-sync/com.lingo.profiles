@@ -54,6 +54,7 @@ public class ProjectController {
 		{
 			ProjectForm form = new ProjectForm();
 			WebUtils.copyBean(item, form);
+			form.setImage(Common.getFileUrl(request, Project.class.getName(), form.getImage()));
 			list.add(form);
 		}
 		return list;
@@ -71,15 +72,8 @@ public class ProjectController {
 		ProjectForm form = WebUtils.requestToBean(request, ProjectForm.class);
 		form.setPid(Common.getPid(request));
 		if (!file.isEmpty()) {
-			try {
-				InputStream is = file.getInputStream();
-				byte[] image = new byte[is.available()];
-				is.read(image);
-				form.setImage(image);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Project.class.getName());	
+			form.setImage(fileName);
 		}
 		
 		//check
@@ -115,15 +109,8 @@ public class ProjectController {
 		ProjectForm form = WebUtils.requestToBean(request, ProjectForm.class);
 		form.setPid(Common.getPid(request));
 		if (!file.isEmpty()) {
-			try {
-				InputStream is = file.getInputStream();
-				byte[] image = new byte[is.available()];
-				is.read(image);
-				form.setImage(image);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Project.class.getName());	
+			form.setImage(fileName);
 		}
 		//check
 		if(!form.validate())
@@ -164,7 +151,7 @@ public class ProjectController {
 
 	@Login
 	@RequestMapping(value={"/model/{id}"},method=RequestMethod.GET)
-	public String getModel(@PathVariable int id, ModelMap model)
+	public String getModel(@PathVariable int id, ModelMap model, HttpServletRequest request)
 	{
 		Project data = new Project();
 		data.setId(id);
@@ -180,6 +167,7 @@ public class ProjectController {
 		ProjectForm form = new ProjectForm();
 		data = result.getT();
 		WebUtils.copyBean(data, form);
+		form.setImage(Common.getFileUrl(request, Project.class.getName(), form.getImage()));
 		model.addAttribute("form", form);
 		
 		return "project_update";

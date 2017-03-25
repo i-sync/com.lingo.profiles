@@ -12,14 +12,14 @@ public class LinkForm {
 	private String title;
 	private String icon;
 	private String link;
-	private byte[] logo;
+	private String logo;
 	private Map<String,String> errors = new HashMap<String,String>();
 	
-	public LinkForm(int id, int pid, String title, String icon, String link, byte[] logo) {
+	public LinkForm(int id, int pid, String title, String icon, String link, String logo) {
 		this(pid,title,icon,link,logo);
 		this.id = id;
 	}
-	public LinkForm(int pid, String title, String icon, String link, byte[] logo) {
+	public LinkForm(int pid, String title, String icon, String link, String logo) {
 		super();
 		this.pid = pid;
 		this.title = title;
@@ -58,15 +58,11 @@ public class LinkForm {
 	public void setLink(String link) {
 		this.link = link;
 	}
-	public byte[] getLogo() {
+	public String getLogo() {
 		return logo;
 	}
-	public void setLogo(byte[] logo) {
+	public void setLogo(String logo) {
 		this.logo = logo;
-	}
-	public String getLogoImage()
-	{
-		return new Base64().encodeToString(this.logo);
 	}
 	public Map<String, String> getErrors() {
 		return errors;

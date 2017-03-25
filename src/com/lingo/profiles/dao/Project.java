@@ -88,7 +88,7 @@ public class Project {
 				pstmt.setObject(i + 1, objs[i]);
 			}
 			// add avatar param
-			if (StringUtils.isNullOrEmpty( data.getImage() )) {
+			if (!StringUtils.isNullOrEmpty( data.getImage() )) {
 				// storage avatar
 				//byte[] image = data.getImage();
 				//ByteArrayInputStream bis = new ByteArrayInputStream(image);				

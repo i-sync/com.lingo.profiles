@@ -1,7 +1,7 @@
 package com.lingo.profiles.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +59,7 @@ public class ProfileController {
 
 		ProfileForm form = WebUtils.requestToBean(request, ProfileForm.class);
 		if (!file.isEmpty()) {
-			String fileName = Common.saveFile(request, file, "profile");				
+			String fileName = Common.saveFile(request, file, Profile.class.getName());				
 			form.setAvatar(fileName);
 		}
 		// check
@@ -116,7 +116,7 @@ public class ProfileController {
 	{
 		ProfileForm form = WebUtils.requestToBean(request, ProfileForm.class);
 		if (!file.isEmpty()) {
-			String fileName = Common.saveFile(request, file, "profile");				
+			String fileName = Common.saveFile(request, file, Profile.class.getName());				
 			form.setAvatar(fileName);
 		}
 		// check
@@ -160,8 +160,7 @@ public class ProfileController {
 	}
 
 	@RequestMapping(value={"/+{name}","/{name}"},method=RequestMethod.GET)
-	public String getModel(@PathVariable String name ,ModelMap model)
-	{
+	public String getModel(@PathVariable String name ,ModelMap model,HttpServletRequest request) {
 		Profile data = new Profile();
 		data.setName(name);
 		TResult<Profile> result = new com.lingo.profiles.dao.Profile().getIdByName(data);
@@ -173,11 +172,11 @@ public class ProfileController {
 			return "message";
 		}		
 		//return String.format("redirect:/profile/model/%d",result.getT().getId());
-		return getModel(result.getT().getId(),model);
+		return getModel(result.getT().getId(),model,request);
 	}
 	
 	@RequestMapping(value = { "/model/{id}" }, method = RequestMethod.GET)
-	public String getModel(@PathVariable int id, ModelMap model) {
+	public String getModel(@PathVariable int id, ModelMap model, HttpServletRequest request) {
 		Profile data = new Profile();
 		data.setId(id);
 
@@ -190,6 +189,9 @@ public class ProfileController {
 		data = result.getT();
 		ProfileForm form = new ProfileForm();
 		WebUtils.copyBean(data, form);
+		String url = Common.getFileUrl(request, Profile.class.getName(), form.getAvatar());
+		LingoLogger.logger.info(url);
+		form.setAvatar(url == null?"":url.toString());
 		//copy list property
 		List<SkillForm> temp1 = new ArrayList<SkillForm>();
 		for(Skill item : data.getSkill())
@@ -205,6 +207,7 @@ public class ProfileController {
 		{
 			ProjectForm project = new ProjectForm();
 			WebUtils.copyBean(item, project);
+			project.setImage(Common.getFileUrl(request, Project.class.getName(), project.getImage(), data.getName()));
 			temp2.add(project);
 		}
 		form.setProject(temp2);
@@ -214,6 +217,8 @@ public class ProfileController {
 		{
 			EducationForm education = new EducationForm();
 			WebUtils.copyBean(item, education);
+			education.setLogo(Common.getFileUrl(request, Education.class.getName(), education.getLogo(), data.getName()));
+			LingoLogger.logger.info(education.getLogo());
 			temp3.add(education);
 		}
 		form.setEducation(temp3);
@@ -242,6 +247,7 @@ public class ProfileController {
 		{
 			ExperienceForm experience = new ExperienceForm();
 			WebUtils.copyBean(item, experience);
+			experience.setLogo(Common.getFileUrl(request, Experience.class.getName(), experience.getLogo(), data.getName()));
 			temp6.add(experience);
 		}		
 		form.setExperience(temp6);

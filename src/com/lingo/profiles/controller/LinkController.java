@@ -82,15 +82,8 @@ public class LinkController {
 		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
 		form.setPid(com.lingo.profiles.common.Common.getPid(request));
 		if (!file.isEmpty()) {
-			try {
-				InputStream is = file.getInputStream();
-				byte[] logo = new byte[is.available()];
-				is.read(logo);
-				form.setLogo(logo);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Link.class.getName());	
+			form.setLogo(fileName);
 		}
 		//check
 		if(!form.validate())
@@ -125,15 +118,8 @@ public class LinkController {
 		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
 		form.setPid(com.lingo.profiles.common.Common.getPid(request));
 		if (!file.isEmpty()) {
-			try {
-				InputStream is = file.getInputStream();
-				byte[] logo = new byte[is.available()];
-				is.read(logo);
-				form.setLogo(logo);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Link.class.getName());	
+			form.setLogo(fileName);
 		}
 		//check
 		if(!form.validate())

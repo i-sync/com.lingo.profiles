@@ -6,6 +6,8 @@ import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -46,6 +48,16 @@ public class Common {
 	}
 	
 	/**
+	 * get profile name from session
+	 * @param request
+	 * @return
+	 */
+	public static String getProfileName(HttpServletRequest request){
+		Profile data = getModel(request, "user", Profile.class);
+		return data == null ? "" : data.getName();
+	}
+	
+	/**
 	 * get file path by type
 	 * @param type
 	 * @param name
@@ -53,7 +65,7 @@ public class Common {
 	 */
 	public static String getFilePath(HttpServletRequest request, String type, String name)
 	{
-		return request.getServletContext().getRealPath(String.format("/images/%s/%s", type, name));
+		return request.getServletContext().getRealPath(String.format("/images/%s/%s/%s", getProfileName(request),type, name));
 	}
 	/**
 	 * get file resource url
@@ -63,13 +75,17 @@ public class Common {
 	 * @return
 	 * @throws MalformedURLException
 	 */
-	public static URL getFileUrl(HttpServletRequest request, String type, String name) throws MalformedURLException
-	{		
-		return request.getServletContext().getResource(String.format("/images/%s/%s", type, name));
+	public static String getFileUrl(HttpServletRequest request, String type, String fileName)
+	{
+		return String.format("%s/images/%s/%s/%s",request.getContextPath(), getProfileName(request), type, fileName);
 	}
-	
+
+	public static String getFileUrl(HttpServletRequest request, String type, String fileName, String userName)
+	{
+		return String.format("%s/images/%s/%s/%s",request.getContextPath(), userName, type, fileName);
+	}
 	/**
-	 * save file to disc
+	 * save file to disk
 	 * @param request
 	 * @param file
 	 * @param type
@@ -78,12 +94,18 @@ public class Common {
 	public static String saveFile(HttpServletRequest request, MultipartFile file, String type)
 	{
 		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-		String fileName = file.getName();
+		String fileName = file.getOriginalFilename();
+		//LingoLogger.logger.info(String.format("update load file name:%s", fileName));
 		String newFileExt = fileName.substring(fileName.lastIndexOf("."));
 		String newFileName = String.format("%s%s", df.format(new Date()), newFileExt);
 		String newFilePath = getFilePath(request, type, newFileName);
 		File newFile = new File(newFilePath);
+		//LingoLogger.logger.info(String.format("%s, %s, %s",newFilePath, newFile.getPath(), newFile.getParent()));
 		try (InputStream input = file.getInputStream()) {
+			if(Files.notExists(newFile.getParentFile().toPath()))
+			{
+				Files.createDirectories(newFile.getParentFile().toPath());
+			}
 		    Files.copy(input, newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

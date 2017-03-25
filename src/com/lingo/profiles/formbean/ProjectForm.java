@@ -9,18 +9,18 @@ public class ProjectForm {
 	private int id ;
 	private int pid;
 	private String title;
-	private byte[] image;
+	private String image;
 	private String link;
 	private String tags;
 	private String intro;
 	private Map<String,String> errors = new HashMap<String,String>();
 		
-	public ProjectForm(int id, int pid, String title, byte[] image, String link,
+	public ProjectForm(int id, int pid, String title, String image, String link,
 			String tags, String intro) {
 		this(pid, title, image, link, tags, intro);
 		this.id = id;
 	}
-	public ProjectForm(int pid, String title, byte[] image, String link,
+	public ProjectForm(int pid, String title, String image, String link,
 			String tags, String intro) {
 		super();
 		this.pid = pid;
@@ -49,15 +49,11 @@ public class ProjectForm {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public byte[] getImage() {
+	public String getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
-	}
-	public String getProjectImage()
-	{
-		return new Base64().encodeToString(this.image);
 	}
 	public String getLink() {
 		return link;

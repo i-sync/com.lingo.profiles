@@ -89,7 +89,7 @@ public class Link {
 				pstmt.setObject(i + 1, objs[i]);
 			}
 			// add avatar param
-			if (StringUtils.isNullOrEmpty(data.getLogo())) {
+			if (!StringUtils.isNullOrEmpty(data.getLogo())) {
 				// storage avatar
 				//byte[] logo = data.getLogo();
 				//ByteArrayInputStream bis = new ByteArrayInputStream(logo);

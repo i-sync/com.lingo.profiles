@@ -1,6 +1,7 @@
 package com.lingo.profiles.controller;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Login;
@@ -42,7 +45,7 @@ public class ExperienceController {
 		{
 			//error...
 		}
-		return result.getList();
+		return result.getList().stream().map(x -> { x.setLogo(Common.getFileUrl(request, Experience.class.getName(), x.getLogo())); return x;}).collect(Collectors.toList());
 	}
 	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.GET)
@@ -52,9 +55,14 @@ public class ExperienceController {
 
 	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-	public String addExperience(@ModelAttribute ExperienceForm form, ModelMap model, HttpServletRequest request) {
-		//ExperienceForm form = WebUtils.requestToBean(request, ExperienceForm.class);
+	public String addExperience(@RequestParam(value = "logo") MultipartFile file, ModelMap model, HttpServletRequest request) {
+		ExperienceForm form = WebUtils.requestToBean(request, ExperienceForm.class);
 		form.setPid(Common.getPid(request));
+		if (!file.isEmpty()) {
+			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Experience.class.getName());	
+			form.setLogo(fileName);
+		}		
+		
 		if(!form.validate())
 		{
 			model.addAttribute("form", form);
@@ -82,10 +90,15 @@ public class ExperienceController {
 
 	@Login
 	@RequestMapping(value={"/update"},method = RequestMethod.POST)
-	public String updateExperience(@ModelAttribute ExperienceForm form, ModelMap model,HttpServletRequest request)
+	public String updateExperience(@RequestParam(value = "logo") MultipartFile file, ModelMap model,HttpServletRequest request)
 	{
-		//ExperienceForm form = WebUtils.requestToBean(request, ExperienceForm.class);
+		ExperienceForm form = WebUtils.requestToBean(request, ExperienceForm.class);
 		form.setPid(Common.getPid(request));
+		if (!file.isEmpty()) {
+			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Experience.class.getName());	
+			form.setLogo(fileName);
+		}
+		
 		if(!form.validate())
 		{
 			model.addAttribute("form", form);
@@ -123,7 +136,7 @@ public class ExperienceController {
 
 	@Login
 	@RequestMapping(value={"/model/{id}"},method=RequestMethod.GET)
-	public String getModel(@PathVariable int id, ModelMap model)
+	public String getModel(@PathVariable int id, ModelMap model, HttpServletRequest request)
 	{
 		Experience data = new Experience();
 		data.setId(id);
@@ -139,6 +152,7 @@ public class ExperienceController {
 		ExperienceForm form = new ExperienceForm();
 		data = result.getT();
 		WebUtils.copyBean(data, form);
+		form.setLogo(Common.getFileUrl(request, Experience.class.getName(), form.getLogo()));
 		model.addAttribute("form", form);
 		
 		return "experience_update";
