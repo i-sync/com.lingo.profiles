@@ -17,7 +17,7 @@
 						<label>Name</label> <input type="text" name="name" placeholder="Name" value="${form.name }">
 					</div>
 					<div class="fourteen wide field">
-						<label>NickName</label> <input type="text" name="nickname" placeholder="NickName" value="${form.nickName }">
+						<label>NickName</label> <input type="text" name="nickName" placeholder="NickName" value="${form.nickName }">
 					</div>
 					<div class="fourteen wide field">
 						<label>Avatar</label> <input type="file" name="avatar" accept="image/*" placeholder="Avatar">

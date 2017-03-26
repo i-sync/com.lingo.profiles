@@ -16,7 +16,7 @@
 						<label>Name</label> <input type="text" name="name" placeholder="Name">
 					</div>
 					<div class="fourteen wide field">
-						<label>NickName</label> <input type="text" name="nickname" placeholder="NickName">
+						<label>NickName</label> <input type="text" name="nickName" placeholder="NickName">
 					</div>
 					<div class="fourteen wide field">
 						<label>Avatar</label> <input type="file" name="avatar" accept="image/*" placeholder="Avatar">

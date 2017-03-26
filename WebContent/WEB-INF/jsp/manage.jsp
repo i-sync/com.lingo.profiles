@@ -67,8 +67,24 @@
 		<div
 			class="five wide computer eight wide tablet sixteen wide mobile column">
 			<div class="ui center aligned grid">
+				<div id="profile" class="ui inverted ${colors[random.nextInt(10)] } circular  segment">
+					<h2 class="ui header">Profile</h2>
+				</div>
+			</div>
+		</div>
+		<div
+			class="five wide computer eight wide tablet sixteen wide mobile column">
+			<div class="ui center aligned grid">
 				<div id="skill" class="ui inverted ${colors[random.nextInt(10)] } circular  segment">
 					<h2 class="ui header">Skill</h2>
+				</div>
+			</div>
+		</div>
+		<div
+			class="five wide computer eight wide tablet sixteen wide mobile column">
+			<div class="ui center aligned grid">
+				<div id="skillcategory" class="ui inverted ${colors[random.nextInt(10)] } circular  segment">
+					<h2 class="ui header">SkillCategory</h2>
 				</div>
 			</div>
 		</div>
@@ -120,7 +136,14 @@
 				$(this).transition('jiggle');				
 			}).click(function(){
 				var id = $(this).attr('id');
-				var url ="${pageContext.request.contextPath }/" + id + "/add";
+				var url;
+				if(id == 'profile')
+				{
+					url = "${pageContext.request.contextPath }/" + id + "/update/${id}";
+				}else
+				{
+					url ="${pageContext.request.contextPath }/" + id + "/add";
+				}
 				window.location.href = url;
 			});			
 		});
