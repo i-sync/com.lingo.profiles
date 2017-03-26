@@ -59,7 +59,7 @@ public class Experience {
 		try
 		{
 			String sql = String.format("update Profiles.Experience set Title=?,Company=?, Link=?, Period=?,Location=?,Position=?,Intro=?,UpdateDate=? %s where ID=?", StringUtils.isNullOrEmpty(data.getLogo())?"":",Logo=?");
-			Object [] objs = new Object[]{data.getTitle(),data.getCompany(),data.getLink(),data.getPeriod(),data.getLocation(),data.getPosition(),data.getIntro(),new Date(),data.getId()};
+			Object [] objs = new Object[]{data.getTitle(),data.getCompany(),data.getLink(),data.getPeriod(),data.getLocation(),data.getPosition(),data.getIntro(),new Date()};
 			
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);

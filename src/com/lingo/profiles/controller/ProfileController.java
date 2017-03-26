@@ -189,7 +189,7 @@ public class ProfileController {
 		data = result.getT();
 		ProfileForm form = new ProfileForm();
 		WebUtils.copyBean(data, form);
-		String url = Common.getFileUrl(request, Profile.class.getName(), form.getAvatar());
+		String url = Common.getFileUrl(request, Profile.class.getName(), form.getAvatar(),"");
 		LingoLogger.logger.info(url);
 		form.setAvatar(url == null?"":url.toString());
 		//copy list property

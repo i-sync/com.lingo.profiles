@@ -1,7 +1,5 @@
 package com.lingo.profiles.controller;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +22,7 @@ import com.lingo.profiles.bean.Link;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.LinkForm;
+import com.lingo.profiles.formbean.LivingForm;
 import com.lingo.profiles.utils.Common;
 import com.lingo.profiles.utils.WebUtils;
 
@@ -78,13 +77,9 @@ public class LinkController {
 
 	@Login
 	@RequestMapping(value = {"/add"}, method = RequestMethod.POST)
-	public String addLink(@RequestParam(value = "logo") MultipartFile file, ModelMap model, HttpServletRequest request) {
-		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
+	public String addLink(@ModelAttribute LinkForm form, ModelMap model, HttpServletRequest request) {
+		//LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
 		form.setPid(com.lingo.profiles.common.Common.getPid(request));
-		if (!file.isEmpty()) {
-			String fileName = com.lingo.profiles.common.Common.saveFile(request, file, Link.class.getName());	
-			form.setLogo(fileName);
-		}
 		//check
 		if(!form.validate())
 		{
@@ -141,9 +136,9 @@ public class LinkController {
 	
 	@Login
 	@RequestMapping(value={"/update"},method = RequestMethod.POST)
-	public String updateLink(ModelMap model,HttpServletRequest request)
+	public String updateLink(@ModelAttribute LinkForm form, ModelMap model,HttpServletRequest request)
 	{
-		LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
+		//LinkForm form = WebUtils.requestToBean(request, LinkForm.class);
 		form.setPid(com.lingo.profiles.common.Common.getPid(request));
 		//check
 		if(!form.validate())

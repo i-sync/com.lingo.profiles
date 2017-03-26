@@ -58,7 +58,7 @@ public class Education {
 		try
 		{
 			String sql = String.format("update Profiles.Education set Title=?,Period=?,Professional=?,Link=?,Intro=?,UpdateDate=? %s where ID=?", StringUtils.isNullOrEmpty(data.getLogo())?"":",Logo=?");
-			Object [] objs = new Object[]{data.getTitle(),data.getPeriod(),data.getProfessional(),data.getLink(),data.getIntro(),new Date(),data.getId()};
+			Object [] objs = new Object[]{data.getTitle(),data.getPeriod(),data.getProfessional(),data.getLink(),data.getIntro(),new Date()};
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			int i = 0;
@@ -66,7 +66,7 @@ public class Education {
 				pstmt.setObject(i + 1, objs[i]);
 			}
 			// add avatar param
-			if (StringUtils.isNullOrEmpty( data.getLogo() )) {
+			if (!StringUtils.isNullOrEmpty( data.getLogo() )) {
 				// storage avatar
 				//byte[] image = data.getImage();
 				//ByteArrayInputStream bis = new ByteArrayInputStream(image);				

@@ -68,7 +68,7 @@ public class Common {
 		return request.getServletContext().getRealPath(String.format("/images/%s/%s/%s", getProfileName(request),type, name));
 	}
 	/**
-	 * get file resource url
+	 * get file path
 	 * @param request
 	 * @param type
 	 * @param name
@@ -80,6 +80,14 @@ public class Common {
 		return String.format("%s/images/%s/%s/%s",request.getContextPath(), getProfileName(request), type, fileName);
 	}
 
+	/**
+	 * get file path 
+	 * @param request
+	 * @param type
+	 * @param fileName
+	 * @param userName
+	 * @return
+	 */
 	public static String getFileUrl(HttpServletRequest request, String type, String fileName, String userName)
 	{
 		return String.format("%s/images/%s/%s/%s",request.getContextPath(), userName, type, fileName);
