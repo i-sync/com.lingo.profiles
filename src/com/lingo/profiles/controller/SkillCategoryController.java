@@ -19,7 +19,6 @@ import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.SkillCategoryForm;
-import com.lingo.profiles.formbean.SkillForm;
 import com.lingo.profiles.utils.WebUtils;
 
 @Controller

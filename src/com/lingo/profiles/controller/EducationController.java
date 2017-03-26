@@ -16,10 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Login;
-import com.lingo.profiles.bean.Profile;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.Education;
-import com.lingo.profiles.bean.Experience;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.Common;
 import com.lingo.profiles.common.LingoLogger;

@@ -3,8 +3,6 @@ package com.lingo.profiles.bean;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.tomcat.util.codec.binary.Base64;
-
 public class Profile {
 	private int id;
 	private String name;

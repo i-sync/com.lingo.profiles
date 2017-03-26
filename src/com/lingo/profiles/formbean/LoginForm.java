@@ -3,8 +3,6 @@ package com.lingo.profiles.formbean;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.lingo.profiles.utils.RegexUtil;
-
 
 public class LoginForm {
 	private String phone;

@@ -22,7 +22,6 @@ import com.lingo.profiles.bean.Link;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
 import com.lingo.profiles.formbean.LinkForm;
-import com.lingo.profiles.formbean.LivingForm;
 import com.lingo.profiles.utils.Common;
 import com.lingo.profiles.utils.WebUtils;
 

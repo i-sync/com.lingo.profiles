@@ -1,6 +1,5 @@
 package com.lingo.profiles.dao;
 
-import java.io.ByteArrayInputStream;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,11 +9,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.lingo.profiles.bean.ListResult;
 import com.lingo.profiles.bean.Result;
 import com.lingo.profiles.bean.TResult;
 import com.lingo.profiles.common.LingoLogger;
-import com.lingo.profiles.utils.ByteUtils;
 import com.mysql.jdbc.StringUtils;
 
 public class Profile {

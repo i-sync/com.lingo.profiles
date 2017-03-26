@@ -3,7 +3,6 @@ package com.lingo.profiles.formbean;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.tomcat.util.codec.binary.Base64;
 
 public class ProjectForm {
 	private int id ;
