@@ -30,7 +30,7 @@
 		<div class="header_holder" id="header_holder"></div>
 		<div id="fullpage">
 			<div class="section section1 active">
-				<h1>I am a full-stack developer </h1>
+				<h1>${form.profession }</h1>
 				<div class="wrap">
 					<ul class="infor clearfix">
 						<li class="data-infor">
