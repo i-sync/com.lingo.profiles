@@ -57,7 +57,7 @@ public class ProfileController {
 
 		ProfileForm form = WebUtils.requestToBean(request, ProfileForm.class);
 		if (!file.isEmpty()) {
-			String fileName = Common.saveFile(request, file, Profile.class.getName());				
+			String fileName = Common.saveFile(request, file, Profile.class.getName(), form.getName());				
 			form.setAvatar(fileName);
 		}
 		// check
@@ -187,7 +187,7 @@ public class ProfileController {
 		data = result.getT();
 		ProfileForm form = new ProfileForm();
 		WebUtils.copyBean(data, form);
-		String url = Common.getFileUrl(request, Profile.class.getName(), form.getAvatar(),"");
+		String url = Common.getFileUrl(request, Profile.class.getName(), form.getAvatar(),data.getName());
 		LingoLogger.logger.info(url);
 		form.setAvatar(url == null?"":url.toString());
 		//copy list property

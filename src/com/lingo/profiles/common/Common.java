@@ -55,7 +55,7 @@ public class Common {
 	}
 	
 	/**
-	 * get file path by type
+	 * get file path by userName(come from session), type, fileName
 	 * @param type
 	 * @param name
 	 * @return
@@ -63,6 +63,18 @@ public class Common {
 	public static String getFilePath(HttpServletRequest request, String type, String name)
 	{
 		return request.getServletContext().getRealPath(String.format("/images/%s/%s/%s", getProfileName(request),type, name));
+	}
+	/**
+	 * get file path by userName, type, fileName
+	 * @param request
+	 * @param type
+	 * @param name
+	 * @param userName
+	 * @return
+	 */
+	public static String getFilePath(HttpServletRequest request, String type, String name, String userName)
+	{
+		return request.getServletContext().getRealPath(String.format("/images/%s/%s/%s", userName,type, name));
 	}
 	/**
 	 * get file path
@@ -90,7 +102,7 @@ public class Common {
 		return String.format("%s/images/%s/%s/%s",request.getContextPath(), userName, type, fileName);
 	}
 	/**
-	 * save file to disk
+	 * save image file by type
 	 * @param request
 	 * @param file
 	 * @param type
@@ -104,6 +116,39 @@ public class Common {
 		String newFileExt = fileName.substring(fileName.lastIndexOf("."));
 		String newFileName = String.format("%s%s", df.format(new Date()), newFileExt);
 		String newFilePath = getFilePath(request, type, newFileName);
+		File newFile = new File(newFilePath);
+		//LingoLogger.logger.info(String.format("%s, %s, %s",newFilePath, newFile.getPath(), newFile.getParent()));
+		try (InputStream input = file.getInputStream()) {
+			if(Files.notExists(newFile.getParentFile().toPath()))
+			{
+				Files.createDirectories(newFile.getParentFile().toPath());
+			}
+		    Files.copy(input, newFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			LingoLogger.logger.error(e);
+			return "";
+		}
+		LingoLogger.logger.info(String.format("save file :%s", newFilePath ));
+		return newFileName;
+	}
+	/**
+	 * save image file by type, and userName
+	 * @param request
+	 * @param file
+	 * @param type
+	 * @param userName
+	 * @return
+	 */
+	public static String saveFile(HttpServletRequest request, MultipartFile file, String type, String userName)
+	{
+		SimpleDateFormat df = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+		String fileName = file.getOriginalFilename();
+		//LingoLogger.logger.info(String.format("update load file name:%s", fileName));
+		String newFileExt = fileName.substring(fileName.lastIndexOf("."));
+		String newFileName = String.format("%s%s", df.format(new Date()), newFileExt);
+		String newFilePath = getFilePath(request, type, newFileName, userName);
 		File newFile = new File(newFilePath);
 		//LingoLogger.logger.info(String.format("%s, %s, %s",newFilePath, newFile.getPath(), newFile.getParent()));
 		try (InputStream input = file.getInputStream()) {
