@@ -254,6 +254,9 @@ ul.skill-list li .list-area{
 	margin: 0;
 	padding: 0;
 }
+.section3 .container .owl-carousel .item h3{
+	color: #869690
+}
 .section3 .container .owl-carousel .item p{
 	color:#333;
 	font-size: .9em;
