@@ -77,7 +77,7 @@
 		                    	<p>
 		                    		<c:forEach var="item" items="${form.link }">
 			                    		<c:if test="${ fn:contains(item.link,'blog') }">
-				                    		<a href="${item.link} }">
+				                    		<a href="${item.link}">
 				                    			${item.link }
 				                    		</a>
 			                    		</c:if>
@@ -116,10 +116,14 @@
 				  <div id="owl-example" class="owl-carousel">
 				  	<c:forEach var="item" items="${form.project }">
 				  		<div class="item" >
-				            <img src="${item.image }" />
+				            <a href="${item.link }">
+					            <img src="${item.image }" />
+					        </a>					        
 							<div class="slide-txt">
-								<a href="${item.intro }"><h3>${item.title }</h3></a>
-								<p>${item.intro }</p>
+								<h3>${item.title }</h3>
+								<a href="${item.link }">
+									<p>${item.intro }</p>
+								</a>
 							</div>
 				        </div>
 				  	</c:forEach>
