@@ -14,7 +14,7 @@
 					<h2 class="ui header">Update Profile Info</h2>					
 					<input type="hidden" name="id" value="${form.id }">
 					<div class="fourteen wide field">
-						<label>Name</label> <input type="text" name="name" placeholder="Name" value="${form.name }">
+						<label>Name</label> <input type="text" name="name" readonly placeholder="Name" value="${form.name }">
 					</div>
 					<div class="fourteen wide field">
 						<label>NickName</label> <input type="text" name="nickName" placeholder="NickName" value="${form.nickName }">

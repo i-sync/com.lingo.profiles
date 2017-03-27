@@ -72,8 +72,8 @@ public class Profile {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		try{			
-			String sql =String.format("update Profiles.Profile set Name=?,NickName=?, Email=?,Phone=?,Address=?,Profession=?,Intro=?,UpdateDate=? %s where ID=?",StringUtils.isNullOrEmpty(data.getAvatar())?"":",Avatar=?");//"insert into Profile(Name,Email,Phone,Address,Intro,Avatar) values(?,?,?,?,?,?);";
-			Object[] objs = new Object[]{data.getName(),data.getNickName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getProfession(),data.getIntro(),new Date()};
+			String sql =String.format("update Profiles.Profile set NickName=?, Email=?,Phone=?,Address=?,Profession=?,Intro=?,UpdateDate=? %s where ID=?",StringUtils.isNullOrEmpty(data.getAvatar())?"":",Avatar=?");//"insert into Profile(Name,Email,Phone,Address,Intro,Avatar) values(?,?,?,?,?,?);";
+			Object[] objs = new Object[]{data.getNickName(),data.getEmail(),data.getPhone(),data.getAddress(),data.getProfession(),data.getIntro(),new Date()};
 			
 			conn = PoolManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
