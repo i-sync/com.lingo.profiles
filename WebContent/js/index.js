@@ -132,7 +132,10 @@ function exprience(){
     }
     if(browser.versions.iPhone && window.screen.width <= 768 || document.documentElement.clientWidth <= 768){
         for(var i=0;i<aItem.length;i++){
-            aItem[i].onclick = function(){
+            aItem[i].onclick = function(e){
+                if(e.target && e.target.nodeName=="H2"){
+                    return;
+                }
                 iNow++;
                 if(iNow == aItem.length){
                     iNow=0;

@@ -77,7 +77,7 @@
 		                    	<p>
 		                    		<c:forEach var="item" items="${form.link }">
 			                    		<c:if test="${ fn:contains(item.link,'blog') }">
-				                    		<a href="${item.link}">
+				                    		<a target="_blank" href="${item.link}">
 				                    			${item.link }
 				                    		</a>
 			                    		</c:if>
@@ -116,12 +116,12 @@
 				  <div id="owl-example" class="owl-carousel">
 				  	<c:forEach var="item" items="${form.project }">
 				  		<div class="item" >
-				            <a href="${item.link }">
+				            <a target="_blank" href="${item.link }">
 					            <img src="${item.image }" />
 					        </a>					        
 							<div class="slide-txt">
 								<h3>${item.title }</h3>
-								<a href="${item.link }">
+								<a target="_blank" href="${item.link }">
 									<p>${item.intro }</p>
 								</a>
 							</div>
@@ -137,13 +137,13 @@
 					<div class="slide">
 					    <h1>Educations</h1>
 						<div class="slide-school" >
-							<a href="${item.link }">
+							<a target="_blank" href="${item.link }">
 								<img src="${item.logo }" />
-								<p>School：<span>${item.title }</span></p>
-								<p>Period：<span>${item.period }</span></p>
-								<p>Professional：<span>${item.professional }</span></p>
-								<p>${item.intro }</p>
-							</a>
+                            </a>
+                            <p>School：<span>${item.title }</span></p>
+                            <p>Period：<span>${item.period }</span></p>
+                            <p>Professional：<span>${item.professional }</span></p>
+                            <p>${item.intro }</p>							
 						</div>
 					</div>
 				</c:forEach>
@@ -161,13 +161,13 @@
 						<c:forEach var="item" items="${form.experience}">
 							<div class="exprience_text clearfix">
 								<div class="u_exprience_head">
-									<a herf="${item.link }">
+									<a target="_blank" href="${item.link }">
 										<img src="${item.logo }" alt="${item.company }">									
 									</a>
 								</div>
 								<div class="u_exprience_body">
 									<div class="u_exprience_item">
-										<a herf="${item.link }"><h2>${item.company }</h2></a>
+										<a target="_blank" href="${item.link }"><h2>${item.company }</h2></a>
 										<p>${item.period }</p>
 										<p>${item.position }</p>
 										<p>${item.intro }</p>
