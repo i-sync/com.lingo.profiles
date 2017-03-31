@@ -76,7 +76,7 @@
 		                    	<h1>技术博客：</h1>
 		                    	<p>
 		                    		<c:forEach var="item" items="${form.link }">
-			                    		<c:if test="${ fn:contains(item.link,'blog') }">
+			                    		<c:if test="${ fn:contains(item.link,'blog') || fn:contains(item.link, 'github')}">
 				                    		<a target="_blank" href="${item.link}">
 				                    			${item.link }
 				                    		</a>
