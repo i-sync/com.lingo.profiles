@@ -52,12 +52,7 @@ public class AppConfiguration extends WebMvcConfigurerAdapter{
      */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/css/**").addResourceLocations("/css/");
-        registry.addResourceHandler("/js/**").addResourceLocations("/js/");
-        registry.addResourceHandler("/font/**").addResourceLocations("/font/");
-        registry.addResourceHandler("/images/**").addResourceLocations("/images/");
-        registry.addResourceHandler("/img/**").addResourceLocations("/img/");
-        registry.addResourceHandler("/semantic/**").addResourceLocations("/semantic/");
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
         registry.addResourceHandler("/.well-known/**").addResourceLocations("/.well-known/");
     }
      

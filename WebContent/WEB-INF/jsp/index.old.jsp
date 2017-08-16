@@ -46,7 +46,7 @@
 				<c:forEach var="item" items="${form.experience }">
 					<div class="cd-timeline-block">
 						<div class="cd-timeline-img  cd-location ">
-							<img src="${pageContext.request.contextPath}/img/icon-location.svg" alt="Picture">
+							<img src="${pageContext.request.contextPath}/static/img/icon-location.svg" alt="Picture">
 						</div>
 						<!-- cd-timeline-img -->
 		
@@ -72,7 +72,7 @@
 				<c:forEach var="item" items="${form.project }">
 					<div class="cd-timeline-block">
 						<div class="cd-timeline-img  cd-location ">
-							<img src="${pageContext.request.contextPath}/img/icon-location.svg" alt="Picture">
+							<img src="${pageContext.request.contextPath}/static/img/icon-location.svg" alt="Picture">
 						</div>
 						<!-- cd-timeline-img -->
 		
@@ -96,7 +96,7 @@
 				<c:forEach var="item" items="${form.education }">
 					<div class="cd-timeline-block">
 						<div class="cd-timeline-img cd-location ">
-							<img src="${pageContext.request.contextPath}/img/icon-location.svg" alt="Picture">
+							<img src="${pageContext.request.contextPath}/static/img/icon-location.svg" alt="Picture">
 						</div>
 						<!-- cd-timeline-img -->
 		

@@ -11,10 +11,10 @@
 <meta name="keywords" content="Profile,New Design" />
 <script type="applisalonion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
-<link href="${pageContext.request.contextPath }/css/bootstrap.css" rel='stylesheet'/>
-<link href="${pageContext.request.contextPath }/css/style.new.css" rel='stylesheet' />	
-<link href="${pageContext.request.contextPath }/css/swipebox.css" rel="stylesheet" />
-<link href="${pageContext.request.contextPath }/css/font-awesome.min.css" rel='stylesheet' />	
+<link href="${pageContext.request.contextPath }/static/css/bootstrap.css" rel='stylesheet'/>
+<link href="${pageContext.request.contextPath }/static/css/style.new.css" rel='stylesheet' />	
+<link href="${pageContext.request.contextPath }/static/css/swipebox.css" rel="stylesheet" />
+<link href="${pageContext.request.contextPath }/static/css/font-awesome.min.css" rel='stylesheet' />	
 <!--//Custom Theme files-->
 <style>
 	input.invalid
@@ -27,11 +27,11 @@
 	}
 </style>
 <!--web-font-->
-<link href="${pageContext.request.contextPath }/css/fontstyle.css" rel='stylesheet' />
-<link href="${pageContext.request.contextPath }/css/fontgoogle.css" rel='stylesheet'/>
+<link href="${pageContext.request.contextPath }/static/css/fontstyle.css" rel='stylesheet' />
+<link href="${pageContext.request.contextPath }/static/css/fontgoogle.css" rel='stylesheet'/>
 <!--//web-font-->
 
-<script src="${pageContext.request.contextPath }/js/jquery-2.1.4.min.js"></script>
+<script src="${pageContext.request.contextPath }/static/js/jquery-2.1.4.min.js"></script>
 </head>
 <body>
 <!--banner-->
@@ -294,11 +294,11 @@
 <!--//footer-->
 
 <!--common js-->
-<script src="${pageContext.request.contextPath }/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath }/static/js/bootstrap.min.js"></script>
 <!--//common js-->
 
 <!--ResponsiveTabs-->
-<script src="${pageContext.request.contextPath }/js/easyResponsiveTabs.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath }/static/js/easyResponsiveTabs.js" type="text/javascript"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
 		$('#horizontalTab').easyResponsiveTabs({

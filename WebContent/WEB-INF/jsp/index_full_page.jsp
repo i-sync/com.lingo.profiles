@@ -9,13 +9,13 @@
 		<title>My Profile</title>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">		
-		<script src="${pageContext.request.contextPath }/js/jquery-2.1.4.min.js"></script>
-		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/bootstrapTheme.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/jquery.fullPage.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/animate.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/owl.carousel.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/owl.theme.css" />
-		<link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.full.css"  />
+		<script src="${pageContext.request.contextPath }/static/js/jquery-2.1.4.min.js"></script>
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/bootstrapTheme.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/jquery.fullPage.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/animate.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/owl.carousel.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/owl.theme.css" />
+		<link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/style.full.css"  />
 	</head>
 	<body>
 		<div id="header" class="gwidth">
@@ -181,9 +181,9 @@
 		</div>
 	
 		
-		<script src="${pageContext.request.contextPath }/js/jquery.fullPage.min.js"></script>
-		<script src="${pageContext.request.contextPath }/js/move.min.js"></script>
-	    <script src="${pageContext.request.contextPath }/js/owl.carousel.js"></script>
-		<script src="${pageContext.request.contextPath }/js/index.js"></script>
+		<script src="${pageContext.request.contextPath }/static/js/jquery.fullPage.min.js"></script>
+		<script src="${pageContext.request.contextPath }/static/js/move.min.js"></script>
+	    <script src="${pageContext.request.contextPath }/static/js/owl.carousel.js"></script>
+		<script src="${pageContext.request.contextPath }/static/js/index.js"></script>
 	</body>
 </html>

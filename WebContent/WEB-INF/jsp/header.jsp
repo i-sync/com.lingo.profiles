@@ -4,17 +4,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/bootstrap.css">
+	href="${pageContext.request.contextPath }/static/css/bootstrap.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/mdb.min.css">
+	href="${pageContext.request.contextPath }/static/css/mdb.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/icon.css">
+	href="${pageContext.request.contextPath }/static/css/icon.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/font-awesome.min.css">
+	href="${pageContext.request.contextPath }/static/css/font-awesome.min.css">
 <link rel="stylesheet"
-	href="${pageContext.request.contextPath }/css/style.css">
-<link rel="shortcut icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
-<link rel="icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
+	href="${pageContext.request.contextPath }/static/css/style.css">
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/static/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="${pageContext.request.contextPath }/static/img/favicon.ico" type="image/x-icon">
 
 <nav class="double-navbar navbar navbar-fixed-top pt-color z-depth-1"
 	role="navigation">

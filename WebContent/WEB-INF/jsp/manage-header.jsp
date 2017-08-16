@@ -8,27 +8,27 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/reset.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/site.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/reset.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/site.css">
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/container.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/grid.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/header.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/image.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/menu.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/container.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/grid.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/header.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/image.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/menu.css">
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/divider.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/dropdown.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/form.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/input.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/button.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/list.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/message.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/icon.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/sidebar.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/transition.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/components/segment.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/semantic/semantic.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/divider.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/dropdown.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/form.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/input.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/button.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/list.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/message.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/icon.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/sidebar.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/transition.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/components/segment.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/static/semantic/semantic.css">
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="${pageContext.request.contextPath }/img/favicon.ico" type="image/x-icon">
 <style>
